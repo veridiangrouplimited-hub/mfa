@@ -1,0 +1,10 @@
+# Local dev / preview config
+.claude/
+
+# Reference screenshots used to build the clone (not part of the site)
+screenshots/
+foreignaffairs.gov.ng_*.png
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
