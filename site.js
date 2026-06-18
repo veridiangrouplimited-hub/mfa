@@ -44,8 +44,8 @@
           '<div class="col"><a href="nigeria.html#culture">Culture</a><a href="nigeria.html#tourism">Tourism</a><a href="nigeria.html#symbols">National symbols</a></div>' +
         '</div></li>' +
         '<li class="has-mega' + cur('policy') + '"><a href="policy.html" aria-haspopup="true">Policy <svg class="caret" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></a><div class="mega mega--2">' +
-          '<div class="col"><span class="col-title">4D Foreign Policies</span><a href="policy.html#brief">4D brief</a><a href="policy.html#activities">Activities</a><a href="policy.html#brochure">Download 4D Brochure</a></div>' +
-          '<div class="col"><span class="col-title">Issues</span><a href="policy.html#issues">All issues</a></div>' +
+          '<div class="col"><span class="col-title">4D Foreign Policy</span><a href="policy.html#intro">Introduction</a><a href="policy.html#fourd">The 4Ds</a><a href="policy.html#activities">Activities</a></div>' +
+          '<div class="col"><span class="col-title">More</span><a href="policy.html#objectives">Policy Objectives</a><a href="policy.html#activities">Download 4D Brochure</a></div>' +
         '</div></li>' +
         '<li class="has-mega' + cur('services') + '"><a href="services.html" aria-haspopup="true">Services <svg class="caret" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></a><div class="mega mega--2">' +
           '<div class="col"><span class="col-title">Document Authentication</span><a href="services.html#auth">Birth certificate</a><a href="services.html#auth">Child Adoption Documents</a><a href="services.html#auth">End User Certificates</a><a href="services.html#auth">Marriage Certificates</a></div>' +
@@ -185,34 +185,74 @@
     restart();
   }
 
-  /* Diplomatic missions directory (search + category filter) */
+  /* Diplomatic missions directory (search + region filter) */
   var grid = document.getElementById('missions-grid');
   if (grid && window.MISSIONS) {
+    var all = window.MISSIONS;
     var search = document.getElementById('mission-search');
     var chips = document.getElementById('mission-filters');
+    var typeChips = document.getElementById('mission-type-filters');
     var count = document.getElementById('mission-count');
-    var cat = 'All', q = '';
+    var region = 'All', type = 'All', q = '';
+
+    // map a mission type to its CSS modifier suffix (e.g. "High Commission" -> "HighCommission")
+    function typeKey(t) { return t.replace(/\s/g, ''); }
+
+    // populate region chip counts + overview stats
+    var regions = ['Africa', 'America', 'Asia', 'Europe'];
+    function inRegion(r) { return all.filter(function (m) { return m.region === r; }).length; }
+    function inType(t) { return all.filter(function (m) { return m.type === t; }).length; }
+    document.querySelectorAll('#mission-filters .chip').forEach(function (c) {
+      var r = c.getAttribute('data-cat');
+      var n = r === 'All' ? all.length : inRegion(r);
+      c.innerHTML = '<span class="chip-dot chip-dot--region' + r + '"></span>' +
+        r + ' <span class="chip-n">' + n + '</span>';
+    });
+    document.querySelectorAll('#mission-type-filters .chip').forEach(function (c) {
+      var t = c.getAttribute('data-type');
+      var n = t === 'All' ? all.length : inType(t);
+      c.innerHTML = '<span class="chip-dot chip-dot--' + (t === 'All' ? 'All' : typeKey(t)) + '"></span>' +
+        t + ' <span class="chip-n">' + n + '</span>';
+    });
+    var stats = document.getElementById('mission-stats');
+    if (stats) {
+      stats.innerHTML = '<div class="stat"><strong>' + all.length + '</strong><span>Total Missions</span></div>' +
+        regions.map(function (r) { return '<div class="stat"><strong>' + inRegion(r) + '</strong><span>' + r + '</span></div>'; }).join('');
+    }
+
     function render() {
-      var items = window.MISSIONS.filter(function (m) {
-        var okCat = cat === 'All' || m.category === cat;
+      var items = all.filter(function (m) {
+        var okR = region === 'All' || m.region === region;
+        var okT = type === 'All' || m.type === type;
         var okQ = !q || (m.name + ' ' + m.address).toLowerCase().indexOf(q) > -1;
-        return okCat && okQ;
+        return okR && okT && okQ;
       });
       grid.innerHTML = items.map(function (m) {
-        return '<article class="mission-card">' +
+        var key = typeKey(m.type);
+        return '<article class="mission-card mission-card--region' + m.region + '">' +
           '<img class="mission-flag" src="' + m.flag + '" alt="' + m.name + '" loading="lazy" />' +
           '<div class="mission-body"><h3>' + m.name + '</h3>' +
           '<p class="mission-addr">' + m.address + '</p>' +
           '<p class="mission-hours">' + (m.hours || '') + '</p>' +
-          '<span class="mission-cat">' + m.category + '</span></div></article>';
+          '<span class="mission-cat mission-cat--' + key + '">' + m.type + '</span></div></article>';
       }).join('') || '<p class="mission-empty">No missions match your search.</p>';
-      if (count) count.textContent = items.length + ' mission' + (items.length === 1 ? '' : 's');
+      if (count) {
+        count.textContent = 'Showing ' + items.length + ' of ' + all.length + ' missions' +
+          (region !== 'All' ? ' in ' + region : '') +
+          (type !== 'All' ? ' · ' + type : '') +
+          (q ? ' matching "' + q + '"' : '');
+      }
     }
     if (search) search.addEventListener('input', function () { q = search.value.trim().toLowerCase(); render(); });
     if (chips) chips.addEventListener('click', function (e) {
       var b = e.target.closest('.chip'); if (!b) return;
       chips.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('is-active'); });
-      b.classList.add('is-active'); cat = b.getAttribute('data-cat'); render();
+      b.classList.add('is-active'); region = b.getAttribute('data-cat'); render();
+    });
+    if (typeChips) typeChips.addEventListener('click', function (e) {
+      var b = e.target.closest('.chip'); if (!b) return;
+      typeChips.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('is-active'); });
+      b.classList.add('is-active'); type = b.getAttribute('data-type'); render();
     });
     render();
   }
@@ -235,18 +275,54 @@
     document.body.insertBefore(skip, document.body.firstChild);
   }
 
-  var sideLinks = Array.prototype.slice.call(document.querySelectorAll('.side-nav a[href^="#"]'));
-  var spyTargets = sideLinks.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
-  function spy() {
-    if (!spyTargets.length) return;
-    var pos = window.scrollY + 140, activeId = spyTargets[0].id;
-    spyTargets.forEach(function (t) { if (t.offsetTop <= pos) activeId = t.id; });
-    sideLinks.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + activeId); });
+  /* Tabbed side-nav: show only the selected panel */
+  var tabNav = document.querySelector('.side-nav[data-tabs]');
+  if (tabNav) {
+    var tabLinks = tabNav.querySelectorAll('a[href^="#"]');
+    var panels = document.querySelectorAll('.prose .panel');
+    var subpageTop = function () { var s = document.querySelector('.subpage'); return s ? s.offsetTop - 80 : 0; };
+    function activate(id, scroll) {
+      var found = false;
+      panels.forEach(function (p) { var on = p.id === id; p.classList.toggle('is-active', on); if (on) found = true; });
+      if (!found) return;
+      tabLinks.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + id); });
+      if (scroll && window.scrollY > subpageTop() + 40) window.scrollTo({ top: subpageTop(), behavior: 'smooth' });
+    }
+    tabLinks.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var id = a.getAttribute('href').slice(1);
+        activate(id, true);
+        history.replaceState(null, '', '#' + id);
+      });
+    });
+    // honor a hash arriving from the mega-menu (e.g. about.html#vision)
+    var hash = (location.hash || '').slice(1);
+    if (hash && document.getElementById(hash) && document.getElementById(hash).classList.contains('panel')) activate(hash, false);
   }
+
+  /* 4D pillar tabs (policy) */
+  var fourdTabs = document.querySelectorAll('.fourd-tab');
+  if (fourdTabs.length) {
+    var fourdPanels = document.querySelectorAll('.fourd-panel');
+    fourdTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var key = tab.getAttribute('data-pillar');
+        fourdTabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', String(on));
+        });
+        fourdPanels.forEach(function (p) {
+          p.classList.toggle('is-active', p.getAttribute('data-panel') === key);
+        });
+      });
+    });
+  }
+
   function onScroll() {
     if (topbar) topbar.classList.toggle('scrolled', window.scrollY > 8);
     toTop.classList.toggle('show', window.scrollY > 400);
-    spy();
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

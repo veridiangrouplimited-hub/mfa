@@ -5,6 +5,10 @@
 screenshots/
 foreignaffairs.gov.ng_*.png
 
+# Scraped source / intermediate build inputs (not part of the site)
+_*.html
+_*.json
+
 # OS / editor cruft
 Thumbs.db
 .DS_Store
