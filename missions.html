@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Diplomatic Missions — Ministry of Foreign Affairs, Federal Republic of Nigeria</title>
+<meta name="description" content="Directory of Nigeria's embassies, high commissions, consulates and permanent missions worldwide." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="missions">
+
+<div id="site-header"></div>
+
+<section class="missions-banner">
+  <div class="wrap">
+    <div>
+      <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Diplomatic Missions</p>
+      <h1>Diplomatic Missions</h1>
+      <p>Search Nigeria's network of embassies, high commissions and consulates around the world.</p>
+    </div>
+    <img class="world-map" src="assets/world.png" alt="World map" />
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="missions-toolbar">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.8l-.3-.3a6.5 6.5 0 1 0-.7.7l.3.3v.8l5 5 1.5-1.5-5-5m-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+        <input id="mission-search" type="search" placeholder="Search by country, city or address…" aria-label="Search missions" />
+      </div>
+      <div class="mission-filters" id="mission-filters" role="group" aria-label="Filter by category">
+        <button class="chip is-active" data-cat="All">All</button>
+        <button class="chip" data-cat="Embassy">Embassy</button>
+        <button class="chip" data-cat="High Commission">High Commission</button>
+        <button class="chip" data-cat="Consulate">Consulate</button>
+        <button class="chip" data-cat="Permanent Mission">Permanent Mission</button>
+      </div>
+    </div>
+    <p class="mission-count" id="mission-count"></p>
+    <div class="missions-grid" id="missions-grid"><!-- rendered by site.js from missions-data.js --></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="missions-data.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

@@ -9,9 +9,9 @@
   --green-500: #1cb146;   /* hover / accents (sampled) */
   --green-050: #eef7f1;   /* tints / watermark */
   --gold:      #d9b67b;   /* accent / gold (sampled) */
-  --navy:      #3d4055;   /* wordmark, headings (sampled) */
-  --ink:       #2d3047;   /* body text (sampled) */
-  --muted:     #636576;   /* secondary text (sampled) */
+  --navy:      #20242f;   /* headings — darkened for sharper contrast */
+  --ink:       #23262f;   /* body text — darkened for sharper contrast */
+  --muted:     #5a5d6b;   /* secondary text */
   --line:      #e6e8ec;   /* hairline borders */
   --bg:        #ffffff;
   --bg-soft:   #f6f6f7;
@@ -30,7 +30,14 @@ body {
   background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+  font-feature-settings: "kern" 1, "liga" 1, "cv11" 1;
 }
+/* tighter tracking sharpens Inter at display sizes */
+h1, h2, h3, .section-title, .hero h1, .page-banner h1 { letter-spacing: -0.022em; }
+h1, h2 { font-weight: 800; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
@@ -217,8 +224,15 @@ body.nav-open .burger span:nth-child(3) { transform: translateY(-7.5px) rotate(-
    CONSULAR SERVICES (green band w/ slider)
    ============================================================ */
 .band { background: var(--green-600); color: #fff; position: relative; overflow: hidden; }
-.band::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 80% 20%, rgba(255,255,255,.08), transparent 45%); }
-.band .wrap { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center; }
+.band::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 80% 20%, rgba(255,255,255,.08), transparent 45%); z-index: 0; }
+/* faded world-map watermark, inset with left/right padding */
+.band::after {
+  content:""; position:absolute; top:8%; bottom:8%; left:6%; right:6%;
+  background: url("assets/world.png") center/contain no-repeat;
+  opacity: .10; pointer-events: none; z-index: 0;
+  filter: brightness(0) invert(1);
+}
+.band .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center; }
 .band .eyebrow { color: rgba(255,255,255,.75); }
 .band h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700; margin: 0 0 16px; }
 .slider { position: relative; }
@@ -239,10 +253,11 @@ body.nav-open .burger span:nth-child(3) { transform: translateY(-7.5px) rotate(-
    WELCOME MESSAGE (home)
    ============================================================ */
 .welcome { position: relative; overflow: hidden; }
+/* faded minister watermark, kept on-page with right-hand padding */
 .welcome::after {
-  content:""; position:absolute; right: -40px; top: 0; bottom: 0; width: 360px;
+  content:""; position:absolute; right: 4%; top: 8%; bottom: 8%; width: 300px; max-width: 32%;
   background: url("assets/image_4.png") right center/contain no-repeat;
-  opacity: .16; z-index: 0; pointer-events: none;
+  opacity: .22; z-index: 0; pointer-events: none;
 }
 .welcome .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; align-items: center; }
 .minister-photo { aspect-ratio: 3/4; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); position: relative; }
@@ -255,8 +270,19 @@ body.nav-open .burger span:nth-child(3) { transform: translateY(-7.5px) rotate(-
 /* ============================================================
    LOCATIONS & MISSIONS (green) + FOOTER
    ============================================================ */
-.locations { background: var(--green-600); color: #fff; }
-.locations .wrap { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; align-items: start; }
+.locations { background: var(--green-600); color: #fff; position: relative; overflow: hidden; }
+/* faded delegation photo watermark, inset with left/right padding */
+.locations::before {
+  content:""; position:absolute; top:0; bottom:0; left:5%; right:5%;
+  background: url("assets/Footer1.png") center/cover no-repeat;
+  opacity: .12; pointer-events: none;
+}
+.locations::after {
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(0,125,83,.78), rgba(0,125,83,.55));
+  pointer-events: none;
+}
+.locations .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; align-items: start; }
 .locations h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; margin: 0 0 16px; }
 .locations p { opacity: .9; max-width: 360px; margin: 0 0 24px; }
 .loc-col h4 { font-size: .92rem; color: #cfe9d9; margin: 0 0 14px; font-weight: 600; }
@@ -264,12 +290,6 @@ body.nav-open .burger span:nth-child(3) { transform: translateY(-7.5px) rotate(-
 .loc-col a:hover { opacity: 1; padding-left: 6px; }
 
 footer.site-footer { background: var(--green-900); color: #fff; padding: 60px 0 0; position: relative; overflow: hidden; }
-/* faded delegation photo watermark, as on the reference site */
-footer.site-footer::before {
-  content:""; position:absolute; inset:0;
-  background: url("assets/Footer1.png") center/cover no-repeat;
-  opacity: .10; pointer-events: none;
-}
 footer.site-footer .wrap { position: relative; z-index: 1; }
 .foot-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 36px; }
 .foot-col h4 { font-size: .95rem; margin: 0 0 18px; font-weight: 600; }
@@ -331,6 +351,54 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
   .foot-bottom .wrap { flex-direction: column; text-align: center; }
   .doc-row { flex-wrap: wrap; }
   .doc-row .btn { margin-left: 0; }
+}
+
+/* ============================================================
+   DIPLOMATIC MISSIONS DIRECTORY
+   ============================================================ */
+.missions-banner {
+  position: relative; color: #fff; padding: 64px 0; overflow: hidden;
+  background: url("assets/diplomaticmissionsbg.jpg") center/cover no-repeat;
+}
+.missions-banner::after { content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(0,89,59,.94), rgba(0,89,59,.66)); }
+.missions-banner .wrap { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+.missions-banner h1 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; margin: 0 0 8px; }
+.missions-banner p { margin: 0; opacity: .92; max-width: 520px; }
+.missions-banner .world-map { width: 240px; max-width: 40%; opacity: .9; filter: brightness(0) invert(1); }
+
+.missions-toolbar { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin: 0 0 28px; }
+.search-box { position: relative; flex: 1; min-width: 240px; }
+.search-box svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; fill: var(--muted); }
+.search-box input {
+  width: 100%; padding: 13px 16px 13px 44px; border: 1px solid var(--line); border-radius: 999px;
+  font: inherit; font-size: .94rem; color: var(--ink); background: #fff; transition: border-color .2s, box-shadow .2s;
+}
+.search-box input:focus { outline: none; border-color: var(--green-500); box-shadow: 0 0 0 3px rgba(28,177,70,.15); }
+.mission-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  border: 1px solid var(--line); background: #fff; color: var(--muted);
+  padding: 9px 18px; border-radius: 999px; font: inherit; font-size: .86rem; font-weight: 600; cursor: pointer; transition: .2s;
+}
+.chip.is-active, .chip:hover { background: var(--green-700); color: #fff; border-color: var(--green-700); }
+.mission-count { color: var(--muted); font-size: .88rem; margin: 0 0 22px; }
+
+.missions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.mission-card {
+  display: flex; gap: 18px; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px; transition: transform .2s, box-shadow .2s; background: #fff;
+}
+.mission-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.mission-flag { width: 132px; height: 92px; flex: 0 0 auto; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+.mission-body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.mission-body h3 { margin: 0; font-size: 1rem; color: var(--navy); line-height: 1.3; }
+.mission-addr { margin: 0; font-size: .84rem; color: var(--muted); }
+.mission-hours { margin: 0; font-size: .82rem; color: var(--muted); }
+.mission-cat { align-self: flex-start; margin-top: 4px; background: var(--green-050); color: var(--green-700); font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+.mission-empty { color: var(--muted); padding: 30px 0; }
+
+@media (max-width: 760px) {
+  .missions-grid { grid-template-columns: 1fr; }
+  .missions-banner .world-map { display: none; }
 }
 
 /* ============================================================

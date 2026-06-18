@@ -8,16 +8,20 @@ HTML5, vanilla CSS, and vanilla JavaScript.
 
 | File | Description |
 |------|-------------|
-| `index.html` | Homepage — hero, Latest News, Consular Services slider, Welcome Message, Locations & Missions |
-| `about.html` | About Us — Who We Are, Mandate, Mission, Vision, Core Values, Leadership |
+| `index.html` | Homepage — hero, Latest News (HMFA/HMOS/MFA), Consular slider, Welcome Message, Locations & Missions |
+| `about.html` | About Us — Who We Are, Mandate, Mission, Vision, Core Values, History, Organization, Leadership |
+| `nigeria.html` | Nigeria — History, Natural resources, Investment, People, Culture, Tourism, National symbols |
+| `policy.html` | Policy — 4D foreign policy (brief, activities, brochure) and issues |
 | `services.html` | Services — Document Authentication + Visa & Consular |
 | `press.html` | Press Center — Latest News, Public Documents, Press Releases |
+| `missions.html` | Diplomatic Missions — searchable, filterable directory of 46 missions with flags |
 
 ## Shared
 
 - `styles.css` — design tokens (palette & Inter font sampled from the live site), all components, responsive rules
-- `nav.js` — mobile nav drawer, mega-menu accordion, news filter, and homepage slider (guarded per page)
-- `assets/` — logo, hero, minister portrait and other imagery
+- `site.js` — injects the shared header/footer into every page (via `#site-header` / `#site-footer` placeholders and `<body data-page>`), then wires up the mobile nav, mega-menu accordion, news filter, slider, missions directory, scrollspy and back-to-top
+- `missions-data.js` — the 46 mission records (name, address, hours, category, flag), parsed from the live directory
+- `assets/` — logo, hero, minister portrait, watermarks, and `assets/flags/` mission flags
 
 ## Run locally
 
