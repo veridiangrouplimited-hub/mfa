@@ -295,6 +295,15 @@
     if (hash && document.getElementById(hash) && document.getElementById(hash).classList.contains('panel')) activate(hash, false);
   }
 
+  /* Accordion (about > departments, and reusable) */
+  document.querySelectorAll('.accordion .acc-head').forEach(function (h) {
+    h.addEventListener('click', function () {
+      var item = h.closest('.acc-item');
+      var open = item.classList.toggle('is-open');
+      h.setAttribute('aria-expanded', String(open));
+    });
+  });
+
   /* 4D pillar tabs (policy) */
   var fourdTabs = document.querySelectorAll('.fourd-tab');
   if (fourdTabs.length) {
