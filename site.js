@@ -24,7 +24,7 @@
       '</div>' +
       '<a class="u-mail" href="mailto:info@foreignaffairs.gov.ng"><svg viewBox="0 0 24 24" width="15" height="15" fill="#fff"><path d="M2 5h20v14H2V5m2 2v.4l8 5 8-5V7H4m16 2.6-8 5-8-5V17h16V9.6z"/></svg> info@foreignaffairs.gov.ng</a>' +
       '<nav class="u-links" aria-label="Quick links">' +
-        '<a href="press.html">Press Releases</a><a href="services.html">Visas &amp; Passports</a><a href="atrium.html">The Atrium</a><a href="#">Travel Advisories</a>' +
+        '<a href="press.html">Press Releases</a><a href="services.html">Visas &amp; Passports</a><a href="atrium.html">The Atrium</a><a href="travel-advisory.html">Travel Advisories</a>' +
       '</nav>' +
       '<a class="u-portal"' + EXT + ' href="https://portal.foreignaffairs.gov.ng"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3V3m11 0h7v7h-7V3M3 14h7v7H3v-7m11 0h7v7h-7v-7z"/></svg> Paperless Service Portal</a>' +
     '</div></div>' +
