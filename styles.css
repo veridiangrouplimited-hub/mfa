@@ -658,3 +658,56 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
 .gallery-item:hover img { transform: scale(1.06); }
 .gallery-cta { text-align: center; margin-top: 28px; }
 @media (max-width: 760px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ============================================================
+   ACCORDION (about.html > departments)
+   ============================================================ */
+.accordion { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-top: 22px; background: #fff; }
+.acc-item + .acc-item { border-top: 1px solid var(--line); }
+.acc-head {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  padding: 18px 22px; background: #fff; border: 0; cursor: pointer; font: inherit; text-align: left;
+  transition: background .2s;
+}
+.acc-head:hover { background: var(--bg-soft); }
+.acc-title { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.acc-name { font-weight: 700; color: var(--navy); font-size: 1rem; }
+.acc-sub { font-size: .82rem; color: var(--muted); font-weight: 500; }
+.acc-ic { position: relative; width: 30px; height: 30px; flex: 0 0 auto; border-radius: 50%; border: 1.5px solid var(--line); transition: border-color .2s, background .2s; }
+.acc-ic::before, .acc-ic::after { content: ""; position: absolute; top: 50%; left: 50%; width: 12px; height: 2px; background: var(--green-700); transform: translate(-50%, -50%); transition: transform .25s, opacity .2s; border-radius: 2px; }
+.acc-ic::after { transform: translate(-50%, -50%) rotate(90deg); }
+.acc-item.is-open .acc-ic { background: var(--green-700); border-color: var(--green-700); }
+.acc-item.is-open .acc-ic::before, .acc-item.is-open .acc-ic::after { background: #fff; }
+.acc-item.is-open .acc-ic::after { transform: translate(-50%, -50%) rotate(0); opacity: 0; }
+.acc-body { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+.acc-item.is-open .acc-body { max-height: 420px; }
+.acc-body-inner { padding: 2px 22px 22px; }
+.acc-body-inner p { margin: 0 0 12px; color: var(--ink); font-size: .94rem; }
+.acc-meta { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 26px; }
+.acc-meta li { font-size: .88rem; color: var(--muted); }
+.acc-meta strong { color: var(--navy); }
+
+/* ============================================================
+   PRESS CENTER — article list + sidebar
+   ============================================================ */
+.press-layout { display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: start; }
+.press-grid { grid-template-columns: repeat(2, 1fr); }
+.press-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 100px; }
+.side-card { border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; background: #fff; }
+.side-card h4 { margin: 0 0 12px; color: var(--navy); font-size: 1rem; }
+.side-card > a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; color: var(--ink); font-size: .9rem; font-weight: 500; border-bottom: 1px solid var(--line); transition: color .18s, padding-left .18s; }
+.side-card > a:last-child { border-bottom: 0; }
+.side-card > a:hover { color: var(--green-700); padding-left: 4px; }
+.side-card .count { color: var(--muted); font-size: .78rem; font-weight: 700; background: var(--bg-soft); border-radius: 999px; padding: 1px 9px; }
+.archive-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.archive-list a { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 0; color: var(--ink); font-size: .85rem; border-bottom: 1px solid var(--line); transition: color .18s; }
+.archive-list a:hover { color: var(--green-700); }
+.side-card--cta { background: var(--green-050); border-color: transparent; }
+.side-card--cta p { margin: 0 0 14px; color: var(--muted); font-size: .88rem; }
+.side-card--cta .btn { background: var(--green-700); color: #fff; }
+@media (max-width: 980px) {
+  .press-layout { grid-template-columns: 1fr; }
+  .press-sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
+  .press-sidebar .side-card { flex: 1 1 260px; }
+}
+@media (max-width: 620px) { .press-grid { grid-template-columns: 1fr; } }
