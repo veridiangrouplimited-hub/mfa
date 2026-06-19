@@ -133,12 +133,12 @@ body.nav-open .burger span:nth-child(3) { transform: translateY(-7.5px) rotate(-
 .hero-bg { position: absolute; inset: 0; background: url("assets/mainhero.jpg") center/cover no-repeat; }
 .hero-bg::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(100deg, rgba(0,89,59,.95) 0%, rgba(0,89,59,.78) 55%, rgba(0,89,59,.42) 100%);
+  background: rgba(0,89,59,.55);
 }
 .hero .wrap { position: relative; z-index: 2; }
 .hero h1 {
-  font-size: clamp(2.1rem, 5vw, 3.7rem); font-weight: 800; line-height: 1.08;
-  max-width: 760px; margin: 0 0 18px; text-shadow: 0 2px 18px rgba(0,0,0,.25);
+  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.12;
+  max-width: 720px; margin: 0 0 18px; text-shadow: 0 2px 16px rgba(0,0,0,.4);
 }
 .hero h1::after { content:""; display:block; width: 90px; height: 5px; background: var(--gold); border-radius: 3px; margin-top: 22px; }
 .hero p { max-width: 560px; font-size: 1.06rem; opacity: .94; margin: 0 0 28px; }
@@ -153,7 +153,7 @@ body.nav-open .burger span:nth-child(3) { transform: translateY(-7.5px) rotate(-
 }
 .page-banner::after {
   content:""; position:absolute; inset:0;
-  background: linear-gradient(90deg, rgba(0,89,59,.94) 0%, rgba(0,89,59,.72) 60%, rgba(0,125,83,.4) 100%);
+  background: rgba(0,89,59,.55);
 }
 .page-banner .wrap { position: relative; z-index: 1; }
 .breadcrumb { font-size: .82rem; opacity: .9; margin: 0 0 12px; }
@@ -402,7 +402,7 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
   position: relative; color: #fff; padding: 64px 0; overflow: hidden;
   background: url("assets/diplomaticmissionsbg.jpg") center/cover no-repeat;
 }
-.missions-banner::after { content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(0,89,59,.94), rgba(0,89,59,.66)); }
+.missions-banner::after { content:""; position:absolute; inset:0; background: rgba(0,89,59,.55); }
 .missions-banner .wrap { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
 .missions-banner h1 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; margin: 0 0 8px; }
 .missions-banner p { margin: 0; opacity: .92; max-width: 520px; }
