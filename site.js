@@ -211,14 +211,8 @@
     document.querySelectorAll('#mission-type-filters .chip').forEach(function (c) {
       var t = c.getAttribute('data-type');
       var n = t === 'All' ? all.length : inType(t);
-      c.innerHTML = '<span class="chip-dot chip-dot--' + (t === 'All' ? 'All' : typeKey(t)) + '"></span>' +
-        t + ' <span class="chip-n">' + n + '</span>';
+      c.innerHTML = t + ' <span class="chip-n">' + n + '</span>';
     });
-    var stats = document.getElementById('mission-stats');
-    if (stats) {
-      stats.innerHTML = '<div class="stat"><strong>' + all.length + '</strong><span>Total Missions</span></div>' +
-        regions.map(function (r) { return '<div class="stat"><strong>' + inRegion(r) + '</strong><span>' + r + '</span></div>'; }).join('');
-    }
 
     function render() {
       var items = all.filter(function (m) {

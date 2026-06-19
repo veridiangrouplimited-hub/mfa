@@ -14,13 +14,13 @@ HTML5, vanilla CSS, and vanilla JavaScript.
 | `policy.html` | Policy — 4D foreign policy (brief, activities, brochure) and issues |
 | `services.html` | Services — Document Authentication + Visa & Consular |
 | `press.html` | Press Center — Latest News, Public Documents, Press Releases |
-| `missions.html` | Diplomatic Missions — searchable, filterable directory of 108 missions with flags |
+| `missions.html` | Diplomatic Missions — searchable, filterable directory of 113 missions with flags |
 
 ## Shared
 
 - `styles.css` — design tokens (palette & Inter font sampled from the live site), all components, responsive rules
 - `site.js` — injects the shared header/footer into every page (via `#site-header` / `#site-footer` placeholders and `<body data-page>`), then wires up the mobile nav, mega-menu accordion, news filter, slider, missions directory, scrollspy and back-to-top
-- `missions-data.js` — the 108 mission records (name, address, hours, category, flag), parsed from the live directory
+- `missions-data.js` — the 113 mission records (name, address, hours, category, flag), parsed from the live directory
 - `assets/` — logo, hero, minister portrait, watermarks, and `assets/flags/` mission flags
 
 ## Run locally

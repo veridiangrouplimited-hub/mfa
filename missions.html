@@ -29,32 +29,32 @@
   <div class="wrap">
     <p class="eyebrow">Overview</p>
     <h2 class="section-title">Global Diplomatic Presence</h2>
-    <p style="max-width:720px;color:var(--muted);margin:0 0 26px">Nigeria maintains a vast network of diplomatic missions worldwide — channels for fostering bilateral relations, promoting trade and investment, and protecting the interests of Nigerian citizens abroad.</p>
+    <p class="missions-lead">Nigeria maintains a vast network of diplomatic missions worldwide — fostering bilateral relations, promoting trade and investment, and protecting Nigerian citizens abroad.</p>
 
-    <div class="mission-stats" id="mission-stats"><!-- region stats injected --></div>
-
-    <div class="missions-toolbar">
+    <div class="mission-controls">
       <div class="search-box">
         <svg viewBox="0 0 24 24"><path d="M15.5 14h-.8l-.3-.3a6.5 6.5 0 1 0-.7.7l.3.3v.8l5 5 1.5-1.5-5-5m-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
         <input id="mission-search" type="search" placeholder="Search by country, city or address…" aria-label="Search missions" />
       </div>
-      <div class="mission-filters" id="mission-filters" role="group" aria-label="Filter by region">
-        <button class="chip is-active" data-cat="All">All</button>
-        <button class="chip" data-cat="Africa">Africa</button>
-        <button class="chip" data-cat="America">America</button>
-        <button class="chip" data-cat="Asia">Asia</button>
-        <button class="chip" data-cat="Europe">Europe</button>
+      <div class="filter-row">
+        <span class="filter-label">Region</span>
+        <div class="mission-filters" id="mission-filters" role="group" aria-label="Filter by region">
+          <button class="chip is-active" data-cat="All">All</button>
+          <button class="chip" data-cat="Africa">Africa</button>
+          <button class="chip" data-cat="America">America</button>
+          <button class="chip" data-cat="Asia">Asia</button>
+          <button class="chip" data-cat="Europe">Europe</button>
+        </div>
       </div>
-    </div>
-
-    <div class="mission-typebar">
-      <span class="mission-typebar__label">Type</span>
-      <div class="mission-filters" id="mission-type-filters" role="group" aria-label="Filter by mission type">
-        <button class="chip is-active" data-type="All">All</button>
-        <button class="chip" data-type="Embassy">Embassy</button>
-        <button class="chip" data-type="High Commission">High Commission</button>
-        <button class="chip" data-type="Consulate">Consulate</button>
-        <button class="chip" data-type="Permanent Mission">Permanent Mission</button>
+      <div class="filter-row">
+        <span class="filter-label">Type</span>
+        <div class="mission-filters" id="mission-type-filters" role="group" aria-label="Filter by mission type">
+          <button class="chip is-active" data-type="All">All</button>
+          <button class="chip" data-type="Embassy">Embassy</button>
+          <button class="chip" data-type="High Commission">High Commission</button>
+          <button class="chip" data-type="Consulate">Consulate</button>
+          <button class="chip" data-type="Permanent Mission">Permanent Mission</button>
+        </div>
       </div>
     </div>
 

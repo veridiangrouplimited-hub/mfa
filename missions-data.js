@@ -1,4 +1,4 @@
-﻿/* Auto-generated from the live diplomatic-missions directory (108 missions, region-ordered). */
+﻿/* Auto-generated from the live diplomatic-missions directory (113 missions, region-ordered). */
 window.MISSIONS = [
  { name: "Nigeria High Commission in Kigali, Rwanda", address: "No. 56, KG 13 Avenue Nyarutarama, Gasabo District, Kigali-Rwanda.", hours: "8:00AM - 5:00PM (Monday - Friday)", region: "Africa", type: "High Commission", flag: "assets/flags/rwanda.jpg" },
  { name: "Embassy of Nigeria, Abidjan, Côte D'Ivoire", address: "Stade Félix Houphouët-Boigny Boulevard de le République Abidjan Côte d'Ivoire", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Africa", type: "Embassy", flag: "assets/flags/abidjan.jpg" },
@@ -92,6 +92,11 @@ window.MISSIONS = [
  { name: "Embassy of Nigeria, Bern, Switzerland", address: "Zielgrabenstrasse 45, 3007 Bern, Switzerland", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Embassy", flag: "assets/flags/switzerland.jpg" },
  { name: "Embassy of Nigeria, Brussels, Belgium", address: "Avenue de Tervuren 285, 1150 Woluwe-Saint-Pierre, Brussels, Belgium", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Embassy", flag: "assets/flags/belgium.jpg" },
  { name: "Permanent Mission of Nigeria to UN, Geneva", address: "Chemin de Petit-Saconnex 24, 1211 Geneva, Switzerland", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Permanent Mission", flag: "assets/flags/switzerland.jpg" },
+ { name: "Permanent Mission of Nigeria to the United Nations, New York", address: "828 Second Avenue, New York, NY 10017, United States of America.", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "America", type: "Permanent Mission", flag: "assets/flags/atlanta.png" },
+ { name: "Permanent Mission of Nigeria to the UN and International Organisations, Vienna", address: "Vienna, Republic of Austria.", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Permanent Mission", flag: "assets/flags/austria.jpg" },
+ { name: "Permanent Mission of Nigeria to the African Union and UNECA, Addis Ababa", address: "Addis Ababa, Federal Democratic Republic of Ethiopia.", hours: "8:00AM - 5:00PM (Monday - Friday)", region: "Africa", type: "Permanent Mission", flag: "assets/flags/addis.jpg" },
+ { name: "Permanent Delegation of Nigeria to UNESCO, Paris", address: "Paris, French Republic.", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Permanent Mission", flag: "assets/flags/france.jpg" },
+ { name: "Permanent Mission of Nigeria to the OIC, Jeddah", address: "Jeddah, Kingdom of Saudi Arabia.", hours: "9:00AM - 5:00PM (Sunday - Thursday)", region: "Asia", type: "Permanent Mission", flag: "assets/flags/saudi_arabia.jpg" },
  { name: "Embassy of Nigeria, Dublin, Ireland", address: "56 Leeson Park, Ranelagh, Dublin 6, D06 WXL1, Ireland", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Embassy", flag: "assets/flags/ireland.jpg" },
  { name: "Embassy of Nigeria, Kyiv, Ukraine", address: "Provolok Vaskivskyi 12, Kyiv, 03118, Ukraine", hours: "10:00AM - 4:00PM (Monday - Thursday)", region: "Europe", type: "Embassy", flag: "assets/flags/ukraine.jpg" },
  { name: "Nigeria High Commission, London, United Kingdom", address: "Nigeria High Commission, 9 Northumberland Avenue London WC2N 5BX United Kingdom", hours: "8:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "High Commission", flag: "assets/flags/uk.jpg" },
