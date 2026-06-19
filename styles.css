@@ -610,3 +610,51 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
   .symbol-feature { grid-template-columns: 1fr; gap: 24px; }
   .symbol-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   TRAVEL ADVISORY (travel-advisory.html)
+   ============================================================ */
+.ta-band { background: linear-gradient(160deg, var(--green-700), var(--green-900)); color: #fff; }
+.ta-band .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
+.ta-band .section-title { color: #fff; }
+.ta-sub { font-weight: 700; font-size: 1.02rem; margin: 22px 0 10px; color: inherit; }
+.ta-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
+.ta-list li { position: relative; padding-left: 30px; font-size: .95rem; line-height: 1.5; }
+.ta-list li::before {
+  content: ""; position: absolute; left: 0; top: 2px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--green-500) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat;
+}
+.ta-note { margin: 16px 0 0; opacity: .9; font-size: .92rem; }
+.ta-media { margin: 0; }
+.ta-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; box-shadow: var(--shadow); display: block; }
+
+/* foreigners block (light) */
+.ta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
+.ta-list--dark li { color: var(--ink); }
+.ta-note--dark { color: var(--muted); }
+
+/* important contacts band */
+.ta-contacts-band { position: relative; color: #fff; padding: 76px 0; overflow: hidden;
+  background: url("assets/diplomaticmissionsbg.jpg") center/cover no-repeat; }
+.ta-contacts-band::after { content: ""; position: absolute; inset: 0; background: rgba(0,89,59,.74); }
+.ta-contacts-band .wrap { position: relative; z-index: 1; }
+.ta-contacts { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+.ta-contact { background: #fff; color: var(--ink); border-radius: 12px; padding: 14px 22px;
+  display: inline-flex; gap: 12px; align-items: center; font-weight: 600; transition: transform .2s, box-shadow .2s; }
+.ta-contact:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.ta-contact svg { width: 20px; height: 20px; stroke: var(--green-700); flex: 0 0 auto; }
+
+@media (max-width: 860px) {
+  .ta-band .wrap, .ta-grid { grid-template-columns: 1fr; gap: 30px; }
+  .ta-grid .ta-media { order: 2; }
+}
+
+/* ============================================================
+   GALLERY (atrium.html)
+   ============================================================ */
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.gallery-item { margin: 0; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-cta { text-align: center; margin-top: 28px; }
+@media (max-width: 760px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
