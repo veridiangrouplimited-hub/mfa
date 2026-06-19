@@ -400,13 +400,13 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
    ============================================================ */
 .missions-banner {
   position: relative; color: #fff; padding: 64px 0; overflow: hidden;
-  background: url("assets/diplomaticmissionsbg.jpg") center/cover no-repeat;
+  background: url("assets/mainhero.jpg") center/cover no-repeat;
 }
 .missions-banner::after { content:""; position:absolute; inset:0; background: rgba(0,89,59,.55); }
 .missions-banner .wrap { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
 .missions-banner h1 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; margin: 0 0 8px; }
 .missions-banner p { margin: 0; opacity: .92; max-width: 520px; }
-.missions-banner .world-map { width: 240px; max-width: 40%; opacity: .9; filter: brightness(0) invert(1); }
+.missions-banner .banner-globe { width: 210px; max-width: 32%; height: auto; flex: 0 0 auto; color: #fff; opacity: .22; }
 
 .missions-lead { max-width: 720px; color: var(--muted); margin: 0 0 26px; }
 
@@ -466,7 +466,7 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
 
 @media (max-width: 760px) {
   .missions-grid { grid-template-columns: 1fr; }
-  .missions-banner .world-map { display: none; }
+  .missions-banner .banner-globe { display: none; }
   .mission-controls { padding: 18px; }
   .filter-label { min-width: 0; width: 100%; }
 }
