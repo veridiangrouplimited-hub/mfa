@@ -568,25 +568,32 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
 .chip.is-active, .chip:hover { background: var(--green-700); color: #fff; border-color: var(--green-700); }
 .mission-count { color: var(--muted); font-size: .88rem; margin: 0 0 22px; }
 
-.missions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+/* portrait gallery cards — flag fills the top, info below */
+.missions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 24px; }
 .mission-card {
-  display: flex; gap: 18px; border-radius: var(--radius);
-  padding: 16px; transition: transform .2s, box-shadow .2s; background: #fff;
-  box-shadow: 0 1px 6px rgba(0,0,0,.07);
+  display: flex; flex-direction: column; border-radius: 12px; overflow: hidden;
+  background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--line);
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
-.mission-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-/* card left accent encodes the mission's region (matches the region tabs) */
-.mission-card { border-left: 4px solid var(--line); }
-.mission-card--regionAfrica  { border-left-color: #b8923f; }
-.mission-card--regionAmerica { border-left-color: #c0392b; }
-.mission-card--regionAsia    { border-left-color: #117a8b; }
-.mission-card--regionEurope  { border-left-color: #34495e; }
-.mission-flag { width: 160px; height: 112px; flex: 0 0 auto; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
-.mission-body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
-.mission-body h3 { margin: 0; font-size: 1rem; color: var(--navy); line-height: 1.3; }
-.mission-addr { margin: 0; font-size: .84rem; color: var(--muted); }
-.mission-hours { margin: 0; font-size: .82rem; color: var(--muted); }
-.mission-cat { align-self: flex-start; margin-top: 4px; background: var(--green-050); color: var(--green-700); font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+.mission-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(0,0,0,.10); }
+/* region accent — thin top colour line */
+.mission-card--regionAfrica  { border-top-color: #b8923f; }
+.mission-card--regionAmerica { border-top-color: #c0392b; }
+.mission-card--regionAsia    { border-top-color: #117a8b; }
+.mission-card--regionEurope  { border-top-color: #34495e; }
+.mission-flag {
+  display: block; width: 100%; height: 148px; flex: 0 0 auto;
+  object-fit: contain; background: var(--bg-soft);
+  padding: 16px 32px; box-sizing: border-box;
+  transition: transform .4s ease;
+}
+.mission-card:hover .mission-flag { transform: scale(1.05); }
+.mission-body { display: flex; flex-direction: column; padding: 14px 18px 18px; flex: 1; }
+.mission-body h3 { margin: 0 0 5px; font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.mission-addr { margin: 0 0 2px; font-size: .80rem; color: var(--muted); line-height: 1.45; }
+.mission-hours { margin: 0; font-size: .75rem; color: var(--muted); }
+.mission-cat { align-self: flex-start; margin-top: auto; padding: 4px 10px; font-size: .68rem; font-weight: 700; border-radius: 999px; }
 .mission-empty { color: var(--muted); padding: 30px 0; }
 
 @media (max-width: 760px) {
@@ -699,27 +706,47 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
 .act-stat strong { display: block; font-size: 2rem; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 6px; }
 .act-stat span { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
 
-.act-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 0 0 36px; }
+/* horizontal editorial list — number + icon accent on left, content on right */
+.act-grid { display: flex; flex-direction: column; gap: 12px; margin: 0 0 36px; }
 .act-card {
-  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 24px 24px 20px; border-top: 3px solid var(--line);
-  transition: transform .2s, box-shadow .2s; display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--line); border-radius: 16px;
+  overflow: hidden; display: grid; grid-template-columns: 88px 1fr;
+  border-left: 4px solid var(--line);
+  transition: box-shadow .22s, transform .22s;
 }
-.act-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.act-card--democracy  { border-top-color: var(--navy); }
-.act-card--development { border-top-color: var(--green-700); }
-.act-card--demography { border-top-color: var(--gold); }
-.act-card--diaspora   { border-top-color: #117a8b; }
+.act-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,.09); transform: translateX(3px); }
+.act-card--democracy  { border-left-color: var(--navy); }
+.act-card--development { border-left-color: var(--green-700); }
+.act-card--demography { border-left-color: var(--gold); }
+.act-card--diaspora   { border-left-color: #117a8b; }
 
-.act-card__head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
-.act-ic { width: 42px; height: 42px; border-radius: 10px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; }
+/* accent column */
+.act-accent {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; padding: 20px 14px; background: var(--bg-soft);
+  border-right: 1px solid var(--line);
+}
+.act-card--democracy  .act-accent { background: rgba(22,26,36,.04); }
+.act-card--development .act-accent { background: rgba(0,122,79,.04); }
+.act-card--demography .act-accent { background: rgba(210,162,60,.06); }
+.act-card--diaspora   .act-accent { background: rgba(17,122,139,.04); }
+
+.act-n { font-size: 1.5rem; font-weight: 800; line-height: 1; color: rgba(0,0,0,.15); }
+.act-card--democracy  .act-n { color: rgba(22,26,36,.28); }
+.act-card--development .act-n { color: rgba(0,122,79,.28); }
+.act-card--demography .act-n { color: rgba(155,109,15,.32); }
+.act-card--diaspora   .act-n { color: rgba(17,122,139,.32); }
+
+.act-ic { width: 40px; height: 40px; border-radius: 10px; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
 .act-ic svg { width: 20px; height: 20px; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; stroke: var(--green-700); }
 .act-card--democracy  .act-ic svg { stroke: var(--navy); }
 .act-card--demography .act-ic svg { stroke: #9b6d0f; }
 .act-card--diaspora   .act-ic svg { stroke: #117a8b; }
-.act-n { font-size: .68rem; font-weight: 800; color: rgba(0,0,0,.18); letter-spacing: .08em; }
-.act-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin: 0 0 9px; line-height: 1.3; }
-.act-card p { font-size: .86rem; color: var(--muted); line-height: 1.7; margin: 0 0 16px; flex: 1; }
+
+/* content body */
+.act-body { padding: 18px 22px; display: flex; flex-direction: column; justify-content: center; }
+.act-card h3 { font-size: 1.01rem; font-weight: 700; color: var(--navy); margin: 0 0 6px; line-height: 1.3; }
+.act-card p { font-size: .86rem; color: var(--muted); line-height: 1.65; margin: 0 0 12px; }
 .act-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .act-tag { font-size: .65rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1px solid; }
 .act-tag--democracy  { color: var(--navy); border-color: rgba(22,26,36,.25); background: rgba(22,26,36,.06); }
@@ -735,7 +762,6 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
   .fourd-tabs { grid-template-columns: repeat(2, 1fr); }
   .fourd-panel { grid-template-columns: 1fr; }
   .obj-media img { min-height: 240px; }
-  .act-grid { grid-template-columns: repeat(2, 1fr); }
   .act-stats { grid-template-columns: repeat(2, 1fr); }
   .act-stat:nth-child(2) { border-right: 0; }
   .act-stat:nth-child(1), .act-stat:nth-child(2) { border-bottom: 1px solid var(--line); }
@@ -743,8 +769,10 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
 @media (max-width: 620px) {
   .fourd-tabs { grid-template-columns: 1fr 1fr; }
   .fourd-spot strong { font-size: 2.6rem; }
-  .act-grid { grid-template-columns: 1fr; }
   .act-stats { grid-template-columns: repeat(2, 1fr); }
+  .act-card { grid-template-columns: 72px 1fr; }
+  .act-accent { padding: 14px 10px; gap: 8px; }
+  .act-n { font-size: 1.2rem; }
 }
 
 /* ============================================================
@@ -1399,16 +1427,26 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
 .who-stat span { font-size: .7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
 
 /* ============================================================
-   ABOUT — CORE VALUES V2 (5-column icon cards)
+   ABOUT — CORE VALUES V2 (agency-card accordion style)
    ============================================================ */
-.value-grid-v2 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin: 28px 0 8px; }
-.value-card-v2 { background: #fff; border: 1.5px solid var(--line); border-radius: 16px; padding: 28px 16px 24px; text-align: center; transition: box-shadow .22s, transform .22s, border-color .22s; }
-.value-card-v2:hover { box-shadow: 0 8px 28px rgba(0,0,0,.1); transform: translateY(-5px); border-color: var(--green-700); }
-.vc-icon { width: 68px; height: 68px; border-radius: 50%; background: rgba(0,125,83,.07); border: 1.5px solid rgba(0,125,83,.18); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; transition: background .2s, border-color .2s; }
-.value-card-v2:hover .vc-icon { background: rgba(0,125,83,.14); border-color: rgba(0,125,83,.35); }
-.vc-icon svg { width: 34px; height: 34px; fill: none; stroke: var(--green-700); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.value-card-v2 h4 { margin: 0 0 10px; color: var(--navy); font-size: .97rem; font-weight: 700; }
-.value-card-v2 p { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.65; }
+.value-grid-v2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0 8px; }
+.value-card-v2 { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; overflow: hidden; transition: box-shadow .2s; }
+.value-card-v2:hover { box-shadow: var(--shadow); }
+.vc-head { display: flex; align-items: center; gap: 14px; padding: 18px 20px; cursor: pointer; user-select: none; transition: background .15s; }
+.vc-head:hover { background: var(--bg-soft); }
+.vc-icon { width: 54px; height: 54px; border-radius: 14px; background: rgba(0,125,83,.07); border: 1.5px solid rgba(0,125,83,.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s, border-color .2s; }
+.vc-head:hover .vc-icon { background: rgba(0,125,83,.14); border-color: rgba(0,125,83,.35); }
+.vc-icon svg { width: 26px; height: 26px; fill: none; stroke: var(--green-700); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.vc-meta { flex: 1; min-width: 0; }
+.vc-meta h4 { margin: 0 0 3px; color: var(--navy); font-size: .96rem; font-weight: 700; }
+.vc-tag { font-size: .68rem; font-weight: 700; color: var(--green-700); text-transform: uppercase; letter-spacing: .06em; }
+.vc-toggle { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--line); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s, border-color .2s; }
+.vc-toggle svg { width: 12px; height: 12px; stroke: var(--muted); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s; }
+.value-card-v2.open .vc-toggle { background: var(--green-700); border-color: var(--green-700); }
+.value-card-v2.open .vc-toggle svg { stroke: #fff; transform: rotate(180deg); }
+.vc-body { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s ease; padding: 0 20px; }
+.value-card-v2.open .vc-body { max-height: 200px; padding: 0 20px 18px; }
+.vc-body p { margin: 0; font-size: .86rem; color: var(--muted); line-height: 1.65; padding-top: 4px; border-top: 1px solid var(--line); padding-top: 12px; }
 
 /* ============================================================
    NIGERIA — MINERAL MOSAIC GRID
@@ -1428,7 +1466,7 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
   .mineral-mosaic { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
-  .value-grid-v2 { grid-template-columns: 1fr 1fr; }
+  .value-grid-v2 { grid-template-columns: 1fr; }
 }
 
 /* ============================================================

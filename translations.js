@@ -30,6 +30,7 @@ en: {
   'util.visas': 'Visas & Passports',
   'util.atrium': 'The Atrium',
   'util.travel': 'Travel Advisories',
+  'util.portal': 'Paperless Service Portal',
 
   /* Mega-menu — About */
   'mega.explore': 'Explore',
@@ -183,6 +184,7 @@ en: {
   'about.nav.mission': 'Mission',
   'about.nav.vision': 'Vision',
   'about.nav.values': 'Core Values',
+  'about.nav.divisions': 'Divisions &amp; Units',
 
   'about.who.title': 'Who We Are',
   'about.who.lead': 'The Ministry of Foreign Affairs is the principal arm of Nigeria\'s foreign engagement — leading the nation\'s diplomatic missions and managing its international relations across every region of the world.',
@@ -752,6 +754,7 @@ fr: {
   'util.visas': 'Visas & Passeports',
   'util.atrium': "L'Atrium",
   'util.travel': 'Avis de Voyage',
+  'util.portal': 'Portail Sans Papier',
 
   /* Mega-menu — About */
   'mega.explore': 'Explorer',
@@ -905,6 +908,7 @@ fr: {
   'about.nav.mission': 'Mission',
   'about.nav.vision': 'Vision',
   'about.nav.values': 'Valeurs Fondamentales',
+  'about.nav.divisions': 'Divisions &amp; Unités',
 
   'about.who.title': 'Qui Sommes-Nous',
   'about.who.lead': 'Le Ministère des Affaires Étrangères est le principal organe de l\'engagement extérieur du Nigeria — dirigeant les missions diplomatiques de la nation et gérant ses relations internationales dans toutes les régions du monde.',
