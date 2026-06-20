@@ -16,41 +16,41 @@
 
 <section class="page-banner">
   <div class="wrap">
-    <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Services</p>
-    <h1>Services</h1>
+    <p class="breadcrumb"><a href="index.html" data-i18n="breadcrumb.home">Home</a> &nbsp;/&nbsp; <span data-i18n="services.bc">Services</span></p>
+    <h1 data-i18n="services.banner.title">Services</h1>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <p class="eyebrow" id="auth">Document Authentication</p>
-    <h2 class="section-title">Authenticate Your Official Documents</h2>
-    <p style="max-width:720px;color:var(--muted);margin:0 0 36px">The Ministry authenticates a range of public documents for use abroad, confirming their validity to foreign governments and institutions. Begin any request through the Paperless Service Portal.</p>
+    <p class="eyebrow" id="auth" data-i18n="services.auth.eyebrow">Document Authentication</p>
+    <h2 class="section-title" data-i18n="services.auth.title">Authenticate Your Official Documents</h2>
+    <p style="max-width:720px;color:var(--muted);margin:0 0 36px" data-i18n="services.auth.desc">The Ministry authenticates a range of public documents for use abroad, confirming their validity to foreign governments and institutions. Begin any request through the Paperless Service Portal.</p>
     <!-- Auth tabs -->
     <div class="auth-tabs" role="tablist">
       <button class="auth-tab is-active" data-tab="birth" role="tab" aria-selected="true" aria-controls="panel-birth">
         <div class="auth-tab-ic">
           <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2m9 1.5V8h4.5L15 3.5M8 12h8v1.5H8V12m0 3h8v1.5H8V15m0 3h5v1.5H8V18z"/></svg>
         </div>
-        Birth Certificate
+        <span data-i18n="services.auth.tab.birth">Birth Certificate</span>
       </button>
       <button class="auth-tab" data-tab="adoption" role="tab" aria-selected="false" aria-controls="panel-adoption">
         <div class="auth-tab-ic">
           <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8m6 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6M6 11a3 3 0 1 0 0 6 3 3 0 0 0 0-6m6 3c-3 0-6 1.5-6 4v2h12v-2c0-2.5-3-4-6-4z"/></svg>
         </div>
-        Child Adoption Documents
+        <span data-i18n="services.auth.tab.adoption">Child Adoption Documents</span>
       </button>
       <button class="auth-tab" data-tab="euc" role="tab" aria-selected="false" aria-controls="panel-euc">
         <div class="auth-tab-ic">
           <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3m-1 13-3-3 1.4-1.4L11 12.2l4.6-4.6L17 9l-6 6z"/></svg>
         </div>
-        End User Certificates
+        <span data-i18n="services.auth.tab.euc">End User Certificates</span>
       </button>
       <button class="auth-tab" data-tab="marriage" role="tab" aria-selected="false" aria-controls="panel-marriage">
         <div class="auth-tab-ic">
           <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
         </div>
-        Marriage Certificate
+        <span data-i18n="services.auth.tab.marriage">Marriage Certificate</span>
       </button>
     </div>
 
@@ -59,30 +59,30 @@
       <!-- Panel: Birth Certificate -->
       <div class="auth-panel is-active" id="panel-birth" role="tabpanel">
         <div>
-          <h3>Birth Certificate Authentication</h3>
-          <p>The Ministry authenticates Nigerian birth certificates issued by the National Population Commission (NPC) for use in visa applications, overseas education, employment and residency purposes.</p>
-          <p class="auth-reqs-title">Required Documents</p>
+          <h3 data-i18n="services.birth.title">Birth Certificate Authentication</h3>
+          <p data-i18n="services.birth.desc">The Ministry authenticates Nigerian birth certificates issued by the National Population Commission (NPC) for use in visa applications, overseas education, employment and residency purposes.</p>
+          <p class="auth-reqs-title" data-i18n="services.auth.required">Required Documents</p>
           <ul class="auth-req-list">
-            <li>Original birth certificate issued by the NPC</li>
-            <li>National Identity card / NIN slip of the applicant</li>
-            <li>Completed application form (available at the Ministry)</li>
-            <li>Two (2) recent passport photographs</li>
-            <li>Evidence of payment of prescribed fee</li>
-            <li>Letter of purpose (stating where the document will be used)</li>
+            <li data-i18n="services.birth.l1">Original birth certificate issued by the NPC</li>
+            <li data-i18n="services.birth.l2">National Identity card / NIN slip of the applicant</li>
+            <li data-i18n="services.birth.l3">Completed application form (available at the Ministry)</li>
+            <li data-i18n="services.birth.l4">Two (2) recent passport photographs</li>
+            <li data-i18n="services.birth.l5">Evidence of payment of prescribed fee</li>
+            <li data-i18n="services.birth.l6">Letter of purpose (stating where the document will be used)</li>
           </ul>
         </div>
         <div>
           <div class="auth-cta-box">
-            <h4>How to Apply</h4>
+            <h4 data-i18n="services.auth.how">How to Apply</h4>
             <div class="auth-steps">
-              <div class="auth-step"><div class="auth-step-n">1</div><div class="auth-step-body">Create an account on the Paperless Service Portal.</div></div>
-              <div class="auth-step"><div class="auth-step-n">2</div><div class="auth-step-body">Upload scanned copies of all required documents.</div></div>
-              <div class="auth-step"><div class="auth-step-n">3</div><div class="auth-step-body">Pay the prescribed fee online via Remita.</div></div>
-              <div class="auth-step"><div class="auth-step-n">4</div><div class="auth-step-body">Visit the Ministry's Consular counter with originals for verification.</div></div>
-              <div class="auth-step"><div class="auth-step-n">5</div><div class="auth-step-body">Collect your authenticated document within 5–7 working days.</div></div>
+              <div class="auth-step"><div class="auth-step-n">1</div><div class="auth-step-body" data-i18n="services.birth.s1">Create an account on the Paperless Service Portal.</div></div>
+              <div class="auth-step"><div class="auth-step-n">2</div><div class="auth-step-body" data-i18n="services.birth.s2">Upload scanned copies of all required documents.</div></div>
+              <div class="auth-step"><div class="auth-step-n">3</div><div class="auth-step-body" data-i18n="services.birth.s3">Pay the prescribed fee online via Remita.</div></div>
+              <div class="auth-step"><div class="auth-step-n">4</div><div class="auth-step-body" data-i18n="services.birth.s4">Visit the Ministry's Consular counter with originals for verification.</div></div>
+              <div class="auth-step"><div class="auth-step-n">5</div><div class="auth-step-body" data-i18n="services.birth.s5">Collect your authenticated document within 5–7 working days.</div></div>
             </div>
-            <a class="btn" href="https://portal.mfa.gov.ng" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">Start Application</a>
-            <p class="auth-note">Processing time: 5–7 working days. Bring original documents to the Ministry.</p>
+            <a class="btn" href="https://portal.mfa.gov.ng" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center" data-i18n="btn.start_app">Start Application</a>
+            <p class="auth-note" data-i18n="services.birth.note">Processing time: 5–7 working days. Bring original documents to the Ministry.</p>
           </div>
         </div>
       </div>
@@ -90,31 +90,31 @@
       <!-- Panel: Child Adoption -->
       <div class="auth-panel" id="panel-adoption" role="tabpanel">
         <div>
-          <h3>Child Adoption Document Authentication</h3>
-          <p>Authentication of adoption papers is required for international adoption processes, visa applications for adopted children and legal recognition of adoptions by foreign authorities.</p>
-          <p class="auth-reqs-title">Required Documents</p>
+          <h3 data-i18n="services.adoption.title">Child Adoption Document Authentication</h3>
+          <p data-i18n="services.adoption.desc">Authentication of adoption papers is required for international adoption processes, visa applications for adopted children and legal recognition of adoptions by foreign authorities.</p>
+          <p class="auth-reqs-title" data-i18n="services.auth.required">Required Documents</p>
           <ul class="auth-req-list">
-            <li>Court adoption order / final adoption decree</li>
-            <li>Birth certificate of the adopted child</li>
-            <li>Valid ID of the adopting parent(s)</li>
-            <li>Completed application form</li>
-            <li>Two (2) passport photographs</li>
-            <li>Payment receipt of prescribed fee</li>
-            <li>Home study report (for international adoptions)</li>
+            <li data-i18n="services.adoption.l1">Court adoption order / final adoption decree</li>
+            <li data-i18n="services.adoption.l2">Birth certificate of the adopted child</li>
+            <li data-i18n="services.adoption.l3">Valid ID of the adopting parent(s)</li>
+            <li data-i18n="services.adoption.l4">Completed application form</li>
+            <li data-i18n="services.adoption.l5">Two (2) passport photographs</li>
+            <li data-i18n="services.adoption.l6">Payment receipt of prescribed fee</li>
+            <li data-i18n="services.adoption.l7">Home study report (for international adoptions)</li>
           </ul>
         </div>
         <div>
           <div class="auth-cta-box">
             <h4>How to Apply</h4>
             <div class="auth-steps">
-              <div class="auth-step"><div class="auth-step-n">1</div><div class="auth-step-body">Obtain a certified true copy of the court adoption order.</div></div>
-              <div class="auth-step"><div class="auth-step-n">2</div><div class="auth-step-body">Submit all documents via the Paperless Service Portal.</div></div>
-              <div class="auth-step"><div class="auth-step-n">3</div><div class="auth-step-body">Pay the prescribed fee online via Remita.</div></div>
-              <div class="auth-step"><div class="auth-step-n">4</div><div class="auth-step-body">Attend a verification appointment at the Consular Department.</div></div>
-              <div class="auth-step"><div class="auth-step-n">5</div><div class="auth-step-body">Collect authenticated documents within 7–10 working days.</div></div>
+              <div class="auth-step"><div class="auth-step-n">1</div><div class="auth-step-body" data-i18n="services.adoption.s1">Obtain a certified true copy of the court adoption order.</div></div>
+              <div class="auth-step"><div class="auth-step-n">2</div><div class="auth-step-body" data-i18n="services.adoption.s2">Submit all documents via the Paperless Service Portal.</div></div>
+              <div class="auth-step"><div class="auth-step-n">3</div><div class="auth-step-body" data-i18n="services.adoption.s3">Pay the prescribed fee online via Remita.</div></div>
+              <div class="auth-step"><div class="auth-step-n">4</div><div class="auth-step-body" data-i18n="services.adoption.s4">Attend a verification appointment at the Consular Department.</div></div>
+              <div class="auth-step"><div class="auth-step-n">5</div><div class="auth-step-body" data-i18n="services.adoption.s5">Collect authenticated documents within 7–10 working days.</div></div>
             </div>
-            <a class="btn" href="https://portal.mfa.gov.ng" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">Start Application</a>
-            <p class="auth-note">Adoption cases may require additional documentation. Contact the Consular Department for guidance.</p>
+            <a class="btn" href="https://portal.mfa.gov.ng" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center" data-i18n="btn.start_app">Start Application</a>
+            <p class="auth-note" data-i18n="services.adoption.note">Adoption cases may require additional documentation. Contact the Consular Department for guidance.</p>
           </div>
         </div>
       </div>
@@ -122,30 +122,30 @@
       <!-- Panel: End User Certificates -->
       <div class="auth-panel" id="panel-euc" role="tabpanel">
         <div>
-          <h3>End User Certificates (EUC)</h3>
-          <p>End User Certificates are issued by the Ministry to certify the identity, legitimacy and intended end-use of Nigerian entities importing controlled goods, including defence and dual-use equipment.</p>
-          <p class="auth-reqs-title">Required Documents</p>
+          <h3 data-i18n="services.euc.title">End User Certificates (EUC)</h3>
+          <p data-i18n="services.euc.desc">End User Certificates are issued by the Ministry to certify the identity, legitimacy and intended end-use of Nigerian entities importing controlled goods, including defence and dual-use equipment.</p>
+          <p class="auth-reqs-title" data-i18n="services.auth.required">Required Documents</p>
           <ul class="auth-req-list">
-            <li>Formal application letter on company letterhead</li>
-            <li>Supplier's pro-forma invoice or contract</li>
-            <li>CAC certificate and TIN of the importing entity</li>
-            <li>Ministerial or regulatory approval (where applicable)</li>
-            <li>Evidence of payment of EUC processing fee</li>
-            <li>Completed EUC application form</li>
+            <li data-i18n="services.euc.l1">Formal application letter on company letterhead</li>
+            <li data-i18n="services.euc.l2">Supplier's pro-forma invoice or contract</li>
+            <li data-i18n="services.euc.l3">CAC certificate and TIN of the importing entity</li>
+            <li data-i18n="services.euc.l4">Ministerial or regulatory approval (where applicable)</li>
+            <li data-i18n="services.euc.l5">Evidence of payment of EUC processing fee</li>
+            <li data-i18n="services.euc.l6">Completed EUC application form</li>
           </ul>
         </div>
         <div>
           <div class="auth-cta-box">
             <h4>How to Apply</h4>
             <div class="auth-steps">
-              <div class="auth-step"><div class="auth-step-n">1</div><div class="auth-step-body">Submit a formal application to the Consular &amp; Legal Department.</div></div>
-              <div class="auth-step"><div class="auth-step-n">2</div><div class="auth-step-body">Attach all required documents, including CAC certificate and invoice.</div></div>
-              <div class="auth-step"><div class="auth-step-n">3</div><div class="auth-step-body">Pay the EUC processing fee via the Remita platform.</div></div>
-              <div class="auth-step"><div class="auth-step-n">4</div><div class="auth-step-body">Await Ministry review and inter-agency verification (if applicable).</div></div>
-              <div class="auth-step"><div class="auth-step-n">5</div><div class="auth-step-body">Collect issued EUC within 10–14 working days.</div></div>
+              <div class="auth-step"><div class="auth-step-n">1</div><div class="auth-step-body" data-i18n="services.euc.s1">Submit a formal application to the Consular &amp; Legal Department.</div></div>
+              <div class="auth-step"><div class="auth-step-n">2</div><div class="auth-step-body" data-i18n="services.euc.s2">Attach all required documents, including CAC certificate and invoice.</div></div>
+              <div class="auth-step"><div class="auth-step-n">3</div><div class="auth-step-body" data-i18n="services.euc.s3">Pay the EUC processing fee via the Remita platform.</div></div>
+              <div class="auth-step"><div class="auth-step-n">4</div><div class="auth-step-body" data-i18n="services.euc.s4">Await Ministry review and inter-agency verification (if applicable).</div></div>
+              <div class="auth-step"><div class="auth-step-n">5</div><div class="auth-step-body" data-i18n="services.euc.s5">Collect issued EUC within 10–14 working days.</div></div>
             </div>
-            <a class="btn" href="https://portal.mfa.gov.ng" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">Start Application</a>
-            <p class="auth-note">EUC applications are subject to security vetting. Processing time may vary.</p>
+            <a class="btn" href="https://portal.mfa.gov.ng" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center" data-i18n="btn.start_app">Start Application</a>
+            <p class="auth-note" data-i18n="services.euc.note">EUC applications are subject to security vetting. Processing time may vary.</p>
           </div>
         </div>
       </div>
@@ -153,30 +153,30 @@
       <!-- Panel: Marriage Certificate -->
       <div class="auth-panel" id="panel-marriage" role="tabpanel">
         <div>
-          <h3>Marriage Certificate Authentication</h3>
-          <p>The Ministry authenticates Nigerian marriage certificates for use in spousal visa applications, name change processes, inheritance claims and other legal purposes in foreign countries.</p>
-          <p class="auth-reqs-title">Required Documents</p>
+          <h3 data-i18n="services.marriage.title">Marriage Certificate Authentication</h3>
+          <p data-i18n="services.marriage.desc">The Ministry authenticates Nigerian marriage certificates for use in spousal visa applications, name change processes, inheritance claims and other legal purposes in foreign countries.</p>
+          <p class="auth-reqs-title" data-i18n="services.auth.required">Required Documents</p>
           <ul class="auth-req-list">
-            <li>Original marriage certificate (court, church or customary)</li>
-            <li>Valid IDs of both spouses</li>
-            <li>Two (2) passport photographs of each spouse</li>
-            <li>Completed application form</li>
-            <li>Evidence of payment of prescribed fee</li>
-            <li>Letter of purpose (country and reason for authentication)</li>
+            <li data-i18n="services.marriage.l1">Original marriage certificate (court, church or customary)</li>
+            <li data-i18n="services.marriage.l2">Valid IDs of both spouses</li>
+            <li data-i18n="services.marriage.l3">Two (2) passport photographs of each spouse</li>
+            <li data-i18n="services.marriage.l4">Completed application form</li>
+            <li data-i18n="services.marriage.l5">Evidence of payment of prescribed fee</li>
+            <li data-i18n="services.marriage.l6">Letter of purpose (country and reason for authentication)</li>
           </ul>
         </div>
         <div>
           <div class="auth-cta-box">
             <h4>How to Apply</h4>
             <div class="auth-steps">
-              <div class="auth-step"><div class="auth-step-n">1</div><div class="auth-step-body">Submit your application via the Paperless Service Portal.</div></div>
-              <div class="auth-step"><div class="auth-step-n">2</div><div class="auth-step-body">Upload clear scans of the marriage certificate and IDs.</div></div>
-              <div class="auth-step"><div class="auth-step-n">3</div><div class="auth-step-body">Pay the prescribed fee online via Remita.</div></div>
-              <div class="auth-step"><div class="auth-step-n">4</div><div class="auth-step-body">Visit the Ministry's Consular counter with originals for stamping.</div></div>
-              <div class="auth-step"><div class="auth-step-n">5</div><div class="auth-step-body">Collect your authenticated certificate within 5–7 working days.</div></div>
+              <div class="auth-step"><div class="auth-step-n">1</div><div class="auth-step-body" data-i18n="services.marriage.s1">Submit your application via the Paperless Service Portal.</div></div>
+              <div class="auth-step"><div class="auth-step-n">2</div><div class="auth-step-body" data-i18n="services.marriage.s2">Upload clear scans of the marriage certificate and IDs.</div></div>
+              <div class="auth-step"><div class="auth-step-n">3</div><div class="auth-step-body" data-i18n="services.marriage.s3">Pay the prescribed fee online via Remita.</div></div>
+              <div class="auth-step"><div class="auth-step-n">4</div><div class="auth-step-body" data-i18n="services.marriage.s4">Visit the Ministry's Consular counter with originals for stamping.</div></div>
+              <div class="auth-step"><div class="auth-step-n">5</div><div class="auth-step-body" data-i18n="services.marriage.s5">Collect your authenticated certificate within 5–7 working days.</div></div>
             </div>
-            <a class="btn" href="https://portal.mfa.gov.ng" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">Start Application</a>
-            <p class="auth-note">Both spouses must be present or provide notarised consent if one is absent.</p>
+            <a class="btn" href="https://portal.mfa.gov.ng" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center" data-i18n="btn.start_app">Start Application</a>
+            <p class="auth-note" data-i18n="services.marriage.note">Both spouses must be present or provide notarised consent if one is absent.</p>
           </div>
         </div>
       </div>
@@ -207,17 +207,17 @@
 <section class="section" id="passports" style="background:var(--bg-soft)">
   <div class="wrap policy-intro">
     <div class="policy-intro__text">
-      <p class="eyebrow">Passports</p>
-      <h2 class="section-title">The Nigerian Passport</h2>
-      <p>All citizens of Nigeria — by birth, descent, adoption, registration or naturalisation — are eligible for a Nigerian passport, provided they satisfy all the conditions prescribed by law.</p>
+      <p class="eyebrow" data-i18n="services.passports.eyebrow">Passports</p>
+      <h2 class="section-title" data-i18n="services.passports.title">The Nigerian Passport</h2>
+      <p data-i18n="services.passports.desc">All citizens of Nigeria — by birth, descent, adoption, registration or naturalisation — are eligible for a Nigerian passport, provided they satisfy all the conditions prescribed by law.</p>
       <div class="hero-actions">
-        <a class="btn" href="https://portal.immigration.gov.ng" target="_blank" rel="noopener noreferrer">Apply for Passport</a>
-        <a class="btn btn--ghost-dark" href="missions.html">Apply for Visa</a>
+        <a class="btn" href="https://portal.immigration.gov.ng" target="_blank" rel="noopener noreferrer" data-i18n="services.passports.btn1">Apply for Passport</a>
+        <a class="btn btn--ghost-dark" href="missions.html" data-i18n="services.passports.btn2">Apply for Visa</a>
       </div>
     </div>
     <figure class="policy-intro__media">
       <img src="assets/newvisa.png" alt="Nigerian passport booklets" loading="lazy" />
-      <figcaption>The Enhanced e-Passport</figcaption>
+      <figcaption data-i18n="services.passport.cap">The Enhanced e-Passport</figcaption>
     </figure>
   </div>
 </section>
@@ -226,25 +226,25 @@
 <section class="section ta-band" id="passport-types">
   <div class="wrap">
     <div>
-      <p class="eyebrow eyebrow--light">Standard</p>
-      <h2 class="section-title">Types of Passports</h2>
-      <p class="ta-sub">Enhanced e-Passport</p>
+      <p class="eyebrow eyebrow--light" data-i18n="services.enhanced.eyebrow">Standard</p>
+      <h2 class="section-title" data-i18n="services.enhanced.title">Types of Passports</h2>
+      <p class="ta-sub" data-i18n="services.enhanced.title1">Enhanced e-Passport</p>
       <ul class="ta-list">
-        <li>New security-enhanced passport booklet</li>
-        <li>Polycarbonate technology that improves durability and quality</li>
-        <li>Ten-year validity booklet — fewer visits to the passport office</li>
-        <li>Automated, transparent issuance that addresses touting</li>
-        <li>Strictly online, cashless payment</li>
+        <li data-i18n="services.enhanced.l1">New security-enhanced passport booklet</li>
+        <li data-i18n="services.enhanced.l2">Polycarbonate technology that improves durability and quality</li>
+        <li data-i18n="services.enhanced.l3">Ten-year validity booklet — fewer visits to the passport office</li>
+        <li data-i18n="services.enhanced.l4">Automated, transparent issuance that addresses touting</li>
+        <li data-i18n="services.enhanced.l5">Strictly online, cashless payment</li>
       </ul>
     </div>
     <div>
-      <p class="ta-sub">Electronic Document Management ensures</p>
+      <p class="ta-sub" data-i18n="services.edm.title">Electronic Document Management ensures</p>
       <ul class="ta-list">
-        <li>Tracking of every application</li>
-        <li>Clear communication with applicants on status</li>
-        <li>Reduced human interference</li>
-        <li>Secure document storage</li>
-        <li>Smoother, faster process flow</li>
+        <li data-i18n="services.edm.l1">Tracking of every application</li>
+        <li data-i18n="services.edm.l2">Clear communication with applicants on status</li>
+        <li data-i18n="services.edm.l3">Reduced human interference</li>
+        <li data-i18n="services.edm.l4">Secure document storage</li>
+        <li data-i18n="services.edm.l5">Smoother, faster process flow</li>
       </ul>
     </div>
   </div>
@@ -254,15 +254,15 @@
 <section class="section" id="official-passport">
   <div class="wrap ta-grid">
     <div>
-      <p class="eyebrow">Official</p>
-      <h2 class="section-title">Official Passport</h2>
-      <p class="ta-sub">Eligibility</p>
+      <p class="eyebrow" data-i18n="services.official.eyebrow">Official</p>
+      <h2 class="section-title" data-i18n="services.official.title">Official Passport</h2>
+      <p class="ta-sub" data-i18n="services.official.elig">Eligibility</p>
       <ul class="ta-list ta-list--dark">
-        <li>Commissioners (members of the State Executive Council), Special Assistants and Special Advisers</li>
-        <li>Senior officials of the rank of Deputy Director and above in the Federal Civil Service</li>
-        <li>Senior officials of the rank of Director and above in the State Civil Service</li>
-        <li>Deputy General Managers and above in Federal and State parastatals</li>
-        <li>Chairmen, Deputy Chairmen and Secretaries of Local Government Councils</li>
+        <li data-i18n="services.official.l1">Commissioners (members of the State Executive Council), Special Assistants and Special Advisers</li>
+        <li data-i18n="services.official.l2">Senior officials of the rank of Deputy Director and above in the Federal Civil Service</li>
+        <li data-i18n="services.official.l3">Senior officials of the rank of Director and above in the State Civil Service</li>
+        <li data-i18n="services.official.l4">Deputy General Managers and above in Federal and State parastatals</li>
+        <li data-i18n="services.official.l5">Chairmen, Deputy Chairmen and Secretaries of Local Government Councils</li>
       </ul>
     </div>
     <figure class="ta-media">
@@ -275,16 +275,16 @@
 <section class="section ta-band" id="diplomatic-passport">
   <div class="wrap">
     <div>
-      <p class="eyebrow eyebrow--light">Diplomatic</p>
-      <h2 class="section-title">Diplomatic Passport</h2>
-      <p>Nigerian diplomats and other senior government officials may be approved by the President. Applications require:</p>
+      <p class="eyebrow eyebrow--light" data-i18n="services.diplomatic.eyebrow">Diplomatic</p>
+      <h2 class="section-title" data-i18n="services.diplomatic.title">Diplomatic Passport</h2>
+      <p data-i18n="services.diplomatic.desc">Nigerian diplomats and other senior government officials may be approved by the President. Applications require:</p>
       <ul class="ta-list">
-        <li>Letter of application / introduction from the applicant's organisation</li>
-        <li>Two (2) passport photographs</li>
-        <li>Last promotion letter or letter of appointment</li>
-        <li>Photocopy of a valid official identity card</li>
-        <li>Evidence of age</li>
-        <li>Certificate of return from INEC (for eligible political office holders)</li>
+        <li data-i18n="services.diplomatic.l1">Letter of application / introduction from the applicant's organisation</li>
+        <li data-i18n="services.diplomatic.l2">Two (2) passport photographs</li>
+        <li data-i18n="services.diplomatic.l3">Last promotion letter or letter of appointment</li>
+        <li data-i18n="services.diplomatic.l4">Photocopy of a valid official identity card</li>
+        <li data-i18n="services.diplomatic.l5">Evidence of age</li>
+        <li data-i18n="services.diplomatic.l6">Certificate of return from INEC (for eligible political office holders)</li>
       </ul>
     </div>
     <figure class="ta-media">
@@ -296,22 +296,22 @@
 <!-- Visas -->
 <section class="section" id="visas">
   <div class="wrap">
-    <p class="eyebrow">Visas</p>
-    <h2 class="section-title">Visas</h2>
-    <p class="obj-lead">Whether you're applying for a Nigerian visa, renewing your passport or replacing lost travel documents, we provide clear guidelines and step-by-step assistance to help you navigate the process smoothly.</p>
+    <p class="eyebrow" data-i18n="services.visas.eyebrow">Visas</p>
+    <h2 class="section-title" data-i18n="services.visas.title">Visas</h2>
+    <p class="obj-lead" data-i18n="services.visas.desc">Whether you're applying for a Nigerian visa, renewing your passport or replacing lost travel documents, we provide clear guidelines and step-by-step assistance to help you navigate the process smoothly.</p>
     <div class="ta-grid">
       <figure class="ta-media">
         <img src="assets/newvisa.png" alt="Globe and Nigerian passport" loading="lazy" />
       </figure>
       <div>
-        <p class="ta-sub" style="color:var(--navy)">Types of Nigerian Visas Issued</p>
+        <p class="ta-sub" style="color:var(--navy)" data-i18n="services.visatypes.title">Types of Nigerian Visas Issued</p>
         <ul class="ta-list ta-list--dark">
-          <li>Tourist / Visitor Visa</li>
-          <li>Business Visa</li>
-          <li>Transit Visa</li>
-          <li>Diplomatic / Official Visa</li>
-          <li>Subject to Regularisation (STR) Visa</li>
-          <li>Temporary Work Permit (TWP)</li>
+          <li data-i18n="services.visatypes.l1">Tourist / Visitor Visa</li>
+          <li data-i18n="services.visatypes.l2">Business Visa</li>
+          <li data-i18n="services.visatypes.l3">Transit Visa</li>
+          <li data-i18n="services.visatypes.l4">Diplomatic / Official Visa</li>
+          <li data-i18n="services.visatypes.l5">Subject to Regularisation (STR) Visa</li>
+          <li data-i18n="services.visatypes.l6">Temporary Work Permit (TWP)</li>
         </ul>
       </div>
     </div>
@@ -321,12 +321,12 @@
 <section class="section band" id="consular">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Visa &amp; Consular</p>
-      <h2>Consular &amp; Travel Services</h2>
-      <p>Our missions provide visas to foreign nationals travelling to Nigeria and a full range of consular support to Nigerians abroad — from passport renewals and emergency travel certificates to citizen welfare and document legalisation.</p>
+      <p class="eyebrow" data-i18n="services.consular.eyebrow">Visa &amp; Consular</p>
+      <h2 data-i18n="services.consular.title">Consular &amp; Travel Services</h2>
+      <p data-i18n="services.consular.desc">Our missions provide visas to foreign nationals travelling to Nigeria and a full range of consular support to Nigerians abroad — from passport renewals and emergency travel certificates to citizen welfare and document legalisation.</p>
       <p style="margin-top:18px"><strong>Visas</strong> — apply for tourist, business, official and transit visas through accredited Nigerian missions.</p>
       <p><strong>Consular Services</strong> — passport services, attestations, citizen assistance and diaspora support worldwide.</p>
-      <a class="btn btn--light" href="missions.html" style="margin-top:8px">Find a Mission</a>
+      <a class="btn btn--light" href="missions.html" style="margin-top:8px" data-i18n="services.consular.btn">Find a Mission</a>
     </div>
     <div class="band-visual">
       <img src="assets/newvisa.png" alt="Nigerian passport and globe" loading="lazy" />
@@ -336,6 +336,7 @@
 
 <div id="site-footer"></div>
 
+<script src="translations.js"></script>
 <script src="site.js"></script>
 </body>
 </html>

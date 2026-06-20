@@ -1,13 +1,14 @@
 /* Service worker — cache-first with network fallback */
-var CACHE = 'mfa-v1';
+var CACHE = 'mfa-v2';
 var PRECACHE = [
   'index.html',
   'styles.css',
   'site.js',
+  'translations.js',
   'missions-data.js',
   'mission-coords.js',
   'manifest.json',
-  'assets/Logo_OnWhite.png',
+  'assets/mfa-logo.png',
   'assets/mainhero.jpg'
 ];
 

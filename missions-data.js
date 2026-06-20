@@ -1,4 +1,4 @@
-﻿/* Auto-generated from the live diplomatic-missions directory (113 missions, region-ordered). */
+﻿/* Auto-generated from the live diplomatic-missions directory (108 missions, region-ordered). */
 window.MISSIONS = [
  { name: "Nigeria High Commission in Kigali, Rwanda", address: "No. 56, KG 13 Avenue Nyarutarama, Gasabo District, Kigali-Rwanda.", hours: "8:00AM - 5:00PM (Monday - Friday)", region: "Africa", type: "High Commission", flag: "assets/flags/rwanda.jpg" },
  { name: "Embassy of Nigeria, Abidjan, Côte D'Ivoire", address: "Stade Félix Houphouët-Boigny Boulevard de le République Abidjan Côte d'Ivoire", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Africa", type: "Embassy", flag: "assets/flags/abidjan.jpg" },
@@ -24,7 +24,6 @@ window.MISSIONS = [
  { name: "Nigeria Consulate, Douala, Cameroon", address: "No.161 Dominique Savio Street, Primaire, Behind Star-Land Hotel, Bonapriso.", hours: "Monday to Friday between 08:30 and 16:30", region: "Africa", type: "Consulate", flag: "assets/flags/cameroon.jpg" },
  { name: "Nigeria High Commission in Kampala, Uganda", address: "33 Nakasero Road, P.O. Box 4338, Kampala, Uganda", hours: "Monday - Friday: 09:00 - 17:00", region: "Africa", type: "High Commission", flag: "assets/flags/uganda.jpg" },
  { name: "Embassy of Nigeria in Khartoum, Sudan", address: "El-Mek Nimir Avenue 19th Street, El Sheik Mustafa Al-Amin Street, 17, Macnimere Street, Khartoum.", hours: "10am - 4pm (Sunday - Thursday)", region: "Africa", type: "Embassy", flag: "assets/flags/sudan.jpg" },
- { name: "Nigeria High Commission in Kigali, Rwanda", address: "No. 56, KG 13 Avenue Nyarutarama, Gasabo District, Kigali-Rwanda.", hours: "8am - 5pm (Monday - Friday)", region: "Africa", type: "High Commission", flag: "assets/flags/rwanda.jpg" },
  { name: "Embassy of Nigeria in Kinshasa, D.R. Congo", address: "141 Boulevard du 30 Juin, B. P. 1700, Kinshasa, Democratic Republic of Congo", hours: "Monday - Friday: 09:00 - 14:00", region: "Africa", type: "Embassy", flag: "assets/flags/dr_congo.jpg" },
  { name: "Embassy of Nigeria in Libreville, Gabon", address: "1081, Avenue Paul Marie, YEMBIT, B.P. 1191, Libreville, Republic of Gabon.", hours: "8am - 5pm (Monday - Friday)", region: "Africa", type: "Embassy", flag: "assets/flags/gabon.jpg" },
  { name: "Nigeria High Commission in Lilongwe, Malawi", address: "New Area 12, Plot No. 12/529 Close to Mlambe Lodge, Lilongwe, Malawi.", hours: "8:30 am - 11:30 am 1:00 pm - 4:30 pm", region: "Africa", type: "High Commission", flag: "assets/flags/malawi.jpg" },
@@ -48,11 +47,8 @@ window.MISSIONS = [
  { name: "Nigeria High Commission ,Yaoundé", address: "Bastos, Opposite 10th Police District Yaoundé, Cameroon", hours: "08:00 - 16:00 (Monday - Friday)", region: "Africa", type: "High Commission", flag: "assets/flags/yaounde.jpg" },
  { name: "Nigeria Consulate, Atlanta, United States of America", address: "8060 Roswell Rd, Atlanta, GA 30350", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "America", type: "Consulate", flag: "assets/flags/sa.png" },
  { name: "Embassy of Nigeria, Brasilia", address: "SEN Avenida das Nações, Quadra 801, lote 5 70.800-918 - Brasília - DF Brazil", hours: "8:00AM - 12:30PM and 01:30 - 4:00PM (Monday - Friday)", region: "America", type: "Embassy", flag: "assets/flags/brazil.png" },
- { name: "Nigeria Consulate, Buenos Aires, Argentina", address: "SEN Avenida das Nações, Quadra 801, lote 5 70.800-918 - Brasília - DF Brazil", hours: "8:00AM - 5:00PM (Monday - Friday)", region: "America", type: "Consulate", flag: "assets/flags/argentina.png" },
  { name: "Embassy of Nigeria, Caracas", address: "Calle Chivacoa cruce con calle Taria, San Roman, Las Mercedes, Caracas, Estado Miranda. Zona postal 1080, Venezuela.", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "America", type: "Embassy", flag: "assets/flags/cracas.png" },
  { name: "Nigeria Embassy, Havana, Cuba", address: "5ta. Ave. No. 1801 e/ 14 y 16 Miramar, Playa Havana Cuba", hours: "8:30AM - 15:30PM (Monday - Friday)", region: "America", type: "Embassy", flag: "assets/flags/havana.png" },
- { name: "Nigeria Consulate, Atlanta, United States of America", address: "8060 Roswell Rd, Atlanta, GA 30350", hours: "8:00AM - 5:00PM (Monday - Friday)", region: "America", type: "Consulate", flag: "assets/flags/atlanta.png" },
- { name: "Nigeria Consul General, United Nations, New York, USA", address: "828 2nd Ave, New York, NY 10017, United States", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "America", type: "Consulate", flag: "assets/flags/atlanta.png" },
  { name: "Nigeria Consulate, Buenos Aires, Argentina", address: "Embassy of the Federal Republic of Nigeria, Juán Estrada 2746, (C1425) CABA", hours: "8:00AM - 5:00PM (Monday - Friday)", region: "America", type: "Consulate", flag: "assets/flags/buenosaires.png" },
  { name: "Nigerian Embassy in Mexico", address: "Parque Via Reforma No. 2053 Col. Lomas de Chapultepec, Mexico D.F. C.P.11000", hours: "8:00AM - 5:00PM (Monday - Friday)", region: "America", type: "Embassy", flag: "assets/flags/mexico.png" },
  { name: "Nigeria High Commission, Ottawa, Canada", address: "295 Metcalfe Street Ottawa, Ontario K2P 1R9 Canada", hours: "9:00AM - 15:00PM (Monday - Friday)", region: "America", type: "High Commission", flag: "assets/flags/ottawa.png" },
@@ -112,7 +108,6 @@ window.MISSIONS = [
  { name: "Embassy of Nigeria, Stockholm, Sweden", address: "TYDINGSGATAN 11 114 26 Stockholm Sweden", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Embassy", flag: "assets/flags/sweden.jpg" },
  { name: "Embassy of Nigeria, Vienna, Austria", address: "Kaiserstrasse 23, 1070 Vienna, Austria", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Embassy", flag: "assets/flags/austria.jpg" },
  { name: "Embassy of Nigeria, Prague, Czech Republic", address: "Prague, Czech Republic", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Embassy", flag: "assets/flags/czech_republic.jpg" },
- { name: "Embassy of Nigeria, Budapest, Hungary", address: "Wigandegaz u 2, 2597 LII, The Hague, Netherlands", hours: "9:00AM - 5:00PM (Monday - Friday)", region: "Europe", type: "Embassy", flag: "assets/flags/hungary.jpg" },
 ];
 
 

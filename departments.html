@@ -16,9 +16,9 @@
 
 <section class="page-banner">
   <div class="wrap">
-    <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="about.html">About Us</a> &nbsp;/&nbsp; Departments</p>
-    <h1>Ministry Departments</h1>
-    <p class="banner-sub">Thirteen specialised departments, each responsible for a distinct dimension of Nigeria's foreign policy, diplomatic administration and citizen services.</p>
+    <p class="breadcrumb"><a href="index.html" data-i18n="breadcrumb.home">Home</a> &nbsp;/&nbsp; <a href="about.html" data-i18n="dept.bc.about">About Us</a> &nbsp;/&nbsp; <span data-i18n="dept.bc">Departments</span></p>
+    <h1 data-i18n="dept.banner.title">Ministry Departments</h1>
+    <p class="banner-sub" data-i18n="dept.banner.sub">Thirteen specialised departments, each responsible for a distinct dimension of Nigeria's foreign policy, diplomatic administration and citizen services.</p>
   </div>
 </section>
 
@@ -27,10 +27,10 @@
 
     <!-- Stats strip -->
     <div class="dept-stats-strip">
-      <div class="dept-stat"><strong>13</strong><span>Departments</span></div>
-      <div class="dept-stat"><strong>5</strong><span>Agencies &amp; Parastatals</span></div>
-      <div class="dept-stat"><strong>65+</strong><span>Years of Service</span></div>
-      <div class="dept-stat"><strong>100+</strong><span>Diplomatic Missions</span></div>
+      <div class="dept-stat"><strong>13</strong><span data-i18n="dept.stat1">Departments</span></div>
+      <div class="dept-stat"><strong>5</strong><span data-i18n="dept.stat2">Agencies &amp; Parastatals</span></div>
+      <div class="dept-stat"><strong>65+</strong><span data-i18n="dept.stat3">Years of Service</span></div>
+      <div class="dept-stat"><strong>100+</strong><span data-i18n="dept.stat4">Diplomatic Missions</span></div>
     </div>
 
     <!-- Sidebar + Main -->
@@ -38,7 +38,7 @@
 
       <!-- Sticky sidebar (flat list) -->
       <aside class="dept-sidebar">
-        <p class="dept-sidebar-title">All Departments</p>
+        <p class="dept-sidebar-title" data-i18n="dept.sidebar.title">All Departments</p>
         <a class="dept-side-link" href="#ohmfa">OHMFA</a>
         <a class="dept-side-link" href="#ohms">OHMS</a>
         <a class="dept-side-link" href="#ops">Office of the Perm. Secretary</a>
@@ -397,28 +397,29 @@
 <section class="section locations">
   <div class="wrap">
     <div>
-      <h2>Locations &amp; Missions</h2>
-      <p>Nigeria is a significant player on the international stage, maintaining a vast network of diplomatic missions worldwide.</p>
-      <a class="btn btn--light" href="missions.html">See More</a>
+      <h2 data-i18n="locations.title">Locations &amp; Missions</h2>
+      <p data-i18n="locations.desc">Nigeria is a significant player on the international stage, maintaining a vast network of diplomatic missions worldwide.</p>
+      <a class="btn btn--light" href="missions.html" data-i18n="btn.seemore">See More</a>
     </div>
     <div class="loc-col">
-      <h4>Diplomatic Missions</h4>
-      <a href="missions.html">Embassies</a>
-      <a href="missions.html">High Commissions</a>
-      <a href="missions.html">Consulates</a>
-      <a href="missions.html">Permanent Missions</a>
+      <h4 data-i18n="locations.missions">Diplomatic Missions</h4>
+      <a href="missions.html" data-i18n="locations.embassies">Embassies</a>
+      <a href="missions.html" data-i18n="locations.hc">High Commissions</a>
+      <a href="missions.html" data-i18n="locations.consulates">Consulates</a>
+      <a href="missions.html" data-i18n="locations.perm">Permanent Missions</a>
     </div>
     <div class="loc-col">
-      <h4>Regions &amp; Countries</h4>
-      <a href="missions.html">Africa</a>
-      <a href="missions.html">Europe</a>
-      <a href="missions.html">Americas</a>
-      <a href="missions.html">Asia</a>
+      <h4 data-i18n="locations.regions">Regions &amp; Countries</h4>
+      <a href="missions.html" data-i18n="locations.africa">Africa</a>
+      <a href="missions.html" data-i18n="locations.europe">Europe</a>
+      <a href="missions.html" data-i18n="locations.americas">Americas</a>
+      <a href="missions.html" data-i18n="locations.asia">Asia</a>
     </div>
   </div>
 </section>
 
 <div id="site-footer"></div>
+<script src="translations.js"></script>
 <script src="site.js"></script>
 <script>
 (function () {

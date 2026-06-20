@@ -16,8 +16,8 @@
 
 <section class="page-banner">
   <div class="wrap">
-    <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Press Center</p>
-    <h1>Press Center</h1>
+    <p class="breadcrumb"><a href="index.html" data-i18n="breadcrumb.home">Home</a> &nbsp;/&nbsp; <span data-i18n="press.bc">Press Center</span></p>
+    <h1 data-i18n="press.banner.title">Press Center</h1>
   </div>
 </section>
 
@@ -25,12 +25,12 @@
   <div class="wrap">
     <div class="news-head">
       <div>
-        <p class="eyebrow">Press Center</p>
-        <h2 class="section-title">Latest News</h2>
+        <p class="eyebrow" data-i18n="press.eyebrow">Press Center</p>
+        <h2 class="section-title" data-i18n="press.news.title">Latest News</h2>
         <div class="tabs" id="tabs">
-          <button class="tab is-active" data-filter="hmfa">HMFA News</button>
-          <button class="tab" data-filter="hmos">HMOS News</button>
-          <button class="tab" data-filter="mfa">MFA News</button>
+          <button class="tab is-active" data-filter="hmfa" data-i18n="press.tab.hmfa">HMFA News</button>
+          <button class="tab" data-filter="hmos" data-i18n="press.tab.hmos">HMOS News</button>
+          <button class="tab" data-filter="mfa" data-i18n="press.tab.mfa">MFA News</button>
         </div>
       </div>
       <a class="btn" href="#">View All
@@ -99,28 +99,28 @@
 
 <section class="section" id="watch" style="background:var(--bg-soft);padding-top:56px;padding-bottom:56px">
   <div class="wrap">
-    <p class="eyebrow">Watch</p>
-    <h2 class="section-title" style="text-align:center">Ministerial Addresses &amp; Press Briefings</h2>
-    <p class="obj-lead" style="text-align:center;max-width:640px;margin:0 auto 36px">Watch official addresses, press conferences and key speeches from the Honourable Minister and the Ministry of Foreign Affairs.</p>
+    <p class="eyebrow" data-i18n="press.watch.eyebrow">Watch</p>
+    <h2 class="section-title" style="text-align:center" data-i18n="press.watch.title">Ministerial Addresses &amp; Press Briefings</h2>
+    <p class="obj-lead" style="text-align:center;max-width:640px;margin:0 auto 36px" data-i18n="press.watch.desc">Watch official addresses, press conferences and key speeches from the Honourable Minister and the Ministry of Foreign Affairs.</p>
     <!-- Replace data-vid with the YouTube video ID and img src with:
          https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg -->
     <div class="yt-facade" data-vid="PRESS_VIDEO_ID">
       <img src="assets/news/news6.jpg" alt="Watch: Ministerial Address — Ministry of Foreign Affairs" loading="lazy" />
-      <button class="yt-play" aria-label="Play video">
+      <button class="yt-play" aria-label="Play video" data-i18n-label="press.video.btn">
         <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
           <path d="M66.5 7.5A8.5 8.5 0 0 0 60.2 1C55 0 34 0 34 0S13 0 7.8 1A8.5 8.5 0 0 0 1.5 7.5 89 89 0 0 0 0 24a89 89 0 0 0 1.5 16.5A8.5 8.5 0 0 0 7.8 47C13 48 34 48 34 48s21 0 26.2-1a8.5 8.5 0 0 0 6.3-6.5A89 89 0 0 0 68 24a89 89 0 0 0-1.5-16.5z" fill="red"/>
           <path d="M27 34l18-10-18-10z" fill="#fff"/>
         </svg>
       </button>
     </div>
-    <p class="yt-caption">Official address by H.E. Bianca Odumegwu-Ojukwu, Honourable Minister of Foreign Affairs</p>
+    <p class="yt-caption" data-i18n="press.video.cap">Official address by H.E. Bianca Odumegwu-Ojukwu, Honourable Minister of Foreign Affairs</p>
   </div>
 </section>
 
 <section class="section" id="releases">
   <div class="wrap">
-    <p class="eyebrow">Statements</p>
-    <h2 class="section-title">Press Releases</h2>
+    <p class="eyebrow" data-i18n="press.releases.eyebrow">Statements</p>
+    <h2 class="section-title" data-i18n="press.releases.title">Press Releases</h2>
     <div class="doc-list">
       <div class="doc-row">
         <div class="doc-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v3H4V4m0 5h16v2H4V9m0 4h10v2H4v-2m0 4h10v2H4v-2z"/></svg></div>
@@ -143,8 +143,8 @@
 
 <section class="section" id="documents" style="background:var(--bg-soft);padding-top:56px;padding-bottom:56px">
   <div class="wrap">
-    <p class="eyebrow">Resources</p>
-    <h2 class="section-title">Public Documents</h2>
+    <p class="eyebrow" data-i18n="press.docs.eyebrow">Resources</p>
+    <h2 class="section-title" data-i18n="press.docs.title">Public Documents</h2>
     <div class="doc-list">
       <div class="doc-row">
         <div class="doc-ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2m9 1.5V8h4.5L15 3.5z"/></svg></div>
@@ -172,6 +172,7 @@
 
 <div id="site-footer"></div>
 
+<script src="translations.js"></script>
 <script src="site.js"></script>
 </body>
 </html>
