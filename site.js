@@ -59,9 +59,9 @@
               '<p class="mega-desc">Discover Nigeria\'s rich history, culture, natural resources and investment opportunities.</p>' +
             '</div>' +
             '<div class="mega-cols">' +
-              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>History &amp; Resources</span><a href="nigeria.html#history">History of Nigeria</a><a href="nigeria.html#resources">Natural Resources</a></div>' +
-              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Economy</span><a href="nigeria.html#investment">Investment</a><a href="nigeria.html#people">The People</a></div>' +
-              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>Culture &amp; Tourism</span><a href="nigeria.html#culture">Culture</a><a href="nigeria.html#tourism">Tourism</a><a href="nigeria.html#symbols">National Symbols</a></div>' +
+              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>History &amp; Resources</span><a href="nigeria.html">History of Nigeria</a><a href="nigeria-resources.html">Natural Resources</a></div>' +
+              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Economy</span><a href="nigeria-investment.html">Investment</a><a href="nigeria-people.html">The People</a></div>' +
+              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>Culture &amp; Tourism</span><a href="nigeria-culture.html">Culture</a><a href="nigeria-tourism.html">Tourism</a><a href="nigeria-symbols.html">National Symbols</a></div>' +
             '</div>' +
           '</div>' +
         '</div></li>' +
@@ -111,6 +111,7 @@
         '</div></li>' +
         '<li class="' + cur('missions') + '"><a href="missions.html">Diplomatic Missions</a></li>' +
       '</ul>' +
+      '<button class="search-trigger" id="search-trigger" aria-label="Open search" title="Search (Ctrl+K)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>' +
       '<button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
     '</div></div></header>' +
     '<div class="nav-backdrop" id="backdrop"></div>';
@@ -169,6 +170,107 @@
   var fEl = document.getElementById('site-footer');
   if (hEl) hEl.outerHTML = headerHTML(page);
   if (fEl) fEl.outerHTML = footerHTML();
+
+  /* ---------- Global search modal ---------- */
+  var SEARCH_PAGES = [
+    { title: 'Home', url: 'index.html', desc: 'Official homepage — news, missions overview and services' },
+    { title: 'About the Ministry', url: 'about.html', desc: 'Mandate, mission, vision and core values' },
+    { title: 'Our History', url: 'our-history.html', desc: 'History of the Ministry and list of Foreign Ministers' },
+    { title: 'Departments', url: 'departments.html', desc: 'Departments, divisions and organizational structure' },
+    { title: 'Agencies & Parastatals', url: 'agencies.html', desc: 'NIIA, NIDCOM, IPCR, NFSA, TAC, DTCA' },
+    { title: 'Honourable Minister', url: 'minister.html', desc: 'Minister of Foreign Affairs — biography and profile' },
+    { title: 'Minister of State', url: 'minister-state.html', desc: 'Minister of State biography and official duties' },
+    { title: 'Permanent Secretary', url: 'perm-sec.html', desc: 'Permanent Secretary profile and responsibilities' },
+    { title: 'Department Directors', url: 'dept-directors.html', desc: 'Directors of all Ministry departments' },
+    { title: 'Permanent Mission Representatives', url: 'perm-missions-reps.html', desc: 'Heads of permanent international missions' },
+    { title: 'Nigeria — History', url: 'nigeria.html', desc: 'History, geography and background of Nigeria' },
+    { title: 'Nigeria — Culture', url: 'nigeria-culture.html', desc: 'Cultural diversity, arts, music, Nollywood, cuisine' },
+    { title: 'Nigeria — The People', url: 'nigeria-people.html', desc: 'Demographics, ethnic groups, languages and population' },
+    { title: 'Nigeria — Investment', url: 'nigeria-investment.html', desc: 'NIPC, CAC, BOI, tax and investment opportunities' },
+    { title: 'Nigeria — Natural Resources', url: 'nigeria-resources.html', desc: 'Oil, gas, solid minerals, agriculture' },
+    { title: 'Nigeria — Tourism', url: 'nigeria-tourism.html', desc: 'Tourist attractions, national parks, museums, festivals' },
+    { title: 'Nigeria — National Symbols', url: 'nigeria-symbols.html', desc: 'National flag, coat of arms, anthem and pledge' },
+    { title: 'Foreign Policy (4D Agenda)', url: 'policy.html', desc: 'Diaspora, Democracy, Development, Diplomacy' },
+    { title: 'Services — Visas & Passports', url: 'services.html', desc: 'Consular, authentication, passport and visa services' },
+    { title: 'Press Center', url: 'press.html', desc: 'Official news, press releases and public documents' },
+    { title: 'Diplomatic Missions', url: 'missions.html', desc: 'Embassies, high commissions, consulates worldwide' },
+    { title: 'The Atrium', url: 'atrium.html', desc: 'Gallery, exhibitions and ministerial communications' },
+    { title: 'Travel Advisories', url: 'travel-advisory.html', desc: 'Travel safety advisories for Nigerian citizens' }
+  ];
+
+  document.body.insertAdjacentHTML('beforeend',
+    '<div class="search-modal" id="search-modal" role="dialog" aria-modal="true" aria-label="Site search">' +
+      '<div class="search-modal__backdrop" id="search-backdrop"></div>' +
+      '<div class="search-modal__inner">' +
+        '<div class="search-modal__bar">' +
+          '<svg class="search-modal__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>' +
+          '<input id="search-q" class="search-modal__input" type="search" placeholder="Search missions, pages, services…" autocomplete="off" />' +
+          '<button id="search-close" class="search-modal__close" aria-label="Close search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>' +
+        '</div>' +
+        '<p class="search-modal__hint">Start typing to search all pages and missions</p>' +
+        '<div id="search-results" class="search-modal__results"></div>' +
+      '</div>' +
+    '</div>'
+  );
+
+  var searchModal = document.getElementById('search-modal');
+  var searchQ     = document.getElementById('search-q');
+  var searchRes   = document.getElementById('search-results');
+  var sTrigger    = document.getElementById('search-trigger');
+  var sClose      = document.getElementById('search-close');
+  var sBdrop      = document.getElementById('search-backdrop');
+
+  function openSearch() {
+    searchModal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    searchQ.value = '';
+    searchRes.innerHTML = '';
+    setTimeout(function () { searchQ.focus(); }, 50);
+  }
+  function closeSearch() {
+    searchModal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  if (sTrigger) sTrigger.addEventListener('click', openSearch);
+  if (sClose)   sClose.addEventListener('click', closeSearch);
+  if (sBdrop)   sBdrop.addEventListener('click', closeSearch);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && searchModal.classList.contains('is-open')) { closeSearch(); return; }
+    if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); openSearch(); }
+  });
+
+  function doSearch(q) {
+    if (!q) { searchRes.innerHTML = ''; return; }
+    var out = [];
+    SEARCH_PAGES.forEach(function (p) {
+      if ((p.title + ' ' + p.desc).toLowerCase().indexOf(q) !== -1) {
+        out.push('<a href="' + p.url + '" class="sr-item">' +
+          '<span class="sr-type sr-type--page">Page</span>' +
+          '<span class="sr-main"><strong class="sr-title">' + p.title + '</strong>' +
+          '<span class="sr-desc">' + p.desc + '</span></span>' +
+          '</a>');
+      }
+    });
+    if (window.MISSIONS) {
+      window.MISSIONS.forEach(function (m) {
+        if ((m.name + ' ' + m.region + ' ' + m.type).toLowerCase().indexOf(q) !== -1) {
+          out.push('<a href="missions.html" class="sr-item">' +
+            '<span class="sr-type sr-type--mission">' + m.type + '</span>' +
+            '<span class="sr-main"><strong class="sr-title">' + m.name + '</strong>' +
+            '<span class="sr-desc">' + m.region + ' · ' + m.hours + '</span></span>' +
+            '</a>');
+        }
+      });
+    }
+    searchRes.innerHTML = out.length
+      ? out.slice(0, 10).join('')
+      : '<p class="sr-empty">No results for "<strong>' + q + '</strong>"</p>';
+    searchRes.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeSearch); });
+  }
+
+  if (searchQ) searchQ.addEventListener('input', function () { doSearch(searchQ.value.trim().toLowerCase()); });
 
   /* ---------- Behaviours ---------- */
   var mq = window.matchMedia('(max-width: 880px)');
@@ -233,7 +335,12 @@
   if (tabs) {
     var cards = document.querySelectorAll('#newsGrid .card');
     function applyFilter(f) {
-      cards.forEach(function (c) { c.style.display = (f === 'all' || c.getAttribute('data-cat') === f) ? '' : 'none'; });
+      var shown = 0;
+      cards.forEach(function (c) {
+        var match = f === 'all' || c.getAttribute('data-cat') === f;
+        c.style.display = (match && shown < 3) ? '' : 'none';
+        if (match && shown < 3) shown++;
+      });
     }
     tabs.addEventListener('click', function (e) {
       var btn = e.target.closest('.tab'); if (!btn) return;
@@ -335,6 +442,57 @@
       b.classList.add('is-active'); type = b.getAttribute('data-type'); render();
     });
     render();
+
+    /* Map view toggle */
+    var mapDiv = document.getElementById('missions-map');
+    var vList  = document.getElementById('view-list');
+    var vMap   = document.getElementById('view-map');
+    var lMap = null, lLayers = null;
+    var RCOLS  = { Africa: '#b8923f', America: '#c0392b', Asia: '#117a8b', Europe: '#34495e' };
+
+    if (mapDiv && vList && vMap) {
+      function buildMap() {
+        if (lMap || !window.L) return;
+        lMap = window.L.map('missions-map', { scrollWheelZoom: false }).setView([15, 20], 2);
+        window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          maxZoom: 18
+        }).addTo(lMap);
+        lLayers = window.L.layerGroup().addTo(lMap);
+        all.forEach(function (m) {
+          var c = window.getMissionCoords && window.getMissionCoords(m.name);
+          if (!c) return;
+          window.L.circleMarker(c, {
+            radius: 7, fillColor: RCOLS[m.region] || '#007a4f',
+            color: '#fff', weight: 1.5, opacity: 1, fillOpacity: 0.85
+          }).bindPopup(
+            '<strong style="font-size:.9rem">' + m.name + '</strong><br>' +
+            '<em style="color:#666;font-size:.78rem">' + m.type + ' · ' + m.region + '</em><br>' +
+            '<small style="color:#999">' + m.address + '</small>',
+            { maxWidth: 260 }
+          ).addTo(lLayers);
+        });
+      }
+
+      vList.addEventListener('click', function () {
+        grid.style.display = '';
+        mapDiv.style.display = 'none';
+        vList.classList.add('is-active');
+        vList.setAttribute('aria-pressed', 'true');
+        vMap.classList.remove('is-active');
+        vMap.setAttribute('aria-pressed', 'false');
+      });
+      vMap.addEventListener('click', function () {
+        grid.style.display = 'none';
+        mapDiv.style.display = '';
+        vList.classList.remove('is-active');
+        vList.setAttribute('aria-pressed', 'false');
+        vMap.classList.add('is-active');
+        vMap.setAttribute('aria-pressed', 'true');
+        buildMap();
+        setTimeout(function () { if (lMap) lMap.invalidateSize(); }, 80);
+      });
+    }
   }
 
   /* Header shadow on scroll + back-to-top + scrollspy */
@@ -431,6 +589,65 @@
     });
   }
 
+  /* PDF preview modal — injected on pages with [data-pdf] links */
+  var pdfLinks = document.querySelectorAll('[data-pdf]');
+  if (pdfLinks.length) {
+    var pdfModal = document.createElement('div');
+    pdfModal.className = 'pdf-modal';
+    pdfModal.setAttribute('role', 'dialog');
+    pdfModal.setAttribute('aria-modal', 'true');
+    pdfModal.setAttribute('aria-labelledby', 'pdfModalTitle');
+    pdfModal.innerHTML =
+      '<div class="pdf-modal__backdrop"></div>' +
+      '<div class="pdf-modal__panel">' +
+        '<div class="pdf-modal__header">' +
+          '<h3 class="pdf-modal__title" id="pdfModalTitle"></h3>' +
+          '<div class="pdf-modal__actions">' +
+            '<a class="btn btn--sm" id="pdfDownloadBtn" href="#" download>' +
+              'Download <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>' +
+            '</a>' +
+            '<button class="pdf-modal__close" id="pdfModalClose" aria-label="Close">' +
+              '<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+            '</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="pdf-modal__body"><iframe id="pdfFrame" title="Document preview"></iframe></div>' +
+      '</div>';
+    document.body.appendChild(pdfModal);
+
+    var pdfFrame   = document.getElementById('pdfFrame');
+    var pdfTitleEl = document.getElementById('pdfModalTitle');
+    var pdfDlBtn   = document.getElementById('pdfDownloadBtn');
+
+    function openPdf(src, title) {
+      pdfFrame.src = src;
+      pdfTitleEl.textContent = title;
+      pdfDlBtn.href = src;
+      pdfModal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePdf() {
+      pdfModal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(function () { pdfFrame.src = ''; }, 250);
+    }
+
+    pdfModal.querySelector('.pdf-modal__backdrop').addEventListener('click', closePdf);
+    document.getElementById('pdfModalClose').addEventListener('click', closePdf);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && pdfModal.classList.contains('is-open')) closePdf();
+    });
+
+    pdfLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var card  = link.closest('.card, .doc-row');
+        var title = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : 'Document Preview';
+        openPdf(link.dataset.pdf, title);
+      });
+    });
+  }
+
   /* YouTube façade — swap thumbnail for iframe on click */
   document.querySelectorAll('.yt-facade').forEach(function (el) {
     el.addEventListener('click', function () {
@@ -445,4 +662,11 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* PWA — register service worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    });
+  }
 })();

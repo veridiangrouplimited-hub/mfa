@@ -1,0 +1,29 @@
+{
+  "name": "Ministry of Foreign Affairs, Federal Republic of Nigeria",
+  "short_name": "Nigeria MFA",
+  "description": "Official digital portal — diplomatic missions, policy, services and press releases.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#161a24",
+  "theme_color": "#007a4f",
+  "lang": "en-NG",
+  "icons": [
+    {
+      "src": "assets/Logo_OnWhite.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/Logo_OnWhite.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Diplomatic Missions", "url": "/missions.html", "description": "Browse embassies and consulates" },
+    { "name": "Services", "url": "/services.html", "description": "Visas, passports and consular services" },
+    { "name": "Press Center", "url": "/press.html", "description": "Latest news and press releases" }
+  ]
+}
