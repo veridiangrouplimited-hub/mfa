@@ -84,36 +84,60 @@ img { max-width: 100%; display: block; image-rendering: auto; -ms-interpolation-
 /* ============================================================
    TOP UTILITY BAR
    ============================================================ */
-.utility { background: var(--green-900); color: #fff; font-size: .84rem; }
-.utility .wrap { display: flex; align-items: center; gap: 22px; min-height: 48px; flex-wrap: wrap; }
-.utility a { opacity: .92; transition: opacity .2s; }
+/* ============================================================
+   UTILITY BAR — three-zone layout
+   ============================================================ */
+.utility { background: var(--green-900); color: #fff; font-size: .82rem; }
+.utility .wrap { display: flex; align-items: stretch; min-height: 48px; gap: 0; }
+.utility a { transition: opacity .2s; }
 .utility a:hover { opacity: 1; }
-.u-social { display: flex; gap: 14px; align-items: center; }
-.u-social a { display: inline-flex; }
-.u-social svg { width: 16px; height: 16px; fill: #fff; }
-.u-mail { display: flex; align-items: center; gap: 8px; padding-left: 18px; border-left: 1px solid rgba(255,255,255,.25); }
-.u-links { display: flex; gap: 22px; margin-left: auto; }
-.u-portal {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: #fff; color: var(--green-900); padding: 8px 16px;
-  border-radius: 999px; font-weight: 600; font-size: .82rem;
-}
-.u-portal svg { width: 15px; height: 15px; fill: var(--green-700); }
 
-/* Language toggle */
+/* Zone 1 — social + email */
+.u-left { display: flex; align-items: center; padding-right: 22px; border-right: 1px solid rgba(255,255,255,.14); flex-shrink: 0; gap: 0; }
+.u-follow { font-size: .65rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; opacity: .42; margin-right: 13px; white-space: nowrap; }
+.u-social { display: flex; gap: 13px; align-items: center; padding-right: 16px; border-right: 1px solid rgba(255,255,255,.14); margin-right: 16px; }
+.u-social a { display: inline-flex; opacity: .68; }
+.u-social a:hover { opacity: 1; }
+.u-social svg { width: 15px; height: 15px; fill: #fff; }
+.u-mail { display: flex; align-items: center; gap: 7px; font-size: .78rem; opacity: .66; letter-spacing: .01em; }
+.u-mail:hover { opacity: .9; }
+
+/* Zone 2 — quick links (centred) */
+.u-links { flex: 1; display: flex; align-items: center; justify-content: center; gap: 30px; padding: 0 24px; }
+.u-links a { position: relative; font-size: .80rem; font-weight: 500; opacity: .78; padding-bottom: 3px; letter-spacing: .015em; }
+.u-links a::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 1.5px; background: var(--gold); border-radius: 1px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .22s cubic-bezier(.25,.46,.45,.94);
+}
+.u-links a:hover { opacity: 1; }
+.u-links a:hover::after { transform: scaleX(1); }
+
+/* Zone 3 — lang + portal */
+.u-right { display: flex; align-items: center; gap: 12px; padding-left: 22px; border-left: 1px solid rgba(255,255,255,.14); flex-shrink: 0; }
 .lang-toggle {
   display: flex; align-items: center; gap: 2px;
-  border: 1px solid rgba(255,255,255,.32); border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.28); border-radius: 999px;
   padding: 2px; flex-shrink: 0;
 }
 .lang-btn {
-  background: transparent; border: 0; color: rgba(255,255,255,.72);
-  font-size: .75rem; font-weight: 700; letter-spacing: .06em;
-  padding: 3px 9px; border-radius: 999px; cursor: pointer;
+  background: transparent; border: 0; color: rgba(255,255,255,.68);
+  font-size: .72rem; font-weight: 700; letter-spacing: .07em;
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
   transition: background .18s, color .18s; line-height: 1;
 }
 .lang-btn:hover { color: #fff; }
 .lang-btn.is-active { background: #fff; color: var(--green-900); }
+.u-portal {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #fff; color: var(--green-900); padding: 7px 15px 7px 12px;
+  border-radius: 999px; font-weight: 700; font-size: .77rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.18);
+  transition: box-shadow .22s, transform .22s; letter-spacing: .01em;
+}
+.u-portal:hover { box-shadow: 0 4px 18px rgba(0,0,0,.24); transform: translateY(-1px); }
+.u-portal svg { width: 14px; height: 14px; fill: var(--green-700); flex-shrink: 0; }
 
 /* ============================================================
    MAIN NAVIGATION
@@ -473,6 +497,7 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
   .locations .wrap { grid-template-columns: 1fr 1fr; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .u-links { display: none; }
+  .u-follow { display: none; }
   .subpage .wrap { grid-template-columns: 1fr; }
   .side-nav { position: static; display: flex; flex-wrap: wrap; }
   .side-nav a { border-bottom: 0; border-right: 1px solid var(--line); flex: 1 1 auto; text-align: center; }
@@ -505,8 +530,9 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
 @media (max-width: 620px) {
   .news-grid, .svc-grid, .value-grid { grid-template-columns: 1fr; }
   .locations .wrap, .foot-grid { grid-template-columns: 1fr; }
-  .utility .wrap { gap: 12px; }
   .u-mail { display: none; }
+  .u-left { border-right: 0; padding-right: 14px; }
+  .u-right { border-left: 0; padding-left: 14px; }
   .section, .subpage { padding: 56px 0; }
   .brand-logo { height: 48px; }
   .brand-name { display: none; }
@@ -1686,6 +1712,12 @@ body[data-page="nigeria"] .page-banner {
 body[data-page="atrium"] .page-banner {
   background-image: url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80");
   background-position: center 45%;
+}
+
+/* Agencies & Parastatals — government administrative building */
+body[data-page="agencies"] .page-banner {
+  background-image: url("https://images.unsplash.com/photo-1580193769210-b8d1c049a7d9?auto=format&fit=crop&w=1600&q=80");
+  background-position: center 40%;
 }
 
 /* ============================================================

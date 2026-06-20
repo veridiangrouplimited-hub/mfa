@@ -61,24 +61,29 @@
     function cur(p) { return p === page ? ' is-current' : ''; }
     return '' +
     '<div class="utility"><div class="wrap">' +
-      '<div class="u-social">' +
-        '<a' + EXT + ' href="https://www.facebook.com/NigeriaMFA" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3H13V9c0-.9.3-1.5 1.6-1.5H16V4.9C15.4 4.8 14.4 4.7 13.5 4.7 11 4.7 9.3 6.2 9.3 9V11H7v3h2.3v8H13z"/></svg></a>' +
-        '<a' + EXT + ' href="https://www.instagram.com/nigeriamofa" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.4A4.6 4.6 0 1 0 12 16.6 4.6 4.6 0 0 0 12 7.4m0 7.6A3 3 0 1 1 12 9a3 3 0 0 1 0 6m5.8-7.8a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0M12 4c2.6 0 3 0 4 .1.9 0 1.4.2 1.7.3.5.2.8.4 1.1.7.3.3.5.6.7 1.1.1.3.3.8.3 1.7.1 1 .1 1.4.1 4s0 3-.1 4c0 .9-.2 1.4-.3 1.7-.2.5-.4.8-.7 1.1-.3.3-.6.5-1.1.7-.3.1-.8.3-1.7.3-1 .1-1.4.1-4 .1s-3 0-4-.1c-.9 0-1.4-.2-1.7-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.6-.7-1.1-.1-.3-.3-.8-.3-1.7C4 15 4 14.6 4 12s0-3 .1-4c0-.9.2-1.4.3-1.7.2-.5.4-.8.7-1.1.3-.3.6-.5 1.1-.7.3-.1.8-.3 1.7-.3 1-.1 1.4-.1 4-.1z"/></svg></a>' +
-        '<a' + EXT + ' href="https://x.com/NigeriaMFA" aria-label="Twitter / X"><svg viewBox="0 0 24 24"><path d="M18.2 2.5h3.3l-7.2 8.2 8.5 11.3h-6.7l-5.2-6.9-6 6.9H1.6l7.7-8.8L1.1 2.5h6.8l4.7 6.3 5.6-6.3m-1.2 17.8h1.8L7.1 4.3H5.1l11.9 16z"/></svg></a>' +
-        '<a' + EXT + ' href="https://www.youtube.com/@nigeriamofa" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.5s-.2-1.6-.9-2.3c-.9-.9-1.8-.9-2.3-1C16.5 4 12 4 12 4s-4.5 0-7.8.2c-.5.1-1.5.1-2.3 1C1.2 5.9 1 7.5 1 7.5S.8 9.4.8 11.3v1.4C.8 14.6 1 16.5 1 16.5s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.2 7.6.2s4.5 0 7.8-.2c.5-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-1.4c0-1.9-.2-3.8-.2-3.8M9.8 15.1V8.9l5.9 3.1z"/></svg></a>' +
+      '<div class="u-left">' +
+        '<span class="u-follow">Follow us</span>' +
+        '<div class="u-social">' +
+          '<a' + EXT + ' href="https://www.facebook.com/NigeriaMFA" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3H13V9c0-.9.3-1.5 1.6-1.5H16V4.9C15.4 4.8 14.4 4.7 13.5 4.7 11 4.7 9.3 6.2 9.3 9V11H7v3h2.3v8H13z"/></svg></a>' +
+          '<a' + EXT + ' href="https://www.instagram.com/nigeriamofa" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.4A4.6 4.6 0 1 0 12 16.6 4.6 4.6 0 0 0 12 7.4m0 7.6A3 3 0 1 1 12 9a3 3 0 0 1 0 6m5.8-7.8a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0M12 4c2.6 0 3 0 4 .1.9 0 1.4.2 1.7.3.5.2.8.4 1.1.7.3.3.5.6.7 1.1.1.3.3.8.3 1.7.1 1 .1 1.4.1 4s0 3-.1 4c0 .9-.2 1.4-.3 1.7-.2.5-.4.8-.7 1.1-.3.3-.6.5-1.1.7-.3.1-.8.3-1.7.3-1 .1-1.4.1-4 .1s-3 0-4-.1c-.9 0-1.4-.2-1.7-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.6-.7-1.1-.1-.3-.3-.8-.3-1.7C4 15 4 14.6 4 12s0-3 .1-4c0-.9.2-1.4.3-1.7.2-.5.4-.8.7-1.1.3-.3.6-.5 1.1-.7.3-.1.8-.3 1.7-.3 1-.1 1.4-.1 4-.1z"/></svg></a>' +
+          '<a' + EXT + ' href="https://x.com/NigeriaMFA" aria-label="Twitter / X"><svg viewBox="0 0 24 24"><path d="M18.2 2.5h3.3l-7.2 8.2 8.5 11.3h-6.7l-5.2-6.9-6 6.9H1.6l7.7-8.8L1.1 2.5h6.8l4.7 6.3 5.6-6.3m-1.2 17.8h1.8L7.1 4.3H5.1l11.9 16z"/></svg></a>' +
+          '<a' + EXT + ' href="https://www.youtube.com/@nigeriamofa" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.5s-.2-1.6-.9-2.3c-.9-.9-1.8-.9-2.3-1C16.5 4 12 4 12 4s-4.5 0-7.8.2c-.5.1-1.5.1-2.3 1C1.2 5.9 1 7.5 1 7.5S.8 9.4.8 11.3v1.4C.8 14.6 1 16.5 1 16.5s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.2 7.6.2s4.5 0 7.8-.2c.5-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-1.4c0-1.9-.2-3.8-.2-3.8M9.8 15.1V8.9l5.9 3.1z"/></svg></a>' +
+        '</div>' +
+        '<a class="u-mail" href="mailto:info@foreignaffairs.gov.ng"><svg viewBox="0 0 24 24" width="14" height="14" fill="#fff"><path d="M2 5h20v14H2V5m2 2v.4l8 5 8-5V7H4m16 2.6-8 5-8-5V17h16V9.6z"/></svg> info@foreignaffairs.gov.ng</a>' +
       '</div>' +
-      '<a class="u-mail" href="mailto:info@foreignaffairs.gov.ng"><svg viewBox="0 0 24 24" width="15" height="15" fill="#fff"><path d="M2 5h20v14H2V5m2 2v.4l8 5 8-5V7H4m16 2.6-8 5-8-5V17h16V9.6z"/></svg> info@foreignaffairs.gov.ng</a>' +
       '<nav class="u-links" aria-label="Quick links">' +
         '<a href="press.html"><span data-i18n="util.press">Press Releases</span></a>' +
         '<a href="services.html"><span data-i18n="util.visas">Visas &amp; Passports</span></a>' +
         '<a href="atrium.html"><span data-i18n="util.atrium">The Atrium</span></a>' +
         '<a href="travel-advisory.html"><span data-i18n="util.travel">Travel Advisories</span></a>' +
       '</nav>' +
-      '<div class="lang-toggle" aria-label="Language selection">' +
-        '<button class="lang-btn" data-lang="en">EN</button>' +
-        '<button class="lang-btn" data-lang="fr">FR</button>' +
+      '<div class="u-right">' +
+        '<div class="lang-toggle" aria-label="Language selection">' +
+          '<button class="lang-btn" data-lang="en">EN</button>' +
+          '<button class="lang-btn" data-lang="fr">FR</button>' +
+        '</div>' +
+        '<a class="u-portal"' + EXT + ' href="https://portal.foreignaffairs.gov.ng"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3V3m11 0h7v7h-7V3M3 14h7v7H3v-7m11 0h7v7h-7v-7z"/></svg> <span data-i18n="util.portal">Paperless Service Portal</span></a>' +
       '</div>' +
-      '<a class="u-portal"' + EXT + ' href="https://portal.foreignaffairs.gov.ng"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3V3m11 0h7v7h-7V3M3 14h7v7H3v-7m11 0h7v7h-7v-7z"/></svg> <span data-i18n="util.portal">Paperless Service Portal</span></a>' +
     '</div></div>' +
 
     '<header class="topbar"><div class="wrap"><div class="nav">' +
