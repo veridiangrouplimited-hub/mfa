@@ -97,12 +97,10 @@ img { max-width: 100%; display: block; image-rendering: auto; -ms-interpolation-
 /* Zone 1 — social + email */
 .u-left { display: flex; align-items: center; padding-right: 22px; border-right: 1px solid rgba(255,255,255,.14); flex-shrink: 0; gap: 0; }
 .u-follow { font-size: .65rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; opacity: .42; margin-right: 13px; white-space: nowrap; }
-.u-social { display: flex; gap: 13px; align-items: center; padding-right: 16px; border-right: 1px solid rgba(255,255,255,.14); margin-right: 16px; }
+.u-social { display: flex; gap: 13px; align-items: center; }
 .u-social a { display: inline-flex; opacity: .68; }
 .u-social a:hover { opacity: 1; }
 .u-social svg { width: 15px; height: 15px; fill: #fff; }
-.u-mail { display: flex; align-items: center; gap: 7px; font-size: .78rem; opacity: .66; letter-spacing: .01em; }
-.u-mail:hover { opacity: .9; }
 
 /* Zone 2 — quick links (centred) */
 .u-links { flex: 1; display: flex; align-items: center; justify-content: center; gap: 30px; padding: 0 24px; }
@@ -532,7 +530,6 @@ footer.site-footer .wrap { position: relative; z-index: 1; }
 @media (max-width: 620px) {
   .news-grid, .svc-grid, .value-grid { grid-template-columns: 1fr; }
   .locations .wrap, .foot-grid { grid-template-columns: 1fr; }
-  .u-mail { display: none; }
   .u-left { border-right: 0; padding-right: 14px; }
   .u-right { border-left: 0; padding-left: 14px; }
   .section, .subpage { padding: 56px 0; }
