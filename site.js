@@ -431,6 +431,14 @@
     });
   }
 
+  /* YouTube façade — swap thumbnail for iframe on click */
+  document.querySelectorAll('.yt-facade').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var id = el.dataset.vid;
+      el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    }, { once: true });
+  });
+
   function onScroll() {
     if (topbar) topbar.classList.toggle('scrolled', window.scrollY > 8);
     toTop.classList.toggle('show', window.scrollY > 400);
