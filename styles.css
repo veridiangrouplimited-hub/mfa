@@ -19,7 +19,7 @@
   --shadow:    0 14px 38px rgba(4, 60, 36, .16);
   --maxw:      1280px;
   --maxw-prose: 72ch;
-  --gutter:    clamp(20px, 4%, 48px);
+  --gutter:    clamp(14px, 1.5%, 20px);
   --nav-h:     78px;
 
   /* ── Type scale ─────────────────────────────────── */
