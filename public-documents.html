@@ -4,88 +4,783 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Public Documents — Ministry of Foreign Affairs, Federal Republic of Nigeria</title>
-<meta name="description" content="Official public documents, circulars and publications from the Ministry of Foreign Affairs, Federal Republic of Nigeria." />
+<meta name="description" content="Official public documents, speeches, vacancy announcements and travel bulletins from the Ministry of Foreign Affairs, Federal Republic of Nigeria." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+<style>
+/* ── Document list rows ── */
+.pd-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.pd-header-count {
+  font-size: .82rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.pd-list {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.pd-row {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 0 18px;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: background .15s;
+}
+.pd-row:last-child { border-bottom: none; }
+.pd-row:hover { background: var(--bg-soft); }
+
+/* Category colour bar — always visible on left edge */
+.pd-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+}
+.pd-row[data-cat="speech"]::before   { background: var(--green-700); }
+.pd-row[data-cat="vacancy"]::before  { background: #f59e0b; }
+.pd-row[data-cat="travel"]::before   { background: #ef4444; }
+.pd-row[data-cat="policy"]::before   { background: #7c3aed; }
+.pd-row[data-cat="circular"]::before { background: #0ea5e9; }
+
+/* File icon */
+.pd-row-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.pd-row-icon svg { width: 18px; height: 18px; }
+.pd-row[data-cat="speech"]   .pd-row-icon { background: var(--green-050); color: var(--green-700); }
+.pd-row[data-cat="vacancy"]  .pd-row-icon { background: #fef3c7; color: #b45309; }
+.pd-row[data-cat="travel"]   .pd-row-icon { background: #fee2e2; color: #dc2626; }
+.pd-row[data-cat="policy"]   .pd-row-icon { background: #ede9fe; color: #6d28d9; }
+.pd-row[data-cat="circular"] .pd-row-icon { background: #e0f2fe; color: #0369a1; }
+
+/* Content */
+.pd-row-body {
+  min-width: 0;
+}
+.pd-row-title {
+  font-size: .96rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.4;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pd-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: .78rem;
+  color: var(--muted);
+}
+.pd-row-meta-dot { color: var(--line); }
+.pd-travel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.pd-travel-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pd-travel-badge--green  { background: #dcfce7; color: #166534; } .pd-travel-badge--green::before  { background: #16a34a; }
+.pd-travel-badge--yellow { background: #fef9c3; color: #854d0e; } .pd-travel-badge--yellow::before { background: #eab308; }
+.pd-travel-badge--orange { background: #ffedd5; color: #7c2d12; } .pd-travel-badge--orange::before { background: #f97316; }
+.pd-travel-badge--red    { background: #fee2e2; color: #991b1b; } .pd-travel-badge--red::before    { background: #dc2626; }
+
+/* Actions */
+.pd-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.pd-row-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--green-700);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .18s;
+}
+.pd-row-view:hover { background: var(--green-500); }
+.pd-row-view svg { width: 13px; height: 13px; }
+.pd-row-dl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--muted);
+  text-decoration: none;
+  transition: border-color .18s, color .18s, background .18s;
+  flex-shrink: 0;
+}
+.pd-row-dl:hover { border-color: var(--green-700); color: var(--green-700); background: var(--green-050); }
+.pd-row-dl svg { width: 14px; height: 14px; }
+
+/* File size chip */
+.pd-size-chip {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+/* Pagination */
+.pd-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.pd-pagination-info {
+  font-size: .82rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.pd-pagination-btns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.pd-page-btn {
+  min-width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: #fff;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: background .16s, color .16s, border-color .16s;
+}
+.pd-page-btn.is-active { background: var(--green-700); color: #fff; border-color: var(--green-700); }
+.pd-page-btn:hover:not(.is-active):not(:disabled) { border-color: var(--green-700); color: var(--green-700); }
+.pd-page-btn:disabled { opacity: .35; cursor: default; }
+
+/* Empty state */
+.pd-empty-state {
+  display: none;
+  text-align: center;
+  padding: 56px 24px;
+  color: var(--muted);
+  font-size: .92rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+.pd-empty-state svg { width: 40px; height: 40px; stroke: var(--line); display: block; margin: 0 auto 14px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pd-row { grid-template-columns: 40px 1fr; gap: 0 14px; }
+  .pd-row-actions { grid-column: 2; margin-top: 10px; }
+  .pd-row-title { white-space: normal; }
+  .pd-size-chip { display: none; }
+}
+@media (max-width: 480px) {
+  .pd-row { grid-template-columns: 1fr; padding-left: 16px; }
+  .pd-row-icon { display: none; }
+}
+</style>
 </head>
 <body data-page="press">
 
 <div id="site-header"></div>
 
+<!-- ======================== BANNER ======================== -->
 <section class="page-banner">
   <div class="wrap">
-    <p class="breadcrumb"><a href="index.html" data-i18n="breadcrumb.home">Home</a> &nbsp;/&nbsp; <a href="press.html" data-i18n="pub_docs.bc.press">Press Center</a> &nbsp;/&nbsp; <span data-i18n="pub_docs.bc">Public Documents</span></p>
-    <h1 data-i18n="pub_docs.banner.title">Public Documents</h1>
+    <p class="breadcrumb">
+      <a href="index.html" data-i18n="breadcrumb.home">Home</a> &nbsp;/&nbsp;
+      <a href="press.html">Press Center</a> &nbsp;/&nbsp;
+      <span>Public Documents</span>
+    </p>
+    <h1>Public Documents</h1>
+    <p class="banner-sub">Official publications, speeches, vacancy notices and travel bulletins from the Ministry</p>
   </div>
 </section>
 
-<section class="section">
+<!-- ======================== CATEGORY TAB BAR ======================== -->
+<div class="pd-tab-bar">
   <div class="wrap">
-    <p class="eyebrow" data-i18n="pub_docs.eyebrow">Press Center</p>
-    <h2 class="section-title" data-i18n="pub_docs.title">Official Documents &amp; Publications</h2>
-    <p style="color:var(--muted);max-width:640px;margin-bottom:40px" data-i18n="pub_docs.desc">Browse official circulars, white papers, treaties and other publications issued by the Ministry of Foreign Affairs.</p>
-
-    <div class="news-grid">
-      <article class="card">
-        <div class="card-img"><img src="assets/news/news1.jpg" alt="Nigeria Foreign Policy Framework" loading="lazy" /><span class="tag">Policy Document</span></div>
-        <div class="card-body">
-          <span class="card-date">June 2026</span>
-          <h3>Nigeria's 4D Foreign Policy Framework — Full Document</h3>
-          <p>The complete policy framework outlining the four pillars of Nigeria's foreign engagement strategy.</p>
-          <a class="readmore" href="#" data-pdf="assets/docs/4d-foreign-policy-framework.pdf">Preview <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-img"><img src="assets/news/news3.jpg" alt="Diplomatic Circulars 2026" loading="lazy" /><span class="tag">Circular</span></div>
-        <div class="card-body">
-          <span class="card-date">May 2026</span>
-          <h3>Diplomatic Circulars — Q2 2026</h3>
-          <p>Official circulars issued to Nigeria's diplomatic missions abroad for the second quarter of 2026.</p>
-          <a class="readmore" href="#" data-pdf="assets/docs/diplomatic-circulars-q2-2026.pdf">Preview <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-img"><img src="assets/news/news5.jpg" alt="Bilateral Agreements" loading="lazy" /><span class="tag">Treaty</span></div>
-        <div class="card-body">
-          <span class="card-date">April 2026</span>
-          <h3>Bilateral Agreements Register — 2026 Edition</h3>
-          <p>Updated register of all bilateral and multilateral agreements entered into by the Federal Republic of Nigeria.</p>
-          <a class="readmore" href="#" data-pdf="assets/docs/bilateral-agreements-register-2026.pdf">Preview <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-img"><img src="assets/news/news2.jpg" alt="Annual Report 2025" loading="lazy" /><span class="tag">Annual Report</span></div>
-        <div class="card-body">
-          <span class="card-date">March 2026</span>
-          <h3>Ministry of Foreign Affairs Annual Report 2025</h3>
-          <p>Highlights of the Ministry's diplomatic achievements, programmes and expenditure for the year 2025.</p>
-          <a class="readmore" href="#" data-pdf="assets/docs/mfa-annual-report-2025.pdf">Preview <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-img"><img src="assets/news/news4.jpg" alt="Consular Fee Schedule" loading="lazy" /><span class="tag">Notice</span></div>
-        <div class="card-body">
-          <span class="card-date">January 2026</span>
-          <h3>Updated Consular Fee Schedule — Effective January 2026</h3>
-          <p>Revised schedule of consular fees applicable across all Nigeria diplomatic missions worldwide.</p>
-          <a class="readmore" href="#" data-pdf="assets/docs/consular-fee-schedule-2026.pdf">Preview <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-img"><img src="assets/news/news6.jpg" alt="White Paper Diaspora Policy" loading="lazy" /><span class="tag">White Paper</span></div>
-        <div class="card-body">
-          <span class="card-date">December 2025</span>
-          <h3>White Paper on Nigeria Diaspora Engagement Policy</h3>
-          <p>Government position paper on deepening engagement with the Nigerian diaspora community worldwide.</p>
-          <a class="readmore" href="#" data-pdf="assets/docs/white-paper-diaspora-engagement.pdf">Preview <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        </div>
-      </article>
+    <button class="pd-tab is-active" data-tab="all">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      All
+    </button>
+    <button class="pd-tab" data-tab="speech">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Speeches
+    </button>
+    <button class="pd-tab" data-tab="vacancy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      Vacancies
+    </button>
+    <button class="pd-tab" data-tab="travel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+      Travel Bulletins
+    </button>
+    <button class="pd-tab" data-tab="policy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Policy Briefs
+    </button>
+    <button class="pd-tab" data-tab="circular">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2H3v16h5l3 3 3-3h7V2z"/><path d="M8 8h8M8 12h6"/></svg>
+      Circulars
+    </button>
+    <div class="pd-search">
+      <input id="pd-search-input" type="search" placeholder="Search documents…" autocomplete="off" aria-label="Search documents" />
     </div>
   </div>
+</div>
+
+<!-- ======================== DOCUMENT LIST ======================== -->
+<section class="pd-section">
+  <div class="wrap">
+
+    <div class="pd-header">
+      <p class="pd-header-count" id="pd-count" aria-live="polite"></p>
+    </div>
+
+    <!-- Document rows -->
+    <div class="pd-list" id="pd-list">
+
+      <!-- SPEECHES -->
+      <div class="pd-row" data-cat="speech">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Address at the 79th Session of the UN General Assembly</p>
+          <div class="pd-row-meta">
+            <span>Speech</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>October 2025</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>H.E. Bianca Odumegwu-Ojukwu</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">1.4 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Address at the 79th Session of the UN General Assembly', 'assets/documents/speech-unga-2025.pdf', 'Speech')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/speech-unga-2025.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="speech">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Opening Statement at the G20 Foreign Ministers Meeting, South Africa</p>
+          <div class="pd-row-meta">
+            <span>Speech</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>February 2025</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>H.E. Bianca Odumegwu-Ojukwu</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">0.9 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Opening Statement at the G20 Foreign Ministers Meeting, South Africa', 'assets/documents/speech-g20-2025.pdf', 'Speech')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/speech-g20-2025.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="speech">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Remarks at the African Union Summit on Democracy and Governance</p>
+          <div class="pd-row-meta">
+            <span>Speech</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>January 2025</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>H.E. Bianca Odumegwu-Ojukwu</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">1.1 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Remarks at the African Union Summit on Democracy and Governance', 'assets/documents/speech-au-2025.pdf', 'Speech')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/speech-au-2025.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- VACANCIES -->
+      <div class="pd-row" data-cat="vacancy">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Foreign Service Officer Cadre — Recruitment Exercise 2026</p>
+          <div class="pd-row-meta">
+            <span>Vacancy</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>June 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Human Resources Division</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">2.1 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Foreign Service Officer Cadre — Recruitment Exercise 2026', 'assets/documents/vacancy-fso-2026.pdf', 'Vacancy Announcement')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/vacancy-fso-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="vacancy">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Legal Officer — Treaty and International Law Division</p>
+          <div class="pd-row-meta">
+            <span>Vacancy</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>May 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Human Resources Division</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">1.1 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Legal Officer — Treaty and International Law Division', 'assets/documents/vacancy-legal-2026.pdf', 'Vacancy Announcement')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/vacancy-legal-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="vacancy">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Administrative Support Staff — Headquarters (Multiple Posts)</p>
+          <div class="pd-row-meta">
+            <span>Vacancy</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>April 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Human Resources Division</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">1.6 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Administrative Support Staff — Headquarters (Multiple Posts)', 'assets/documents/vacancy-admin-2026.pdf', 'Vacancy Announcement')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/vacancy-admin-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- TRAVEL BULLETINS -->
+      <div class="pd-row" data-cat="travel">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Travel Bulletin: Republic of Sudan</p>
+          <div class="pd-row-meta">
+            <span>Travel Bulletin</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Updated 15 Jun 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span class="pd-travel-badge pd-travel-badge--red">Level 4 — Do Not Travel</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">0.6 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Travel Bulletin: Republic of Sudan — Level 4: Do Not Travel', 'assets/documents/travel-bulletin-sudan-2026.pdf', 'Travel Bulletin')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/travel-bulletin-sudan-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="travel">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Travel Bulletin: Russia and Ukraine Region</p>
+          <div class="pd-row-meta">
+            <span>Travel Bulletin</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Updated 10 Jun 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span class="pd-travel-badge pd-travel-badge--orange">Level 3 — Reconsider Travel</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">0.8 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Travel Bulletin: Russia and Ukraine Region — Level 3: Reconsider Travel', 'assets/documents/travel-bulletin-russia-ukraine-2026.pdf', 'Travel Bulletin')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/travel-bulletin-russia-ukraine-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="travel">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Travel Bulletin: Haiti</p>
+          <div class="pd-row-meta">
+            <span>Travel Bulletin</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Updated 28 May 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span class="pd-travel-badge pd-travel-badge--orange">Level 3 — Reconsider Travel</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">0.7 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Travel Bulletin: Haiti — Level 3: Reconsider Travel', 'assets/documents/travel-bulletin-haiti-2026.pdf', 'Travel Bulletin')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/travel-bulletin-haiti-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="travel">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Travel Bulletin: United States of America</p>
+          <div class="pd-row-meta">
+            <span>Travel Bulletin</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Updated 1 Jun 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span class="pd-travel-badge pd-travel-badge--green">Level 1 — Normal Precautions</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">0.5 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Travel Bulletin: United States of America — Level 1: Normal Precautions', 'assets/documents/travel-bulletin-usa-2026.pdf', 'Travel Bulletin')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/travel-bulletin-usa-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="travel">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Travel Bulletin: United Kingdom</p>
+          <div class="pd-row-meta">
+            <span>Travel Bulletin</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Updated 14 May 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span class="pd-travel-badge pd-travel-badge--green">Level 1 — Normal Precautions</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">0.5 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Travel Bulletin: United Kingdom — Level 1: Normal Precautions', 'assets/documents/travel-bulletin-uk-2026.pdf', 'Travel Bulletin')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/travel-bulletin-uk-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- POLICY BRIEFS -->
+      <div class="pd-row" data-cat="policy">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Nigeria's 4D Foreign Policy — Strategic Overview and Implementation Framework 2025</p>
+          <div class="pd-row-meta">
+            <span>Policy Brief</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>December 2025</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Policy and Strategy Division</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">3.2 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Nigeria\'s 4D Foreign Policy — Strategic Overview and Implementation Framework 2025', 'assets/documents/policy-4d-2025.pdf', 'Policy Brief')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/policy-4d-2025.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="policy">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Economic Diplomacy Framework — Action Plan 2024–2026</p>
+          <div class="pd-row-meta">
+            <span>Policy Brief</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>September 2024</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Economic Affairs Division</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">2.8 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Economic Diplomacy Framework — Action Plan 2024–2026', 'assets/documents/policy-econ-diplomacy-2024.pdf', 'Policy Brief')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/policy-econ-diplomacy-2024.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="policy">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Consular Services Reform — Progress Report 2025</p>
+          <div class="pd-row-meta">
+            <span>Policy Brief</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>November 2025</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Consular Affairs Division</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">1.9 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Consular Services Reform — Progress Report 2025', 'assets/documents/policy-consular-reform-2025.pdf', 'Policy Brief')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/policy-consular-reform-2025.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- CIRCULARS -->
+      <div class="pd-row" data-cat="circular">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2H3v16h5l3 3 3-3h7V2z"/><path d="M8 8h8M8 12h6"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Circular No. 04/2026 — Updated Document Authentication Procedures</p>
+          <div class="pd-row-meta">
+            <span>Circular</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>April 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Office of the Permanent Secretary</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">0.4 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Circular No. 04/2026 — Updated Document Authentication Procedures', 'assets/documents/circular-04-2026.pdf', 'Official Circular')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/circular-04-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="circular">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2H3v16h5l3 3 3-3h7V2z"/><path d="M8 8h8M8 12h6"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Circular No. 01/2026 — Revised Consular Fee Schedule, Effective 1 January 2026</p>
+          <div class="pd-row-meta">
+            <span>Circular</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>January 2026</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Office of the Permanent Secretary</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">0.3 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Circular No. 01/2026 — Revised Consular Fee Schedule, Effective 1 January 2026', 'assets/documents/circular-01-2026.pdf', 'Official Circular')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/circular-01-2026.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pd-row" data-cat="circular">
+        <div class="pd-row-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2H3v16h5l3 3 3-3h7V2z"/><path d="M8 8h8M8 12h6"/></svg>
+        </div>
+        <div class="pd-row-body">
+          <p class="pd-row-title">Circular No. 08/2025 — Emergency Consular Contact Protocols for Crisis Situations</p>
+          <div class="pd-row-meta">
+            <span>Circular</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>December 2025</span>
+            <span class="pd-row-meta-dot">&middot;</span>
+            <span>Consular Affairs Division</span>
+          </div>
+        </div>
+        <div class="pd-row-actions">
+          <span class="pd-size-chip">0.5 MB</span>
+          <button class="pd-row-view" onclick="openDoc(this, 'Circular No. 08/2025 — Emergency Consular Contact Protocols for Crisis Situations', 'assets/documents/circular-08-2025.pdf', 'Official Circular')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View PDF
+          </button>
+          <a class="pd-row-dl" href="assets/documents/circular-08-2025.pdf" download aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /#pd-list -->
+
+    <!-- Empty state -->
+    <div class="pd-empty-state" id="pd-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <p>No documents match your search.</p>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pd-pagination" id="pd-pagination" aria-label="Page navigation"></div>
+
+  </div>
 </section>
 
+<!-- ======================== PDF MODAL ======================== -->
+<div id="pdf-modal" class="pdf-modal" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title">
+  <div class="pdf-modal-panel">
+    <div class="pdf-modal-header">
+      <div>
+        <p class="pdf-modal-label" id="pdf-modal-label">Document</p>
+        <h4 class="pdf-modal-title" id="pdf-modal-title">Document</h4>
+      </div>
+      <div class="pdf-modal-tools">
+        <a id="pdf-dl-link" class="pdf-dl-link" href="#" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download
+        </a>
+        <button class="pdf-close-btn" onclick="closePDF()" aria-label="Close viewer">&times;</button>
+      </div>
+    </div>
+    <div class="pdf-viewer-wrap">
+      <iframe id="pdf-frame" class="pdf-frame" title="Document viewer"
+        srcdoc="<!DOCTYPE html><html><head><meta charset='UTF-8'><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Georgia,serif;background:#f2f4f6;color:#1d2029;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px}.card{background:#fff;border-radius:10px;max-width:700px;width:100%;box-shadow:0 4px 28px rgba(0,0,0,.09);overflow:hidden}.crest-bar{text-align:center;padding:28px 40px 22px;border-bottom:2px solid #e3e6ea}.shield{display:block;margin:0 auto 12px;width:52px;height:52px}.ministry{font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#007a4f;margin:0 0 2px}.country{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#4b4f5d;margin:0}.body{padding:32px 40px}.cat-label{font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#007a4f;margin:0 0 10px}.headline{font-size:1.2rem;font-weight:800;color:#14172d;line-height:1.4;margin:0 0 6px}.dateline{font-size:.78rem;color:#4b4f5d;padding-bottom:20px;margin-bottom:22px;border-bottom:1px solid #e3e6ea}p{font-size:.92rem;line-height:1.85;color:#1d2029;margin:0 0 14px}.notice{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:16px 20px;margin-top:24px;font-size:.86rem;color:#14532d}.footer{background:#f2f4f6;padding:14px 40px;border-top:1px solid #e3e6ea;display:flex;justify-content:space-between;font-size:.72rem;color:#4b4f5d}</style></head><body><div class='card'><div class='crest-bar'><svg class='shield' viewBox='0 0 80 96' xmlns='http://www.w3.org/2000/svg'><path d='M40 4L8 18v24c0 20 14 36 32 42 18-6 32-22 32-42V18L40 4z' fill='#007a4f'/><path d='M40 20v32M40 36L26 52M40 36l14 16' fill='none' stroke='#fff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/></svg><p class='ministry'>Ministry of Foreign Affairs</p><p class='country'>Federal Republic of Nigeria</p></div><div class='body'><p class='cat-label'>Public Document</p><h2 class='headline'>Nigeria's 4D Foreign Policy — Strategic Overview and Implementation Framework 2025</h2><p class='dateline'>December 2025 &nbsp;&middot;&nbsp; Policy and Strategy Division &nbsp;&middot;&nbsp; Abuja</p><p>This document sets out the strategic framework for the implementation of President Bola Ahmed Tinubu's 4D Foreign Policy Doctrine — a transformative approach to Nigeria's international engagements built on four foundational pillars: Democracy, Development, Demography and Diaspora.</p><p>The framework outlines specific strategic objectives, priority regions, flagship programmes and key performance indicators against which progress will be measured annually.</p><p>Nigeria's foreign policy in the current administration is anchored in the belief that diplomatic engagements must generate measurable benefits for the Nigerian people — in trade, in jobs, in security and in the welfare of our citizens wherever they may be in the world.</p><div class='notice'><strong>Sample Preview</strong> — This document preview is for demonstration. The full PDF is available for download.</div></div><div class='footer'><span>Policy and Strategy Division</span><span>Ministry of Foreign Affairs &nbsp;&middot;&nbsp; Federal Republic of Nigeria</span></div></div></body></html>"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== LOCATIONS ======================== -->
 <section class="section locations" id="missions">
   <div class="wrap">
     <div>
@@ -113,5 +808,113 @@
 <div id="site-footer"></div>
 <script src="translations.js"></script>
 <script src="site.js"></script>
+<script>
+(function () {
+  var PER_PAGE  = 6;
+  var curPage   = 1;
+  var activeTab = 'all';
+
+  var allRows  = document.querySelectorAll('.pd-row');
+  var tabs     = document.querySelectorAll('.pd-tab');
+  var searchEl = document.getElementById('pd-search-input');
+  var countEl  = document.getElementById('pd-count');
+  var listEl   = document.getElementById('pd-list');
+  var emptyEl  = document.getElementById('pd-empty');
+  var pagEl    = document.getElementById('pd-pagination');
+
+  function getVisible() {
+    var q = searchEl.value.trim().toLowerCase();
+    return Array.from(allRows).filter(function (row) {
+      var catOk  = activeTab === 'all' || row.dataset.cat === activeTab;
+      var title  = (row.querySelector('.pd-row-title') || {}).textContent || '';
+      var textOk = !q || title.toLowerCase().indexOf(q) !== -1;
+      return catOk && textOk;
+    });
+  }
+
+  function render() {
+    var visible    = getVisible();
+    var total      = visible.length;
+    var totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+    if (curPage > totalPages) curPage = 1;
+    var start = (curPage - 1) * PER_PAGE;
+    var end   = start + PER_PAGE;
+
+    allRows.forEach(function (r) { r.style.display = 'none'; });
+    visible.forEach(function (r, i) {
+      r.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+
+    countEl.textContent = total + ' document' + (total === 1 ? '' : 's');
+    listEl.style.display  = total > 0 ? '' : 'none';
+    emptyEl.style.display = total === 0 ? 'block' : 'none';
+
+    /* Pagination */
+    pagEl.innerHTML = '';
+    var info = document.createElement('span');
+    info.className = 'pd-pagination-info';
+    info.textContent = 'Page ' + curPage + ' of ' + totalPages + ' · ' + total + ' document' + (total === 1 ? '' : 's');
+    pagEl.appendChild(info);
+
+    if (totalPages <= 1) return;
+
+    var btnsWrap = document.createElement('div');
+    btnsWrap.className = 'pd-pagination-btns';
+
+    function btn(label, page, disabled, active) {
+      var b = document.createElement('button');
+      b.className = 'pd-page-btn' + (active ? ' is-active' : '');
+      b.textContent = label;
+      b.disabled = !!disabled;
+      b.setAttribute('aria-label', typeof page === 'number' ? 'Page ' + page : label);
+      if (!disabled) b.addEventListener('click', function () { curPage = page; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      return b;
+    }
+
+    btnsWrap.appendChild(btn('←', curPage - 1, curPage === 1, false));
+    for (var p = 1; p <= totalPages; p++) {
+      btnsWrap.appendChild(btn(p, p, false, p === curPage));
+    }
+    btnsWrap.appendChild(btn('→', curPage + 1, curPage === totalPages, false));
+    pagEl.appendChild(btnsWrap);
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('is-active'); });
+      tab.classList.add('is-active');
+      activeTab = tab.dataset.tab;
+      curPage = 1;
+      render();
+    });
+  });
+
+  searchEl.addEventListener('input', function () { curPage = 1; render(); });
+
+  render();
+
+  /* PDF modal */
+  var modal  = document.getElementById('pdf-modal');
+  var mLabel = document.getElementById('pdf-modal-label');
+  var mTitle = document.getElementById('pdf-modal-title');
+  var dlLink = document.getElementById('pdf-dl-link');
+
+  window.openDoc = function (btn, title, src, type) {
+    mLabel.textContent = type || 'Document';
+    mTitle.textContent = title;
+    dlLink.href = src;
+    modal.classList.add('is-open');
+    document.body.classList.add('pdf-open');
+  };
+
+  window.closePDF = function () {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('pdf-open');
+  };
+
+  modal.addEventListener('click', function (e) { if (e.target === modal) closePDF(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePDF(); });
+}());
+</script>
 </body>
 </html>

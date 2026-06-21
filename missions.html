@@ -22,15 +22,7 @@
       <h1 data-i18n="missions.banner.title">Diplomatic Missions</h1>
       <p data-i18n="missions.banner.sub">Search Nigeria's network of embassies, high commissions and consulates around the world.</p>
     </div>
-    <svg class="banner-globe" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-      <circle cx="100" cy="100" r="94"/>
-      <line x1="6" y1="100" x2="194" y2="100"/>
-      <ellipse cx="100" cy="100" rx="94" ry="40"/>
-      <ellipse cx="100" cy="100" rx="94" ry="74"/>
-      <line x1="100" y1="6" x2="100" y2="194"/>
-      <ellipse cx="100" cy="100" rx="40" ry="94"/>
-      <ellipse cx="100" cy="100" rx="74" ry="94"/>
-    </svg>
+
   </div>
 </section>
 
@@ -41,44 +33,47 @@
     <p class="missions-lead" data-i18n="missions.overview.lead">Nigeria maintains a vast network of diplomatic missions worldwide — fostering bilateral relations, promoting trade and investment, and protecting Nigerian citizens abroad.</p>
 
     <div class="mission-controls">
-      <div class="search-box">
-        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.8l-.3-.3a6.5 6.5 0 1 0-.7.7l.3.3v.8l5 5 1.5-1.5-5-5m-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
-        <input id="mission-search" type="search" placeholder="Search by country, city or address…" data-i18n-placeholder="missions.search.placeholder" aria-label="Search missions" />
+
+      <div class="mc-search">
+        <svg class="mc-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16.5" y1="16.5" x2="22" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="mission-search" type="search" class="mc-search-input" placeholder="Search by country, city or address…" data-i18n-placeholder="missions.search.placeholder" aria-label="Search missions" autocomplete="off" />
       </div>
+
       <div class="filter-row">
         <span class="filter-label" data-i18n="missions.filter.region">Region</span>
         <div class="mission-filters" id="mission-filters" role="group" aria-label="Filter by region">
-          <button class="chip is-active" data-cat="All" data-i18n="missions.region.all">All</button>
-          <button class="chip" data-cat="Africa" data-i18n="missions.region.africa">Africa</button>
-          <button class="chip" data-cat="America" data-i18n="missions.region.america">America</button>
-          <button class="chip" data-cat="Asia" data-i18n="missions.region.asia">Asia</button>
-          <button class="chip" data-cat="Europe" data-i18n="missions.region.europe">Europe</button>
+          <button class="chip" data-cat="Africa">Africa</button>
+          <button class="chip" data-cat="America">America</button>
+          <button class="chip" data-cat="Asia">Asia</button>
+          <button class="chip" data-cat="Europe">Europe</button>
         </div>
       </div>
+
       <div class="filter-row">
         <span class="filter-label" data-i18n="missions.filter.type">Type</span>
         <div class="mission-filters" id="mission-type-filters" role="group" aria-label="Filter by mission type">
-          <button class="chip is-active" data-type="All" data-i18n="missions.type.all">All</button>
-          <button class="chip" data-type="Embassy" data-i18n="missions.type.embassy">Embassy</button>
-          <button class="chip" data-type="High Commission" data-i18n="missions.type.hc">High Commission</button>
-          <button class="chip" data-type="Consulate" data-i18n="missions.type.consulate">Consulate</button>
-          <button class="chip" data-type="Permanent Mission" data-i18n="missions.type.perm">Permanent Mission</button>
+          <button class="chip" data-type="Embassy">Embassy</button>
+          <button class="chip" data-type="High Commission">High Commission</button>
+          <button class="chip" data-type="Consulate">Consulate</button>
+          <button class="chip" data-type="Permanent Mission">Permanent Mission</button>
         </div>
       </div>
-    </div>
 
-    <div class="view-toggle" role="group" aria-label="Switch view">
-      <button class="vt-btn is-active" id="view-list" aria-pressed="true">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor"/><circle cx="4" cy="12" r="1.5" fill="currentColor"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/></svg>
-        <span data-i18n="missions.view.list">List</span>
-      </button>
-      <button class="vt-btn" id="view-map" aria-pressed="false">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-        <span data-i18n="missions.view.map">Map</span>
-      </button>
-    </div>
+      <div class="mc-footer">
+        <p class="mission-count" id="mission-count"></p>
+        <div class="view-toggle" role="group" aria-label="Switch view">
+          <button class="vt-btn is-active" id="view-list" aria-pressed="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor"/><circle cx="4" cy="12" r="1.5" fill="currentColor"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/></svg>
+            <span data-i18n="missions.view.list">List</span>
+          </button>
+          <button class="vt-btn" id="view-map" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            <span data-i18n="missions.view.map">Map</span>
+          </button>
+        </div>
+      </div>
 
-    <p class="mission-count" id="mission-count"></p>
+    </div>
     <div class="missions-grid" id="missions-grid"><!-- rendered by site.js from missions-data.js --></div>
     <div id="missions-map" style="display:none"></div>
   </div>

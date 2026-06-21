@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>National Symbols — Nigeria — Ministry of Foreign Affairs, Federal Republic of Nigeria</title>
+<title>National Symbols — Ministry of Foreign Affairs, Federal Republic of Nigeria</title>
 <meta name="description" content="The national symbols of the Federal Republic of Nigeria — the flag, coat of arms, anthem, pledge and national motto." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,8 +14,7 @@
 
 <div id="site-header"></div>
 
-<section class="page-banner"
-  style="background-image:url('assets/nigeria/nS-Hero.jpg');background-size:cover;background-position:center 50%;">
+<section class="page-banner page-banner--nigeria-symbols">
   <div class="wrap">
     <p class="breadcrumb"><a href="index.html" data-i18n="breadcrumb.home">Home</a> &nbsp;/&nbsp; <a href="nigeria.html" data-i18n="nigeria.bc">Nigeria</a> &nbsp;/&nbsp; <span data-i18n="symbols.bc">National Symbols</span></p>
     <h1 data-i18n="symbols.banner.title">National Symbols</h1>
@@ -37,56 +36,208 @@
 
     <div class="prose">
 
-      <h2 data-i18n="symbols.main.title">National Symbols</h2>
-      <p data-i18n="symbols.main.p">The enduring emblems of the Federal Republic of Nigeria — expressions of the nation's unity, heritage and aspirations.</p>
+      <h2>Emblems of the Nation</h2>
+      <p class="lead sym-page-intro">The symbols of Nigeria are not merely administrative markers — they are living expressions of the nation's identity, history and collective aspirations, forged at independence and carried forward by every generation of Nigerians.</p>
 
-      <div class="symbol-feature">
-        <div class="flag-visual" role="img" aria-label="Flag of Nigeria — green, white and green vertical bands"></div>
-        <div class="symbol-feature__text">
-          <span class="symbol-kicker" data-i18n="symbols.flag.kicker">The National Flag</span>
-          <h3 data-i18n="symbols.flag.title">Green · White · Green</h3>
-          <p data-i18n="symbols.flag.desc">Designed by Michael Taiwo Akinkunmi and first hoisted at independence on 1 October 1960. The two green bands represent Nigeria's agriculture and natural wealth; the white centre band stands for peace and unity.</p>
+      <!-- Tab navigation -->
+      <div class="sym-tabs" id="sym-tabs" role="tablist" aria-label="National symbols">
+        <button class="sym-tab is-active" data-panel="flag" role="tab" aria-selected="true" aria-controls="panel-flag" id="tab-flag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="2" height="16" fill="currentColor" stroke="none"/><path d="M5 5h13l-3 4.5 3 4.5H5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          <span>National Flag</span>
+        </button>
+        <button class="sym-tab" data-panel="arms" role="tab" aria-selected="false" aria-controls="panel-arms" id="tab-arms">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10C8 19 5 15.5 5 11V6l7-3z"/></svg>
+          <span>Coat of Arms</span>
+        </button>
+        <button class="sym-tab" data-panel="anthem" role="tab" aria-selected="false" aria-controls="panel-anthem" id="tab-anthem">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span>National Anthem</span>
+        </button>
+        <button class="sym-tab" data-panel="pledge" role="tab" aria-selected="false" aria-controls="panel-pledge" id="tab-pledge">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          <span>National Pledge</span>
+        </button>
+        <button class="sym-tab" data-panel="motto" role="tab" aria-selected="false" aria-controls="panel-motto" id="tab-motto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <span>National Motto</span>
+        </button>
+      </div>
+
+      <div class="sym-panels-wrap">
+
+        <!-- ── FLAG ── -->
+        <div class="sym-panel is-active" id="panel-flag" role="tabpanel" aria-labelledby="tab-flag">
+          <div class="sym-flag-layout">
+            <div>
+              <div class="flag-display" role="img" aria-label="Flag of Nigeria — two green vertical bands flanking a white centre band">
+                <div class="flag-band flag-band--green"></div>
+                <div class="flag-band flag-band--white">
+                  <div class="flag-shine" aria-hidden="true"></div>
+                </div>
+                <div class="flag-band flag-band--green"></div>
+              </div>
+            </div>
+            <div>
+              <span class="symbol-kicker">The National Flag</span>
+              <h3 class="sym-panel-title">Green · White · Green</h3>
+              <p class="sym-flag-desc">Designed by <strong style="color:var(--navy)">Michael Taiwo Akinkunmi</strong>, a 23-year-old student in London who submitted the winning entry in a nationwide competition. It was first hoisted on <strong style="color:var(--navy)">1 October 1960</strong> — the moment Nigeria declared independence from British rule.</p>
+              <div class="flag-key">
+                <div class="flag-key__item">
+                  <span class="flag-swatch flag-swatch--green" aria-hidden="true"></span>
+                  <div>
+                    <strong>Green</strong>
+                    <p>Nigeria's forests, agricultural wealth and abundant natural resources</p>
+                  </div>
+                </div>
+                <div class="flag-key__item">
+                  <span class="flag-swatch flag-swatch--white" aria-hidden="true"></span>
+                  <div>
+                    <strong>White</strong>
+                    <p>Peace and unity among all the peoples of the Federal Republic</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="nigeria-body" style="margin:28px 0 32px">
-        <div>
-          <h3 style="margin-top:0" data-i18n="symbols.arms.title">The Coat of Arms</h3>
-          <p>The coat of arms of Nigeria consists of a black shield with a wavy white pall, symbolising the meeting of the Niger and Benue Rivers at Lokoja. The black shield represents Nigeria's fertile soil, while the two supporting horses or chargers on each side represent dignity.</p>
-          <p>Above the shield rests a red eagle — symbolising strength — and at the base is a band of yellow, red and green flowers. The motto <strong>"Unity and Faith, Peace and Progress"</strong> is inscribed at the base.</p>
+        <!-- ── COAT OF ARMS ── -->
+        <div class="sym-panel" id="panel-arms" role="tabpanel" aria-labelledby="tab-arms">
+          <div class="sym-coa-layout">
+            <div>
+              <span class="symbol-kicker">The Coat of Arms</span>
+              <h3 class="sym-panel-title">Shield, Eagle &amp; Horses</h3>
+              <p class="sym-panel-intro">Officially adopted on <strong>20 May 1960</strong>, the coat of arms is the centrepiece of Nigerian state identity, appearing on all official documents, passports and currency.</p>
+              <div class="coa-elements">
+                <div class="coa-el">
+                  <span class="coa-el__num" aria-hidden="true">01</span>
+                  <div>
+                    <strong>The Black Shield</strong>
+                    <p>Represents Nigeria's fertile soil and the solid, unwavering foundation of the nation. Black also alludes to Nigeria's rich dark earth.</p>
+                  </div>
+                </div>
+                <div class="coa-el">
+                  <span class="coa-el__num" aria-hidden="true">02</span>
+                  <div>
+                    <strong>The White Pall (Y-shape)</strong>
+                    <p>Symbolises the confluence of the River Niger and River Benue at Lokoja — the geographic and spiritual heart of Nigeria.</p>
+                  </div>
+                </div>
+                <div class="coa-el">
+                  <span class="coa-el__num" aria-hidden="true">03</span>
+                  <div>
+                    <strong>The Red Eagle</strong>
+                    <p>Crowns the shield as a symbol of strength and national pride. The eagle's soaring posture represents Nigeria's rising potential.</p>
+                  </div>
+                </div>
+                <div class="coa-el">
+                  <span class="coa-el__num" aria-hidden="true">04</span>
+                  <div>
+                    <strong>The Two Chargers</strong>
+                    <p>White horses flanking the shield on both sides, representing dignity and the noble, steadfast character of the Nigerian people.</p>
+                  </div>
+                </div>
+                <div class="coa-el">
+                  <span class="coa-el__num" aria-hidden="true">05</span>
+                  <div>
+                    <strong>Wildflowers at the Base</strong>
+                    <p>Yellow <em>Costus spectabilis</em> — Nigeria's national flower — representing the country's natural beauty and abundant flora.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="coa-image-wrap">
+              <img src="assets/nigeria/nSImage.jpg" alt="Coat of Arms of the Federal Republic of Nigeria" loading="lazy" />
+              <p class="coa-motto">&ldquo;Unity and Faith, Peace and Progress&rdquo;</p>
+            </div>
+          </div>
         </div>
-        <div class="nigeria-body__aside" style="max-width:220px">
-          <img src="assets/nigeria/nSImage.jpg" alt="Coat of Arms of Nigeria" loading="lazy" style="border-radius:12px" />
+
+        <!-- ── ANTHEM ── -->
+        <div class="sym-panel" id="panel-anthem" role="tabpanel" aria-labelledby="tab-anthem">
+          <span class="symbol-kicker">The National Anthem</span>
+          <h3 class="sym-panel-title">Nigeria, We Hail Thee</h3>
+          <p class="sym-panel-intro">Originally composed by <strong>Lillian Jean Williams</strong> circa 1960, the anthem was restored by Act of the National Assembly and re-adopted on <strong>29 May 2024</strong>, replacing &ldquo;Arise O Compatriots&rdquo; which had served since 1978.</p>
+          <div class="anthem-stanzas">
+            <div class="anthem-verse">
+              <span class="anthem-verse-num">Stanza I</span>
+              <p>Nigeria, we hail thee,<br>
+              Our own dear native land,<br>
+              Though tribe and tongue may differ,<br>
+              In brotherhood we stand,<br>
+              Nigerians all, and proud to serve<br>
+              Our sovereign Motherland.</p>
+            </div>
+            <div class="anthem-verse">
+              <span class="anthem-verse-num">Stanza II</span>
+              <p>Our flag shall be a symbol<br>
+              That truth and justice reign,<br>
+              In peace or battle honour&rsquo;d,<br>
+              And this we count as gain,<br>
+              To hand on to our children<br>
+              A banner without stain.</p>
+            </div>
+            <div class="anthem-verse">
+              <span class="anthem-verse-num">Stanza III</span>
+              <p>O God of all creation,<br>
+              Grant this our one request,<br>
+              Help us to build a nation<br>
+              Where no man is oppressed,<br>
+              And so with peace and plenty<br>
+              Nigeria may be blessed.</p>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="nigeria-pledge">
-        <p>"I pledge to Nigeria my Country, to be faithful, loyal and honest, to serve Nigeria with all my strength, to defend her unity and uphold her honour and glory. So help me God."</p>
-        <cite data-i18n="symbols.pledge.cite">— The National Pledge</cite>
-      </div>
+        <!-- ── PLEDGE ── -->
+        <div class="sym-panel" id="panel-pledge" role="tabpanel" aria-labelledby="tab-pledge">
+          <span class="symbol-kicker">The National Pledge</span>
+          <h3 class="sym-panel-title">A Promise to the Nation</h3>
+          <p class="sym-panel-intro">Recited every morning in schools across Nigeria and at national ceremonies, the pledge is a personal covenant between each citizen and the country they call home. It was written by <strong>Felicia Adeyoyin</strong> and adopted in 1978.</p>
+          <div class="pledge-display">
+            <blockquote class="pledge-lines">
+              I pledge to Nigeria my Country,<br>
+              To be faithful, loyal and honest,<br>
+              To serve Nigeria with all my strength,<br>
+              To defend her unity,<br>
+              And uphold her honour and glory.<br>
+              <strong>So help me God.</strong>
+            </blockquote>
+            <div class="pledge-pillars" aria-label="Core values of the pledge">
+              <div class="pledge-pillar">Faithful</div>
+              <div class="pledge-pillar">Loyal</div>
+              <div class="pledge-pillar">Honest</div>
+              <div class="pledge-pillar">Steadfast</div>
+            </div>
+          </div>
+        </div>
 
-      <div class="symbol-grid" style="margin-top:28px">
-        <article class="symbol-card">
-          <div class="symbol-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/></svg></div>
-          <h4 data-i18n="symbols.card.arms.title">Coat of Arms</h4>
-          <p>A black shield bearing two white wavy bands — the Niger and Benue rivers — supported by two horses and crowned by an eagle. Motto: <em>Unity and Faith, Peace and Progress.</em></p>
-        </article>
-        <article class="symbol-card">
-          <div class="symbol-ic"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-          <h4 data-i18n="symbols.card.anthem.title">National Anthem</h4>
-          <p>"Nigeria, We Hail Thee" — expressing the nation's unity, its aspirations for justice and an enduring prayer for peace and progress.</p>
-        </article>
-        <article class="symbol-card">
-          <div class="symbol-ic"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
-          <h4 data-i18n="symbols.card.pledge.title">National Pledge</h4>
-          <p>A solemn commitment to be faithful, loyal and honest, and to serve Nigeria with all one's strength in defence of her unity and honour.</p>
-        </article>
-        <article class="symbol-card">
-          <div class="symbol-ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></div>
-          <h4 data-i18n="symbols.card.motto.title">National Motto</h4>
-          <p><em>"Unity and Faith, Peace and Progress"</em> — the guiding ideals of the Federal Republic of Nigeria, inscribed on the Coat of Arms.</p>
-        </article>
-      </div>
+        <!-- ── MOTTO ── -->
+        <div class="sym-panel" id="panel-motto" role="tabpanel" aria-labelledby="tab-motto">
+          <span class="symbol-kicker">The National Motto</span>
+          <h3 class="sym-panel-title">Unity and Faith, Peace and Progress</h3>
+          <p class="sym-panel-intro">Inscribed on a green band beneath the coat of arms, the national motto encapsulates the four ideals upon which the Federal Republic of Nigeria was built — and toward which every generation strives.</p>
+          <div class="motto-grid">
+            <div class="motto-card">
+              <h5>Unity</h5>
+              <p>Nigeria's greatest strength lies in the harmonious coexistence of over 250 ethnic groups speaking more than 500 languages. Diversity is not a challenge to be managed but a richness to be celebrated — a mosaic that binds rather than divides.</p>
+            </div>
+            <div class="motto-card">
+              <h5>Faith</h5>
+              <p>Belief in Nigeria's shared destiny and the collective conviction that the nation's best days are always ahead. Faith calls every Nigerian to contribute to the country's story with optimism and purpose, regardless of present circumstances.</p>
+            </div>
+            <div class="motto-card">
+              <h5>Peace</h5>
+              <p>A commitment to resolving disputes through dialogue, upholding the rule of law and nurturing harmony — within the nation's borders and across the African continent and the wider world where Nigeria plays a leading role.</p>
+            </div>
+            <div class="motto-card">
+              <h5>Progress</h5>
+              <p>An unwavering drive toward development — economic growth, human flourishing, scientific advancement and the continuous improvement of life for every Nigerian citizen, in every corner of the federation.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /sym-panels-wrap -->
 
     </div>
   </div>
@@ -119,5 +270,22 @@
 <div id="site-footer"></div>
 <script src="translations.js"></script>
 <script src="site.js"></script>
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.sym-tab');
+  var panels = document.querySelectorAll('.sym-panel');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var target = tab.getAttribute('data-panel');
+      tabs.forEach(function (t) { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(function (p) { p.classList.remove('is-active'); });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      var panel = document.getElementById('panel-' + target);
+      if (panel) panel.classList.add('is-active');
+    });
+  });
+}());
+</script>
 </body>
 </html>

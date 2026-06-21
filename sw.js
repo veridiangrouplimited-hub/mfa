@@ -1,5 +1,5 @@
 /* Service worker — cache-first with network fallback */
-var CACHE = 'mfa-v3';
+var CACHE = 'mfa-v11';
 var PRECACHE = [
   'index.html',
   'styles.css',

@@ -9,6 +9,48 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+<style>
+.news-pag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 14px 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.news-pag-info {
+  font-size: .82rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.news-pag-btns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.news-pag-btn {
+  min-width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: #fff;
+  padding: 0 10px;
+  cursor: pointer;
+  transition: background .16s, color .16s, border-color .16s;
+}
+.news-pag-btn.is-active { background: var(--green-700); color: #fff; border-color: var(--green-700); }
+.news-pag-btn:hover:not(.is-active):not(:disabled) { border-color: var(--green-700); color: var(--green-700); }
+.news-pag-btn:disabled { opacity: .35; cursor: default; }
+</style>
 </head>
 <body data-page="press">
 
@@ -27,25 +69,26 @@
       <div>
         <p class="eyebrow" data-i18n="press.eyebrow">Press Center</p>
         <h2 class="section-title" data-i18n="press.news.title">Latest News</h2>
-        <div class="tabs" id="tabs">
+        <!-- id="press-tabs" so site.js tab handler skips this page; managed by inline script below -->
+        <div class="tabs" id="press-tabs">
           <button class="tab is-active" data-filter="hmfa" data-i18n="press.tab.hmfa">HMFA News</button>
           <button class="tab" data-filter="hmos" data-i18n="press.tab.hmos">HMOS News</button>
           <button class="tab" data-filter="mfa" data-i18n="press.tab.mfa">MFA News</button>
         </div>
       </div>
-      <a class="btn" href="#">View All
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
     </div>
 
-    <div class="news-grid press-news-grid" id="newsGrid">
+    <!-- id="press-news-grid" so site.js card query skips this page -->
+    <div class="news-grid press-news-grid" id="press-news-grid">
+
+      <!-- ── HMFA (8 items) ── -->
       <article class="card card--featured" data-cat="hmfa">
         <div class="card-img"><img src="assets/news/news6.jpg" alt="Minister of Foreign Affairs keynote address" loading="lazy" /><span class="tag">HMFA News</span></div>
         <div class="card-body">
           <span class="feat-badge"><svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg> Featured Story</span>
           <span class="card-date">June 15, 2026</span>
-          <h3>Keynote Address by H.E. Bianca Odumegwu-Ojukwu, Honourable Minister of Foreign Affairs</h3>
-          <p>The Honourable Minister delivers a keynote on Nigeria's diplomatic priorities and global partnerships.</p>
+          <h3>Keynote Address by H.E. Bianca Odumegwu-Ojukwu at the Regional Diplomatic Forum on African Security</h3>
+          <p>The Honourable Minister delivers Nigeria's position on multilateral peace-building and ECOWAS-led conflict resolution.</p>
           <a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
       </article>
@@ -53,57 +96,115 @@
         <div class="card-img"><img src="assets/news/news5.jpg" alt="Minister receives Ambassador of Sweden" loading="lazy" /><span class="tag">HMFA News</span></div>
         <div class="card-body"><span class="card-date">June 11, 2026</span><h3>Nigeria and Sweden Deepen Strategic Partnership as Minister Receives Ambassador</h3><p>Both nations reaffirm a shared commitment to trade, sustainability and bilateral cooperation.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
       </article>
-      <article class="card" data-cat="hmos">
-        <div class="card-img"><img src="assets/news/news3.jpg" alt="Minister of State for Foreign Affairs" loading="lazy" /><span class="tag">HMOS News</span></div>
-        <div class="card-body"><span class="card-date">June 9, 2026</span><h3>Minister of State Amb. Sola Enikanolaiye to Represent President Tinubu at Summit</h3><p>The Minister of State leads Nigeria's delegation at a high-level international engagement.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      </article>
-      <article class="card" data-cat="hmos">
-        <div class="card-img"><img src="assets/news/news2.jpg" alt="Nigeria and the Philippines diplomatic engagement" loading="lazy" /><span class="tag">HMOS News</span></div>
-        <div class="card-body"><span class="card-date">June 6, 2026</span><h3>Nigeria and the Philippines Advance 65 Years of Friendship Through Diplomacy</h3><p>High-level engagement marks more than six decades of bilateral relations between the two nations.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      </article>
-      <article class="card" data-cat="mfa">
-        <div class="card-img"><img src="assets/news/news1.jpg" alt="Our Ocean Conference, Mombasa" loading="lazy" /><span class="tag">MFA News</span></div>
-        <div class="card-body"><span class="card-date">June 3, 2026</span><h3>Address by H.E. Bola Ahmed Tinubu at the 11th Our Ocean Conference, Mombasa</h3><p>Mr President reaffirms Nigeria's commitment to ocean governance and sustainable blue economy.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      </article>
-      <article class="card" data-cat="mfa">
-        <div class="card-img"><img src="assets/news/news4.jpg" alt="Minister receives MD/CEO of NLNG" loading="lazy" /><span class="tag">MFA News</span></div>
-        <div class="card-body"><span class="card-date">May 30, 2026</span><h3>Ministry of Foreign Affairs Receives MD/CEO of NLNG</h3><p>Discussions focus on economic diplomacy and Nigeria's energy partnerships abroad.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      </article>
       <article class="card" data-cat="hmfa">
-        <div class="card-img"><img src="assets/news/news1.jpg" alt="Minister participates in G7 Foreign Ministers Meeting" loading="lazy" /><span class="tag">HMFA News</span></div>
-        <div class="card-body"><span class="card-date">May 23, 2026</span><h3>Minister Odumegwu-Ojukwu Participates in G7 Foreign Ministers Meeting in Italy</h3><p>The Minister engages G7 counterparts on Africa's development agenda and Nigeria's reform programme.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+        <div class="card-img"><img src="assets/news/news1.jpg" alt="Minister at G7 Foreign Ministers Meeting" loading="lazy" /><span class="tag">HMFA News</span></div>
+        <div class="card-body"><span class="card-date">May 23, 2026</span><h3>Minister Odumegwu-Ojukwu Participates in G7 Foreign Ministers Meeting in Capri, Italy</h3><p>Nigeria advances Africa's development agenda and highlights the 4D Foreign Policy as a model for proactive economic diplomacy.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
       </article>
       <article class="card" data-cat="hmfa">
         <div class="card-img"><img src="assets/news/news2.jpg" alt="Nigeria-Ghana bilateral relations" loading="lazy" /><span class="tag">HMFA News</span></div>
         <div class="card-body"><span class="card-date">May 19, 2026</span><h3>Nigeria and Ghana Reaffirm Commitment to ECOWAS Integration and Regional Stability</h3><p>A bilateral meeting between the two Ministers reinforces bonds of shared history and shared destiny.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
       </article>
+      <article class="card" data-cat="hmfa">
+        <div class="card-img"><img src="assets/news/news3.jpg" alt="Minister at Commonwealth Ministerial Meeting" loading="lazy" /><span class="tag">HMFA News</span></div>
+        <div class="card-body"><span class="card-date">April 12, 2026</span><h3>Minister Attends Commonwealth Foreign Ministers Forum in London</h3><p>H.E. Odumegwu-Ojukwu articulates Nigeria's vision for a reformed Commonwealth centred on African perspectives and climate finance.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmfa">
+        <div class="card-img"><img src="assets/news/news4.jpg" alt="Minister receives new Ambassadors" loading="lazy" /><span class="tag">HMFA News</span></div>
+        <div class="card-body"><span class="card-date">March 28, 2026</span><h3>Minister Receives Letters of Credence from Seven New Ambassadors to Nigeria</h3><p>The Honourable Minister formally receives credentials from newly appointed envoys across Europe, Asia and the Americas.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmfa">
+        <div class="card-img"><img src="assets/news/news5.jpg" alt="Minister at ECOWAS Foreign Ministers Meeting" loading="lazy" /><span class="tag">HMFA News</span></div>
+        <div class="card-body"><span class="card-date">March 10, 2026</span><h3>Minister Delivers Opening Remarks at ECOWAS Foreign Ministers Emergency Session</h3><p>The session focuses on coordinated regional response to security challenges in the Sahel and the Gulf of Guinea.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmfa">
+        <div class="card-img"><img src="assets/news/news6.jpg" alt="Minister meets UN Secretary-General" loading="lazy" /><span class="tag">HMFA News</span></div>
+        <div class="card-body"><span class="card-date">February 22, 2026</span><h3>Nigeria's Foreign Minister Holds Bilateral Meeting with UN Secretary-General António Guterres</h3><p>Discussions cover Nigeria's candidature for key UN positions and the country's engagement in global peacekeeping operations.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+
+      <!-- ── HMOS (8 items) ── -->
       <article class="card" data-cat="hmos">
-        <div class="card-img"><img src="assets/news/news5.jpg" alt="Minister of State at AU Summit" loading="lazy" /><span class="tag">HMOS News</span></div>
-        <div class="card-body"><span class="card-date">May 14, 2026</span><h3>Minister of State Leads Delegation to African Union Peace and Security Council</h3><p>Ambassador Enikanolaiye represents Nigeria at high-level deliberations on continental security frameworks.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+        <div class="card-img"><img src="assets/news/news3.jpg" alt="Minister of State for Foreign Affairs" loading="lazy" /><span class="tag">HMOS News</span></div>
+        <div class="card-body"><span class="card-date">June 9, 2026</span><h3>Minister of State Amb. Sola Enikanolaiye to Represent President Tinubu at African Union Summit</h3><p>The Minister of State leads Nigeria's high-level delegation to the AU Extraordinary Summit on Terrorism and Violent Extremism.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmos">
+        <div class="card-img"><img src="assets/news/news2.jpg" alt="Nigeria and the Philippines diplomatic engagement" loading="lazy" /><span class="tag">HMOS News</span></div>
+        <div class="card-body"><span class="card-date">June 6, 2026</span><h3>Nigeria and the Philippines Advance 65 Years of Friendship Through High-Level Diplomacy</h3><p>A bilateral meeting marks six decades of diplomatic relations, deepening cooperation in trade, health and education.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmos">
+        <div class="card-img"><img src="assets/news/news5.jpg" alt="Minister of State at AU Peace and Security Council" loading="lazy" /><span class="tag">HMOS News</span></div>
+        <div class="card-body"><span class="card-date">May 14, 2026</span><h3>Minister of State Leads Nigerian Delegation to AU Peace and Security Council</h3><p>Ambassador Enikanolaiye advances Nigeria's proposals on preventive diplomacy and early warning systems across the continent.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmos">
+        <div class="card-img"><img src="assets/news/news6.jpg" alt="Diaspora engagement forum London" loading="lazy" /><span class="tag">HMOS News</span></div>
+        <div class="card-body"><span class="card-date">April 30, 2026</span><h3>Ministry Holds Diaspora Engagement Forum in London, Connecting 400+ Nigerians Abroad</h3><p>The forum addresses welfare, investment pathways, dual citizenship and emergency consular support for Nigerians in the UK.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmos">
+        <div class="card-img"><img src="assets/news/news1.jpg" alt="Minister of State at Non-Aligned Movement Conference" loading="lazy" /><span class="tag">HMOS News</span></div>
+        <div class="card-body"><span class="card-date">April 18, 2026</span><h3>Minister of State Attends Non-Aligned Movement Ministerial Conference in Kampala</h3><p>Ambassador Enikanolaiye reaffirms Nigeria's commitment to multilateralism and the sovereign equality of nations.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmos">
+        <div class="card-img"><img src="assets/news/news4.jpg" alt="HMOS receives outgoing Ambassador of Japan" loading="lazy" /><span class="tag">HMOS News</span></div>
+        <div class="card-body"><span class="card-date">March 20, 2026</span><h3>Minister of State Bids Farewell to Outgoing Japanese Ambassador to Nigeria</h3><p>The sendoff reception marks three decades of Japan-Nigeria bilateral friendship and strong economic partnership.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmos">
+        <div class="card-img"><img src="assets/news/news3.jpg" alt="HMOS bilateral talks ASEAN" loading="lazy" /><span class="tag">HMOS News</span></div>
+        <div class="card-body"><span class="card-date">March 5, 2026</span><h3>Minister of State Leads Bilateral Engagement with ASEAN Diplomatic Partners in Jakarta</h3><p>High-level meetings explore expanded trade, investment corridors and people-to-people exchanges between Nigeria and ASEAN nations.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="hmos">
+        <div class="card-img"><img src="assets/news/news2.jpg" alt="Nigeria-Senegal bilateral cooperation" loading="lazy" /><span class="tag">HMOS News</span></div>
+        <div class="card-body"><span class="card-date">February 14, 2026</span><h3>Nigeria-Senegal Bilateral Cooperation Meeting Yields New MOU on Energy and Agriculture</h3><p>Ambassador Enikanolaiye and his Senegalese counterpart sign a landmark cooperation framework covering oil, gas and food security.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+
+      <!-- ── MFA (8 items) ── -->
+      <article class="card" data-cat="mfa">
+        <div class="card-img"><img src="assets/news/news1.jpg" alt="Our Ocean Conference, Mombasa" loading="lazy" /><span class="tag">MFA News</span></div>
+        <div class="card-body"><span class="card-date">June 3, 2026</span><h3>Address by H.E. Bola Ahmed Tinubu at the 11th Our Ocean Conference, Mombasa</h3><p>Mr President reaffirms Nigeria's commitment to ocean governance and sustainable blue economy development.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="mfa">
+        <div class="card-img"><img src="assets/news/news4.jpg" alt="Ministry receives MD/CEO of NLNG" loading="lazy" /><span class="tag">MFA News</span></div>
+        <div class="card-body"><span class="card-date">May 30, 2026</span><h3>Ministry of Foreign Affairs Receives MD/CEO of Nigeria LNG to Discuss Energy Diplomacy</h3><p>Discussions focus on deepening Nigeria's energy partnerships and leveraging NLNG exports as a tool for foreign policy objectives.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
       </article>
       <article class="card" data-cat="mfa">
         <div class="card-img"><img src="assets/news/news3.jpg" alt="Nigeria UN Human Rights Council" loading="lazy" /><span class="tag">MFA News</span></div>
         <div class="card-body"><span class="card-date">May 8, 2026</span><h3>Nigeria Elected to UN Human Rights Council for 2026–2028 Term</h3><p>The election underscores Nigeria's growing influence in multilateral human rights governance and rule of law advocacy.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
       </article>
-      <article class="card" data-cat="hmos">
-        <div class="card-img"><img src="assets/news/news6.jpg" alt="Diaspora engagement forum" loading="lazy" /><span class="tag">HMOS News</span></div>
-        <div class="card-body"><span class="card-date">April 30, 2026</span><h3>Ministry Holds Diaspora Engagement Forum in London, Connecting 400+ Nigerians Abroad</h3><p>The forum addresses welfare, investment pathways, dual citizenship and emergency consular support for Nigerians in the UK.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-      </article>
       <article class="card" data-cat="mfa">
         <div class="card-img"><img src="assets/news/news2.jpg" alt="Paperless consular portal launch" loading="lazy" /><span class="tag">MFA News</span></div>
         <div class="card-body"><span class="card-date">April 22, 2026</span><h3>Ministry Launches Paperless Consular Portal — A New Era in Digital Diplomacy</h3><p>The portal enables Nigerians to authenticate documents, apply for passports and track consular requests entirely online.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
       </article>
+      <article class="card" data-cat="mfa">
+        <div class="card-img"><img src="assets/news/news5.jpg" alt="MFA statement on Eastern Africa" loading="lazy" /><span class="tag">MFA News</span></div>
+        <div class="card-body"><span class="card-date">April 8, 2026</span><h3>MFA Issues Statement Calling for Immediate Ceasefire in Eastern Africa Conflict Zones</h3><p>Nigeria urges all parties to prioritise civilian protection and engage in inclusive dialogue brokered by the African Union.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="mfa">
+        <div class="card-img"><img src="assets/news/news6.jpg" alt="Global Climate Diplomacy Forum" loading="lazy" /><span class="tag">MFA News</span></div>
+        <div class="card-body"><span class="card-date">March 15, 2026</span><h3>Nigeria Joins 50+ Nations at the Global Climate Diplomacy Forum in Geneva</h3><p>The Ministry leads Nigeria's engagement on climate-linked migration, food insecurity and green transition financing for developing economies.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="mfa">
+        <div class="card-img"><img src="assets/news/news1.jpg" alt="Passport issuance reform" loading="lazy" /><span class="tag">MFA News</span></div>
+        <div class="card-body"><span class="card-date">February 28, 2026</span><h3>Passport Issuance Times Cut by 40% Following Ministry-Led Consular Reform</h3><p>New automated processing systems at 14 overseas missions have slashed average issuance times from 28 days to under 17 days.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+      <article class="card" data-cat="mfa">
+        <div class="card-img"><img src="assets/news/news4.jpg" alt="Nigeria bilateral investment treaty" loading="lazy" /><span class="tag">MFA News</span></div>
+        <div class="card-body"><span class="card-date">February 5, 2026</span><h3>Nigeria Signs Bilateral Investment Treaties with Saudi Arabia, UAE and Qatar</h3><p>The agreements open direct FDI channels across energy, infrastructure and technology, unlocking an estimated $8 billion in commitments.</p><a class="readmore" href="news-article.html">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      </article>
+
+    </div><!-- /#press-news-grid -->
+
+    <!-- Pagination -->
+    <div class="news-pag" id="news-pag">
+      <span class="news-pag-info" id="news-pag-info"></span>
+      <div class="news-pag-btns" id="news-pag-btns"></div>
     </div>
+
   </div>
 </section>
 
-<section class="section" id="watch" style="background:var(--bg-soft);padding-top:56px;padding-bottom:56px">
+<section class="section section--alt" id="watch">
   <div class="wrap">
     <p class="eyebrow" data-i18n="press.watch.eyebrow">Watch</p>
-    <h2 class="section-title" style="text-align:center" data-i18n="press.watch.title">Ministerial Addresses &amp; Press Briefings</h2>
-    <p class="obj-lead" style="text-align:center;max-width:640px;margin:0 auto 36px" data-i18n="press.watch.desc">Watch official addresses, press conferences and key speeches from the Honourable Minister and the Ministry of Foreign Affairs.</p>
-    <!-- Replace data-vid with the YouTube video ID and img src with:
-         https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg -->
+    <h2 class="section-title" data-i18n="press.watch.title">Ministerial Addresses &amp; Press Briefings</h2>
+    <p class="obj-lead" data-i18n="press.watch.desc">Watch official addresses, press conferences and key speeches from the Honourable Minister and the Ministry of Foreign Affairs.</p>
     <div class="yt-facade" data-vid="PRESS_VIDEO_ID">
       <img src="assets/news/news6.jpg" alt="Watch: Ministerial Address — Ministry of Foreign Affairs" loading="lazy" />
       <button class="yt-play" aria-label="Play video" data-i18n-label="press.video.btn">
@@ -125,23 +226,26 @@
       <div class="doc-row">
         <div class="doc-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v3H4V4m0 5h16v2H4V9m0 4h10v2H4v-2m0 4h10v2H4v-2z"/></svg></div>
         <div><h3>Statement on Nigeria's Bilateral Engagements at the Regional Summit</h3><div class="meta">Office of the Spokesperson · June 14, 2026</div></div>
-        <a class="readmore" href="news-article.html" style="margin-left:auto">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="readmore" href="press-releases.html">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
       <div class="doc-row">
         <div class="doc-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v3H4V4m0 5h16v2H4V9m0 4h10v2H4v-2m0 4h10v2H4v-2z"/></svg></div>
         <div><h3>Ministry Reaffirms Commitment to Protecting Nigerians Abroad</h3><div class="meta">Office of the Spokesperson · June 9, 2026</div></div>
-        <a class="readmore" href="news-article.html" style="margin-left:auto">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="readmore" href="press-releases.html">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
       <div class="doc-row">
         <div class="doc-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v3H4V4m0 5h16v2H4V9m0 4h10v2H4v-2m0 4h10v2H4v-2z"/></svg></div>
         <div><h3>Launch of the Paperless Service Portal for Consular Applications</h3><div class="meta">Office of the Spokesperson · June 1, 2026</div></div>
-        <a class="readmore" href="news-article.html" style="margin-left:auto">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="readmore" href="press-releases.html">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
+    </div>
+    <div style="margin-top:20px">
+      <a class="btn btn--ghost-dark" href="press-releases.html">View All Press Releases <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:middle"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>
 
-<section class="section" id="documents" style="background:var(--bg-soft);padding-top:56px;padding-bottom:56px">
+<section class="section section--alt" id="documents">
   <div class="wrap">
     <p class="eyebrow" data-i18n="press.docs.eyebrow">Resources</p>
     <h2 class="section-title" data-i18n="press.docs.title">Public Documents</h2>
@@ -149,23 +253,26 @@
       <div class="doc-row">
         <div class="doc-ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2m9 1.5V8h4.5L15 3.5z"/></svg></div>
         <div><h3>Nigeria Foreign Policy 4D Agenda — Brief</h3><div class="meta">PDF · 1.2 MB · Updated June 2026</div></div>
-        <a class="btn" href="#">Download</a>
+        <a class="btn" href="public-documents.html">Download</a>
       </div>
       <div class="doc-row">
         <div class="doc-ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2m9 1.5V8h4.5L15 3.5z"/></svg></div>
         <div><h3>Consular Services Guidelines for Citizens Abroad</h3><div class="meta">PDF · 860 KB · Updated May 2026</div></div>
-        <a class="btn" href="#">Download</a>
+        <a class="btn" href="public-documents.html">Download</a>
       </div>
       <div class="doc-row">
         <div class="doc-ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2m9 1.5V8h4.5L15 3.5z"/></svg></div>
         <div><h3>Document Authentication — Applicant Checklist</h3><div class="meta">PDF · 420 KB · Updated April 2026</div></div>
-        <a class="btn" href="#">Download</a>
+        <a class="btn" href="public-documents.html">Download</a>
       </div>
       <div class="doc-row">
         <div class="doc-ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2m9 1.5V8h4.5L15 3.5z"/></svg></div>
         <div><h3>Directory of Nigerian Diplomatic Missions</h3><div class="meta">PDF · 2.4 MB · Updated March 2026</div></div>
         <a class="btn" href="missions.html">View</a>
       </div>
+    </div>
+    <div style="margin-top:20px">
+      <a class="btn btn--ghost-dark" href="public-documents.html">Browse All Documents <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:middle"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>
@@ -174,5 +281,79 @@
 
 <script src="translations.js"></script>
 <script src="site.js"></script>
+<script>
+(function () {
+  var PER_PAGE   = 6;
+  var curPage    = 1;
+  var activeFilter = 'hmfa';
+
+  var tabsEl   = document.getElementById('press-tabs');
+  var grid     = document.getElementById('press-news-grid');
+  var pagEl    = document.getElementById('news-pag');
+  var infoEl   = document.getElementById('news-pag-info');
+  var btnsEl   = document.getElementById('news-pag-btns');
+  var allCards = Array.from(grid.querySelectorAll('.card'));
+
+  function getFiltered() {
+    return allCards.filter(function (c) {
+      return c.getAttribute('data-cat') === activeFilter;
+    });
+  }
+
+  function render() {
+    var filtered   = getFiltered();
+    var total      = filtered.length;
+    var totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+    if (curPage > totalPages) curPage = 1;
+    var start = (curPage - 1) * PER_PAGE;
+    var end   = start + PER_PAGE;
+
+    allCards.forEach(function (c) { c.style.display = 'none'; });
+    filtered.forEach(function (c, i) {
+      c.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+
+    /* Pagination info */
+    infoEl.textContent = 'Page ' + curPage + ' of ' + totalPages + ' · ' + total + ' stories';
+
+    /* Pagination buttons */
+    btnsEl.innerHTML = '';
+    if (totalPages <= 1) { pagEl.style.display = 'none'; return; }
+    pagEl.style.display = '';
+
+    function makeBtn(label, page, disabled, active) {
+      var b = document.createElement('button');
+      b.className = 'news-pag-btn' + (active ? ' is-active' : '');
+      b.textContent = label;
+      b.disabled = !!disabled;
+      if (!disabled) b.addEventListener('click', function () {
+        curPage = page;
+        render();
+        document.getElementById('news').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      return b;
+    }
+
+    btnsEl.appendChild(makeBtn('←', curPage - 1, curPage === 1, false));
+    for (var p = 1; p <= totalPages; p++) {
+      btnsEl.appendChild(makeBtn(p, p, false, p === curPage));
+    }
+    btnsEl.appendChild(makeBtn('→', curPage + 1, curPage === totalPages, false));
+  }
+
+  /* Tab clicks */
+  tabsEl.addEventListener('click', function (e) {
+    var btn = e.target.closest('.tab');
+    if (!btn) return;
+    tabsEl.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('is-active'); });
+    btn.classList.add('is-active');
+    activeFilter = btn.getAttribute('data-filter');
+    curPage = 1;
+    render();
+  });
+
+  render();
+}());
+</script>
 </body>
 </html>

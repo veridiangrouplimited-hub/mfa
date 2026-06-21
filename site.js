@@ -81,7 +81,6 @@
           '<button class="lang-btn" data-lang="en">EN</button>' +
           '<button class="lang-btn" data-lang="fr">FR</button>' +
         '</div>' +
-        '<a class="u-portal"' + EXT + ' href="https://portal.foreignaffairs.gov.ng"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3V3m11 0h7v7h-7V3M3 14h7v7H3v-7m11 0h7v7h-7v-7z"/></svg> <span data-i18n="util.portal">Paperless Service Portal</span></a>' +
       '</div>' +
     '</div></div>' +
 
@@ -100,7 +99,7 @@
           '<div class="mega-inner">' +
             '<div class="mega-explore">' +
               '<span class="mega-kicker" data-i18n="mega.explore">Explore</span>' +
-              '<div class="mega-wm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5"/></svg></div>' +
+              '<div class="mega-wm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3L4 7v6c0 4.5 3.5 8.5 8 10 4.5-1.5 8-5.5 8-10V7L12 3z"/><path d="M12 8v5M12 13l-4 4.5M12 13l4 4.5"/></svg></div>' +
               '<h3 class="mega-title" data-i18n="mega.about.title">About Us</h3>' +
               '<p class="mega-desc" data-i18n="mega.about.desc">The Ministry mandated to conduct Nigeria\'s foreign policy and diplomatic relations.</p>' +
             '</div>' +
@@ -114,12 +113,12 @@
                 '<a href="our-history.html#ministry-history" data-i18n="mega.about.ministry_history">History of the Ministry</a>' +
                 '<a href="our-history.html#foreign-ministers" data-i18n="mega.about.ministers_list">List of Foreign Ministers</a>' +
               '</div>' +
-              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span data-i18n="mega.about.col2">Organization Chart</span></span>' +
+              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="2" y="17" width="6" height="4" rx="1"/><rect x="16" y="17" width="6" height="4" rx="1"/><path d="M12 6v6M12 12H5v5M12 12h7v5"/></svg><span data-i18n="mega.about.col2">Organization Chart</span></span>' +
                 '<a href="departments.html" data-i18n="mega.about.departments">Departments</a>' +
                 '<a href="about.html#org" data-i18n="mega.about.divisions">Divisions &amp; Units</a>' +
                 '<a href="agencies.html" data-i18n="mega.about.agencies">Agencies &amp; Parastatals</a>' +
               '</div>' +
-              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg><span data-i18n="mega.about.col3">Leadership</span></span>' +
+              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><path d="M12 2l1.8 3.6L18 6.5l-3 3 .7 4.2L12 11.8l-3.7 1.9L9 9.5l-3-3 4.2-.9L12 2z"/><path d="M8 21v-5a4 4 0 018 0v5"/></svg><span data-i18n="mega.about.col3">Leadership</span></span>' +
                 '<a href="minister.html" data-i18n="mega.about.minister">Honourable Minister of Foreign Affairs</a>' +
                 '<a href="minister-state.html" data-i18n="mega.about.minister_state">Minister of State</a>' +
                 '<a href="perm-sec.html" data-i18n="mega.about.perm_sec">Permanent Secretary</a>' +
@@ -134,7 +133,7 @@
           '<div class="mega-inner">' +
             '<div class="mega-explore">' +
               '<span class="mega-kicker" data-i18n="mega.explore">Explore</span>' +
-              '<div class="mega-wm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a9 9 0 00-9 9c0 6.5 9 14 9 14s9-7.5 9-14a9 9 0 00-9-9z"/><circle cx="12" cy="11" r="3"/></svg></div>' +
+              '<div class="mega-wm mega-wm--center" aria-hidden="true"><img src="assets/nigeria-map.png" alt="" class="mega-wm-map" /></div>' +
               '<h3 class="mega-title" data-i18n="mega.nigeria.title">Nigeria</h3>' +
               '<p class="mega-desc" data-i18n="mega.nigeria.desc">Discover Nigeria\'s rich history, culture, natural resources and investment opportunities.</p>' +
             '</div>' +
@@ -147,7 +146,7 @@
                 '<a href="nigeria-investment.html" data-i18n="mega.nigeria.investment">Investment</a>' +
                 '<a href="nigeria-people.html" data-i18n="mega.nigeria.people">The People</a>' +
               '</div>' +
-              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg><span data-i18n="mega.nigeria.col3">Culture &amp; Tourism</span></span>' +
+              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg><span data-i18n="mega.nigeria.col3">Culture &amp; Tourism</span></span>' +
                 '<a href="nigeria-culture.html" data-i18n="mega.nigeria.culture">Culture</a>' +
                 '<a href="nigeria-tourism.html" data-i18n="mega.nigeria.tourism">Tourism</a>' +
                 '<a href="nigeria-symbols.html" data-i18n="mega.nigeria.symbols">National Symbols</a>' +
@@ -160,7 +159,7 @@
           '<div class="mega-inner">' +
             '<div class="mega-explore">' +
               '<span class="mega-kicker" data-i18n="mega.explore">Explore</span>' +
-              '<div class="mega-wm" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8h14"/><path d="M5 8l-2 7h4l-2-7z"/><path d="M19 8l-2 7h4l-2-7z"/><line x1="8" y1="21" x2="16" y2="21"/></svg></div>' +
+              '<div class="mega-wm" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><polygon points="16.5 7.5 13.5 13.5 7.5 16.5 10.5 10.5"/></svg></div>' +
               '<h3 class="mega-title" data-i18n="mega.policy.title">Policy</h3>' +
               '<p class="mega-desc" data-i18n="mega.policy.desc">Nigeria\'s 4D Foreign Policy Agenda — Diaspora, Democracy, Development and Diplomacy.</p>' +
             '</div>' +
@@ -170,7 +169,7 @@
                 '<a href="policy.html#fourd" data-i18n="mega.policy.4ds">The 4Ds</a>' +
                 '<a href="policy.html#activities" data-i18n="mega.policy.activities">Activities</a>' +
               '</div>' +
-              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span data-i18n="mega.policy.col2">More</span></span>' +
+              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span data-i18n="mega.policy.col2">More</span></span>' +
                 '<a href="policy.html#objectives" data-i18n="mega.policy.objectives">Policy Objectives</a>' +
                 '<a href="policy.html#activities" data-i18n="mega.policy.brochure">Download 4D Brochure</a>' +
               '</div>' +
@@ -193,7 +192,7 @@
                 '<a href="services.html#auth" data-i18n="mega.services.euc">End User Certificates</a>' +
                 '<a href="services.html#auth" data-i18n="mega.services.marriage">Marriage Certificates</a>' +
               '</div>' +
-              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg><span data-i18n="mega.services.col2">Visa &amp; Consular</span></span>' +
+              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M7 18c.8-2 2.6-3 5-3s4.2 1 5 3"/><line x1="9" y1="6" x2="15" y2="6"/></svg><span data-i18n="mega.services.col2">Visa &amp; Consular</span></span>' +
                 '<a href="services.html#consular" data-i18n="mega.services.visas">Visas</a>' +
                 '<a href="services.html#consular" data-i18n="mega.services.consular">Consular Services</a>' +
               '</div>' +
@@ -210,7 +209,7 @@
               '<p class="mega-desc" data-i18n="mega.press.desc">Official news, press releases and public documents from the Ministry.</p>' +
             '</div>' +
             '<div class="mega-cols">' +
-              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span data-i18n="mega.press.col1">Press Releases</span></span>' +
+              '<div class="col"><span class="col-title"><svg viewBox="0 0 24 24"><path d="M4 3h16a1 1 0 011 1v13a2 2 0 01-2 2H5a2 2 0 01-2-2V4a1 1 0 011-1z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="12" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/><rect x="13" y="11" width="4" height="5" rx="1"/></svg><span data-i18n="mega.press.col1">Press Releases</span></span>' +
                 '<a href="press.html" data-i18n="mega.press.latest">Latest News</a>' +
                 '<a href="public-documents.html" data-i18n="mega.press.documents">Public Documents</a>' +
                 '<a href="press-releases.html" data-i18n="mega.press.releases">Press Releases</a>' +
@@ -220,7 +219,7 @@
         '</div></li>' +
         '<li class="' + cur('missions') + '"><a href="missions.html" data-i18n="nav.missions">Diplomatic Missions</a></li>' +
       '</ul>' +
-      '<button class="search-trigger" id="search-trigger" aria-label="Open search" title="Search (Ctrl+K)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>' +
+      '<a class="u-portal"' + EXT + ' href="https://portal.foreignaffairs.gov.ng"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3V3m11 0h7v7h-7V3M3 14h7v7H3v-7m11 0h7v7h-7v-7z"/></svg> <span data-i18n="util.portal">Paperless Service Portal</span></a>' +
       '<button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
     '</div></div></header>' +
     '<div class="nav-backdrop" id="backdrop"></div>';
@@ -572,13 +571,23 @@
     if (search) search.addEventListener('input', function () { q = search.value.trim().toLowerCase(); render(); });
     if (chips) chips.addEventListener('click', function (e) {
       var b = e.target.closest('.chip'); if (!b) return;
-      chips.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('is-active'); });
-      b.classList.add('is-active'); region = b.getAttribute('data-cat'); render();
+      if (b.classList.contains('is-active')) {
+        b.classList.remove('is-active'); region = 'All';
+      } else {
+        chips.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('is-active'); });
+        b.classList.add('is-active'); region = b.getAttribute('data-cat');
+      }
+      render();
     });
     if (typeChips) typeChips.addEventListener('click', function (e) {
       var b = e.target.closest('.chip'); if (!b) return;
-      typeChips.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('is-active'); });
-      b.classList.add('is-active'); type = b.getAttribute('data-type'); render();
+      if (b.classList.contains('is-active')) {
+        b.classList.remove('is-active'); type = 'All';
+      } else {
+        typeChips.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('is-active'); });
+        b.classList.add('is-active'); type = b.getAttribute('data-type');
+      }
+      render();
     });
     render();
 
